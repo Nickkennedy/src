@@ -3,15 +3,16 @@ package grid;
 import java.util.Scanner;
 
 public class grid {
-	
+	//Creates the arrays needed for 2 players. 
 	static String[][] p1shiparray = new String [10][10];
 	static String[][] p1shotsarray = new String [10][10];
 	static String[][] p2shotsarray = new String [10][10];
 	static String[][] p2shipsarray = new String [10][10];
 	static int [] player = {1,2,3,4};	
 	static Scanner KEYBOARD = new Scanner(System.in); 
-	static String text;
+	static String text; //Needed for the keyboard entry
 	
+	//Sets the starting values of the string arrays
 	public static void startvalue(String[][] array){
 		for(int p = 0; p <10; p++){
 			for(int i = 0; i < 10; i++){
@@ -20,6 +21,7 @@ public class grid {
 		}
 	}
 
+	//prints out heads and grids
 	public static void printships(int s){
 		System.out.println("--------------------------------------------------------------------------------------------");
 		System.out.println("					   Player " + player[s] +"									");
@@ -66,12 +68,14 @@ public class grid {
 		
 	}
 	
+	//Takes keyboard antry and passes it to be checked
 	public static void keyboad(Scanner scan){ 
 		System.out.print("Enter Coordinates and press Enter to Fire:");
 		text= scan.nextLine(); 
 		validentry(text);
 	}
 	
+	//Checks to see if the string entered is valid. If not, returns error
 	public static void validentry(String s){
 		char colchar= s.charAt(0);
 		String rowchar= s.substring(1);
@@ -130,6 +134,7 @@ public class grid {
 		hitcheck(col,row);
 	}
 	
+	//Now that the keyboard entry is valid, see if its a hit
 	public static void hitcheck(int a, int b){
 		if(p1shiparray[b][a].equals("S")){
 			System.out.println("Hit!");
@@ -148,6 +153,4 @@ public class grid {
 		startvalue(p1shotsarray);
 		printships(0);
 	}
-	
-
 }
