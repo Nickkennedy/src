@@ -16,7 +16,7 @@ public class grid {
 	public static void startvalue(String[][] array){
 		for(int p = 0; p <10; p++){
 			for(int i = 0; i < 10; i++){
-				array[p][i] = "  ";
+				array[p][i] = " ";
 			}
 		}
 	}
