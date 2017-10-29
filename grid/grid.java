@@ -25,7 +25,7 @@ public class grid {
 	public static void printships(int s){
 		System.out.println("--------------------------------------------------------------------------------------------");
 		System.out.println("					   Player " + player[s] +"									");
-		System.out.println("	   	 My Ships					MyShots");
+		System.out.println("	   	 My Ships					My Shots");
 		System.out.println("--------------------------------------------------------------------------------------------");
 		System.out.println("     A   B   C   D   E   F   G   H   I   J  	    A   B   C   D   E   F   G   H   I   J");
 		System.out.print("--------------------------------------------	--------------------------------------------");
@@ -143,7 +143,7 @@ public class grid {
 		}
 		else {
 			System.out.println("Miss");
-			p1shiparray[b][a] = "M";
+			p1shotsarray[b][a] = "M";
 			printships(0);
 		}
 	}
