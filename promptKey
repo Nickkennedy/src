@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+class promptKey {
+
+   public static void main(String[] args) {
+ 
+      Scanner scanner = new Scanner(System.in);
+      scanner.nextLine();
+      scanner.close();
+
+   }
+}
