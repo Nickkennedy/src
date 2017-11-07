@@ -15,7 +15,7 @@ public class HandOffScr {
      System.out.println("\n\t\t\t\t      Press \"ENTER\" to continue...");
   }
   public static void printScreenTwo(Player p){
-     ///Displays message for the next player that the previous has had their turn. Waits for user to press "Enter" to continue. Does this work    
+     ///Displays message for the next player that the previous has had their turn. Waits for user to press "Enter" to continue.
      
      System.out.println("\n\n\n\n\n\n\t\t\t\t\t=================");
      System.out.println("\t\t\t\t\tNOSRC Battleships");
