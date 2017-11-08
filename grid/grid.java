@@ -10,6 +10,8 @@ public class grid {
 	static String[][] p2shotsarray = new String [10][10];	
 	static Scanner KEYBOARD = new Scanner(System.in); 
 	static String text; //Used for the keyboard entry
+	static int col = 0;
+	static int row = 0;
 	static int currentplayer = 1; //Used to monitor which player is currently playing
 	
 	//Sets the starting value of " " for all items in the array
@@ -95,6 +97,7 @@ public class grid {
 		System.out.print("Enter Coordinates and press Enter to Fire:");
 		text= scan.nextLine(); 
 		validentry(text);
+		hitcheck(col,row); //Now the program has the int values of the keyboard entry, pass to check if its a hit
 	}
 	
 	//Checks to see if the string entered is valid. If not, returns error
@@ -102,10 +105,6 @@ public class grid {
 		//Converts the keyboard entry into a char (column) and string (row)
 		char colchar= s.charAt(0);
 		String rowchar= s.substring(1);
-		
-		//used to assign values from char/string to int
-		int col = 0;
-		int row = 0;
 
 		if (colchar == 'A' || colchar == 'a' )
 			col = 0;
@@ -155,8 +154,7 @@ public class grid {
 		else{
 			System.out.println("Invalid Row");
 			keyboad(KEYBOARD);
-		}
-		hitcheck(col,row); //Now the program has the int values of the keyboard entry, pass to check if its a hit
+		}	
 	}
 	
 	//Once the keyboard entry has been converted to a set of ints, checks if its a hit. Assigns value to array depending on result
@@ -185,26 +183,6 @@ public class grid {
 				System.out.println("Miss");
 				p2shotsarray[b][a] = "M";
 				p1shipsarray[b][a] = "M";
-			}
-		}
-	}
-
-	public static void main(String[] args) {
-		startvalue(p1shipsarray);
-		startvalue(p1shotsarray);
-		startvalue(p2shipsarray);
-		startvalue(p2shotsarray);
-		//Endless loop of happiness :)
-		for(int i =0; i < 5; i++){
-			if (currentplayer == 1){
-				printships();
-				currentplayer= 2;
-				i = 0; //Creates never ending loop
-			} 
-			else if(currentplayer == 2){
-				printships();
-				currentplayer= 1;
-				i = 0; //Creates never ending loop
 			}
 		}
 	}
