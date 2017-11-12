@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import grid.Player;
+
 
 public class HandOffScr {
    
@@ -11,7 +13,7 @@ public class HandOffScr {
      System.out.println("\t\t\t\t\t NOSRC Battleships");
      System.out.println("\t\t\t\t\t =================");
      
-     System.out.println("\n\t\t\t\t"+ p.getName() + "has placed all of their ships");
+     System.out.println("\n\t\t\t\t"+ p.p1getName() + "has placed all of their ships");
      System.out.println("\n\t\t\t\t      Press \"ENTER\" to continue...");
   }
   public static void printScreenTwo(Player p){
@@ -21,7 +23,7 @@ public class HandOffScr {
      System.out.println("\t\t\t\t\tNOSRC Battleships");
      System.out.println("\t\t\t\t\t=================");
      
-     System.out.println("\n\t\t\t\t" + p.getName() + "  has finished their turn");
+     System.out.println("\n\t\t\t\t" + p.p2getName() + "  has finished their turn");
      System.out.println("\n\t\t\t\t  Press \"ENTER\" to continue...");
   }
   public static void promptKey(){

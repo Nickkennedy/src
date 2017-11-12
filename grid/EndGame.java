@@ -1,4 +1,8 @@
+package grid;
+
 import java.util.Scanner;
+
+import grid.Player;
 
 public class EndGame {
 	
@@ -13,7 +17,7 @@ public class EndGame {
 	    HallOfFame.printDetails();
 	    
 	    System.out.println("\n\t\t\t\t\t =================");
-	    System.out.println("\n\t\t\t\tCongratulations " + p.getName() + " has won the game!!!");
+	    System.out.println("\n\t\t\t\tCongratulations " + p.getWinner() + " has won the game!!!");
 	    
 	    System.out.println("\n\t\t\t\t\tTo play again enter 'Y'");
 	    System.out.println("\t\t\t\t\t To exit enter 'X'");

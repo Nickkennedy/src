@@ -4,24 +4,24 @@ package grid;
 import java.util.Scanner;
 
 //class declaration
-class SplashScreen {
+public class SplashScreen {
 	// constants
-	private final String PROJECT;
+	public static String PROJECT;
 
-	private final String TITLE;
-	private final String COURSE;
-	private final String STUDY_PERIOD;
-	private final String YEAR;
+	public static String TITLE;
+	public static String COURSE;
+	public static String STUDY_PERIOD;
+	public static String YEAR;
 
-	private final String WORD;
-	private final String STUDENT_1;
-	private final String STUDENT_1_NUMBER;
-	private final String STUDENT_2;
-	private final String STUDENT_2_NUMBER;
-	private final String STUDENT_3;
-	private final String STUDENT_3_NUMBER;
-	private final String STUDENT_4;
-	private final String STUDENT_4_NUMBER;
+	public static String WORD;
+	public static String STUDENT_1;
+	public static String STUDENT_1_NUMBER;
+	public static String STUDENT_2;
+	public static String STUDENT_2_NUMBER;
+	public static String STUDENT_3;
+	public static String STUDENT_3_NUMBER;
+	public static String STUDENT_4;
+	public static String STUDENT_4_NUMBER;
 
 	// constructor
 	public SplashScreen() {
@@ -44,64 +44,64 @@ class SplashScreen {
 	}
 
 	// getters
-	public String getTitle() {
+	public static String getTitle() {
 		return TITLE;
 	}
 
-	public String getCourse() {
+	public static String getCourse() {
 		return COURSE;
 	}
 
-	public String getStudyPeriod() {
+	public static String getStudyPeriod() {
 		return STUDY_PERIOD;
 	}
 
-	public String getYear() {
+	public static String getYear() {
 		return YEAR;
 	}
 
-	public String getProject() {
+	public static String getProject() {
 		return PROJECT;
 	}
 
-	public String getWord() {
+	public static String getWord() {
 		return WORD;
 	}
 
-	public String getName1() {
+	public static String getName1() {
 		return STUDENT_1;
 	}
 
-	public String getSt1_Number() {
+	public static String getSt1_Number() {
 		return STUDENT_1_NUMBER;
 	}
 
-	public String getName2() {
+	public static String getName2() {
 		return STUDENT_2;
 	}
 
-	public String getSt2_Number() {
+	public static String getSt2_Number() {
 		return STUDENT_2_NUMBER;
 	}
 
-	public String getName3() {
+	public static String getName3() {
 		return STUDENT_3;
 	}
 
-	public String getSt3_Number() {
+	public static String getSt3_Number() {
 		return STUDENT_3_NUMBER;
 	}
 
-	public String getName4() {
+	public static String getName4() {
 		return STUDENT_4;
 	}
 
-	public String getSt4_Number() {
+	public static String getSt4_Number() {
 		return STUDENT_4_NUMBER;
 	}
 
 	// method that prints the screen output
-	public void displayScreen() {
+	public static void displayScreen() {
 		// print project name
 		System.out.println("\t\t=====================================================");
 		System.out.printf("\t\t\t\t%s\n", getProject());
@@ -121,36 +121,63 @@ class SplashScreen {
 		System.out.println("\n\t\t=====================================================");
 
 	}
-}
 
-// class declaration
-public class SplashScreenDemo {
+	public static int validplayer(String s) {
+		int i = Integer.parseInt(s);
+
+		if (i == 1)
+			return 1;
+		else if (i == 2)
+			return 2;
+		else if (i == 3)
+			return 3;
+		else if (i == 4)
+			return 4;
+		else
+			System.out.println("In valud entry. Try again:");
+		return i;
+
+	}
+
+	// class declaration
 	// instantiating objects
 	static SplashScreen scrn = new SplashScreen();
 	static Scanner input = new Scanner(System.in);
 
 	// declaring variables
-	static int numberOfPlayers;
-	static String wrd = "Players";
-	static String player_1;
-	static String player_2;
+	public static int intnumberplayer;
+	public static String numberOfPlayers;
+	public static String wrd = "Players";
+	public static String player_1;
+	public static String player_2;
 
-	// main method
-	public static void main(String[] args) {
-		// call to displayScreen()
-		scrn.displayScreen();
-
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t" + wrd);
-
-		// prompt for number of players
-		System.out.print("Enter number of players (up to 2): ");
-		numberOfPlayers = input.nextInt();
-		// consume trailing new line
-		input.nextLine();
-
-		// prompt for player 1 alias
-		System.out.print("\nEnter alias for player 1: ");
-		player_1 = input.nextLine();
+	public void playername() {
+		if (intnumberplayer == 2) {
+			// prompt for player 2 alias
+			System.out.print("\nEnter alias for player 1: ");
+			main.p.p1name = input.nextLine();
+			System.out.print("\nEnter alias for player 2: ");
+			main.p.p2name = input.nextLine();
+		}
+		if (intnumberplayer == 3) {
+			// prompt for player 3 alias
+			System.out.print("\nEnter alias for player 1: ");
+			main.p.p1name = input.nextLine();
+			System.out.print("\nEnter alias for player 2: ");
+			main.p.p2name = input.nextLine();
+			System.out.print("\nEnter alias for player 3: ");
+			main.p.p3name = input.nextLine();
+		}
+		if (intnumberplayer == 4) {
+			// prompt for player 4 alias
+			System.out.print("\nEnter alias for player 1: ");
+			main.p.p1name = input.nextLine();
+			System.out.print("\nEnter alias for player 2: ");
+			main.p.p2name = input.nextLine();
+			System.out.print("\nEnter alias for player 3: ");
+			main.p.p3name = input.nextLine();
+			System.out.print("\nEnter alias for player 4: ");
+			main.p.p4name = input.nextLine();
+		}
 	}
-
 }
