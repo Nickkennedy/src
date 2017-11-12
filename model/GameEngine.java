@@ -35,9 +35,10 @@ import model.Player;
 public class GameEngine implements GameModel
 {
    //attributes
-   private Map<String,Player> players = new ConcurrentHashMap<String,Player>();
+   private Map<Integer,Player> players = new TreeMap<Integer,Player>();
    private Map<Double,GameRecord> records = new TreeMap<Double,GameRecord>(Collections.reverseOrder());
    private int gameID = 1;
+   private int playerID = 1;
    private boolean noGameHistory = false;
    
    //constructors
@@ -53,7 +54,10 @@ public class GameEngine implements GameModel
    
    //Player housekeeping
    public void addPlayer(Player p){
-      players.put(p.getPlayerAlias(),p);}
+      players.put(playerID++,p);}
+   
+   public Player getPlayer(int key) {
+      return players.get(key);}
    
    public Collection<Player> getAllPlayers(){
       return players.values();}
@@ -77,6 +81,11 @@ public class GameEngine implements GameModel
          count++;}
       return a;
    }
+   
+   public boolean detectEndGame() {
+      //detect end of game here
+      return true;
+   };
 
    
    //Persistence

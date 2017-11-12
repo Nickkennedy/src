@@ -9,7 +9,9 @@ public interface GameModel
 
    //Player housekeeping
    public void addPlayer(Player p);
+   public Player getPlayer(int key);
    public Collection<Player> getAllPlayers();
+   public boolean detectEndGame();
    
    //GameRecord housekeeping
    public void addGameStats(GameRecord r);

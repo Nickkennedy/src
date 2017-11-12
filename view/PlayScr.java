@@ -15,6 +15,6 @@ public class PlayScr
 
    public String getShotCoords() {
       // TODO Auto-generated method stub
-      return null;
+      return "C5";                        //test data
    }
 }

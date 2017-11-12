@@ -36,7 +36,9 @@ public class ScrDriver implements UI
 
    //Place Screen   
    public void dspPlaceScr(Player p){
-      ps = new PlaceScr(s,p);}
+      do{
+         ps = new PlaceScr(s,p);
+      } while(ps.remainingShips());} 
    public String getPlaceCoords(){
       return ps.getPlaceCoords();}
    public ShipType getShipType(){
@@ -52,10 +54,11 @@ public class ScrDriver implements UI
    public void dspShot(){}
    
    //Handoff Screen   
-   public void dspHandoffScr(Player l, Player p){
-      hs = new HandoffScr(s,l,p);}
+   public void dspHandoffScr(Player last, Player current){
+      hs = new HandoffScr(s,last,current);}
    
    //Win Screen   
-   public void dspWinScr(Player p, GameModel m){
-      ws = new WinScr(s,p,m);}
+   public boolean dspWinScr(Player p, GameModel m){
+      ws = new WinScr(s,p,m);
+      return true;}
 }

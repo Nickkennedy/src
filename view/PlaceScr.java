@@ -17,7 +17,7 @@ public class PlaceScr
 
    public String getPlaceCoords() {
       // TODO Auto-generated method stub
-      return null;
+      return "C5";
    }
 
    public ShipType getShipType() {
@@ -29,4 +29,6 @@ public class PlaceScr
       // TODO Auto-generated method stub
       return null;
    }
+   
+   public boolean remainingShips() {return false;}
 }

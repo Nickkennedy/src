@@ -30,5 +30,5 @@ public interface UI
    public void dspHandoffScr(Player l, Player p);
    
    //Win Screen
-   public void dspWinScr(Player p, GameModel m);
+   public boolean dspWinScr(Player p, GameModel m);
 }
