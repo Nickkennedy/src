@@ -4,23 +4,23 @@ import java.util.Scanner;
 
 public class grid {
 	// Creates the arrays needed for 2 players.
-	static String[][] p1shipsarray = new String[10][10];
-	static String[][] p1shotsarray = new String[10][10];
-	static String[][] p2shipsarray = new String[10][10];
-	static String[][] p2shotsarray = new String[10][10];
-	static String[][] p3shipsarray = new String[10][10];
-	static String[][] p3shotsarray = new String[10][10];
-	static String[][] p4shipsarray = new String[10][10];
-	static String[][] p4shotsarray = new String[10][10];
-	static Scanner KEYBOARD = new Scanner(System.in);
-	static Scanner attacker = new Scanner(System.in);
-	static String text; // Used for the keyboard entry
-	static int col = 0;
-	static int row = 0;
-	static int currentplayer = 1; // Used to monitor which player is currently
+	public static String[][] p1shipsarray = new String[10][10];
+	public static String[][] p1shotsarray = new String[10][10];
+	public static String[][] p2shipsarray = new String[10][10];
+	public static String[][] p2shotsarray = new String[10][10];
+	public static String[][] p3shipsarray = new String[10][10];
+	public static String[][] p3shotsarray = new String[10][10];
+	public static String[][] p4shipsarray = new String[10][10];
+	public static String[][] p4shotsarray = new String[10][10];
+	public static Scanner KEYBOARD = new Scanner(System.in);
+	public static Scanner attacker = new Scanner(System.in);
+	public static String text; // Used for the keyboard entry
+	public static int col = 0;
+	public static int row = 0;
+	public static int currentplayer = 1; // Used to monitor which player is currently
 									// playing
-	static String attack;
-	static int attackint;
+	public static String attack;
+	public static int attackint;
 
 	// Sets the starting value of " " for all items in the array
 	public static void startvalue(String[][] array) {

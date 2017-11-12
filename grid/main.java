@@ -15,7 +15,6 @@ public class main {
 		// prompt for number of players
 		System.out.print("Enter number of players (up to 4): ");
 		SplashScreen.numberOfPlayers = input.next();
-
 		// consume trailing new line
 		input.nextLine();
 		SplashScreen.intnumberplayer = SplashScreen.validplayer(SplashScreen.numberOfPlayers);

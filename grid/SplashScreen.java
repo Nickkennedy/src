@@ -145,11 +145,11 @@ public class SplashScreen {
 	static Scanner input = new Scanner(System.in);
 
 	// declaring variables
-	static int intnumberplayer;
-	static String numberOfPlayers;
-	static String wrd = "Players";
-	static String player_1;
-	static String player_2;
+	public static int intnumberplayer;
+	public static String numberOfPlayers;
+	public static String wrd = "Players";
+	public static String player_1;
+	public static String player_2;
 
 	public void playername() {
 		if (intnumberplayer == 2) {
