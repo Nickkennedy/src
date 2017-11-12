@@ -14,7 +14,7 @@ public class SplashScr
    private String[] aliases = {"","","",""};
    private String alias ="";
    
-   //constructor
+   //constructor.
    public SplashScr(Scanner s, GameModel m){
       //display splash screen here
       System.out.println("\nSplash Screen");

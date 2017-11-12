@@ -12,7 +12,7 @@ public class Player
    int myHitCount = 0;
    int[] index = {0,0};
    
-   //constructor
+   //constructor.
    public Player(String a){
       myAlias = a;
       myShips = new Grid();

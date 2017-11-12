@@ -95,6 +95,7 @@ public class GameLogic
       player.loadPlayerShot(coords);
    }
    
+   //load test data
    private void loadTestData(){
       data.addGameStats(new GameRecord("jack",1,32,5));  //test data
       data.addGameStats(new GameRecord("freda",3,21,5)); //test data

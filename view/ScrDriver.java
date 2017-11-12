@@ -23,7 +23,7 @@ public class ScrDriver implements UI
    private HandoffScr hs;
    private WinScr ws;
    
-   //constructor
+   //constructor.
    public ScrDriver(){}
    
    //Splash Screen

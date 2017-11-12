@@ -6,7 +6,7 @@ import model.Player;
 
 public class PlayScr 
 {   
-   //constructor
+   //constructor.
    public PlayScr(Scanner s, Player p){
       //display playing screen here
       System.out.println("\nPlaying Screen");

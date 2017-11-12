@@ -7,7 +7,7 @@ import model.ShipType;
 
 public interface UI 
 {
-   //Constants
+   //Constants.
    public static final int SCR_SIZE = 20;
 
    //Splash Screen

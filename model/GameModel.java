@@ -4,6 +4,7 @@ import java.util.Collection;
 
 public interface GameModel 
 {
+   //constants
    public static final int GRID_SIZE = 10;
    public static final String HISTORY_FILE = "C:\\tmp\\history.dat";
 

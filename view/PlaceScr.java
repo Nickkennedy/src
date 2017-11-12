@@ -8,7 +8,7 @@ import model.ShipType;
 
 public class PlaceScr 
 {   
-   //constructor
+   //constructor.
    public PlaceScr(Scanner s, Player p){
       //display ship placement screen here
       System.out.println("\nPlacement Screen");

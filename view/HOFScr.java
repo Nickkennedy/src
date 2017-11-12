@@ -4,7 +4,8 @@ import model.GameModel;
 import model.GameRecord;
 
 public class HOFScr 
-{ 
+{
+   //constructor
    public HOFScr(GameModel m)
    {
       int i = 0;

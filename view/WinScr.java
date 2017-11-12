@@ -8,7 +8,7 @@ import view.HOFScr;
 
 public class WinScr 
 {   
-   //constructor
+   //constructor.
    public WinScr(Scanner s, Player p, GameModel m){
       System.out.println("\n          "+p.getPlayerAlias()+" has Won the game!");
       new HOFScr(m);
