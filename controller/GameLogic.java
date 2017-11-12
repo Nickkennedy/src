@@ -57,7 +57,8 @@ public class GameLogic
             
          //display winner, ask if another game, record game stats
          exit = ui.dspWinScr(winner,data);
-         data.addGameStats(new GameRecord("jill",1,36,8));
+         data.addGameStats(new GameRecord(winner.getPlayerAlias(),winner.getShipsLeft(),
+               winner.getShotCount(),winner.getHitCount()));
          
       } while(!exit);
       //write out game stats to file   

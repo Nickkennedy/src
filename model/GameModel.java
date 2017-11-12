@@ -1,7 +1,15 @@
 package model;
 
 import java.util.Collection;
-
+/**
+ * @author Kevin Purnell s3611540
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Purpose:       Provide the methods for holding and accessing data
+ * Location:      Model 
+ * Source:        own work 
+ */
 public interface GameModel 
 {
    //constants

@@ -30,7 +30,7 @@ import model.Player;
     *                2)handles multiple players
     *                3)handles all game history records
     * Location:      Model 
-    * Source:        supplied interface/own work 
+    * Source:        own work 
     */
 public class GameEngine implements GameModel
 {

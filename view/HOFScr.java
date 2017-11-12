@@ -2,7 +2,15 @@ package view;
 
 import model.GameModel;
 import model.GameRecord;
-
+/**
+ * @author Kevin Purnell s3611540
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Purpose:       Display the "Hall-of-Fame" sub-screen
+ * Location:      Model 
+ * Source:        own work
+ */
 public class HOFScr 
 {
    //constructor

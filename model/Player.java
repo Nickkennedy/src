@@ -10,6 +10,7 @@ public class Player
    Grid myShots = null;
    int myShotCount = 0;
    int myHitCount = 0;
+   int myShipsLeft = 0;
    int[] index = {0,0};
    
    //constructor.
@@ -27,6 +28,18 @@ public class Player
    
    public Grid getPlayerShots(){
       return myShots;}
+   
+   public int getShipsLeft(){
+      myShipsLeft = 2; //test data
+      return myShipsLeft;}
+   
+   public int getShotCount(){
+      myShotCount = 32; //test data
+      return myShotCount;}
+   
+   public int getHitCount(){
+      myHitCount = 15; //test data
+      return myHitCount;}
    
    public boolean willShipFit(String coords, ShipType shiptype, DirectionType direction){
       index = translateCoords(coords);
