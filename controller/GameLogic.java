@@ -19,18 +19,19 @@ public class GameLogic
    String coords = "";
    
    //contructor -main game logic
-   public GameLogic(){
-      //create game
+   public GameLogic()
+   {
+      //create game 
       ui = new ScrDriver();
       data = new GameEngine();
       
-      //play standard mode
+      //play game
       do {
-         //splash screen
+         //display splash screen & get game configuration from the players
          ui.dspSplashScr(data);
          processGameConfigInput();
             
-         //place ships
+         //each player places their ships
          for(int i=1; i<=playerCount; i++){
             if(i==1) enemy = null; else enemy = data.getPlayer(1);
             ui.dspHandoffScr(enemy, data.getPlayer(i));
@@ -41,20 +42,16 @@ public class GameLogic
             } while(blocked);
          }
             
-         //play game
-         do {
-            for(int i=1; i<=playerCount; i++){
-               if(i==1) enemyID=2; else enemyID=1;
-               ui.dspHandoffScr(data.getPlayer(enemyID), data.getPlayer(i));
-               ui.dspPlayScr(data.getPlayer(i));
-               processPlayInput();                
-               data.getPlayer(enemyID).isShipPresent(coords,0,0);
-               data.getPlayer(i).loadPlayerShot(coords);
-               ui.dspShot();
-               if(win = data.detectEndGame()) {winner = data.getPlayer(i);}
-            }
-         } while(!win);
-            
+         //play the game using the selected 'Play Mode'
+         playMode = PlayMode.STANDARD;
+         switch(playMode){
+            case STANDARD:  playStandardMode(); break;
+            case AI:        playAIMode();       break;
+            case SKIRMISH3: playSkirmish3Mode();break;
+            case SKIRMISH4: playSkirmish4Mode();break;
+            case TEAM:      playTeamMode();     break;    
+            default: System.out.println("Unknown Play Mode!");}   
+                     
          //display winner, ask if another game, record game stats
          exit = ui.dspWinScr(winner,data);
          data.addGameStats(new GameRecord(winner.getPlayerAlias(),winner.getShipsLeft(),
@@ -64,7 +61,29 @@ public class GameLogic
       //write out game stats to file   
       data.writeOutGameHistory();
    }
-   
+
+   //play mode helper methods
+   private void playStandardMode() {
+      do {
+         for(int i=1; i<=playerCount; i++){
+            if(i==1) enemyID=2; else enemyID=1;
+            ui.dspHandoffScr(data.getPlayer(enemyID), data.getPlayer(i));
+            ui.dspPlayScr(data.getPlayer(i));
+            processPlayInput();                
+            data.getPlayer(enemyID).isShipPresent(coords,0,0);
+            data.getPlayer(i).loadPlayerShot(coords);
+            ui.dspShot();
+            if(win = data.detectEndGame()) {winner = data.getPlayer(i);}
+         }
+      } while(!win); }
+
+   private void playAIMode() {}
+
+   private void playSkirmish3Mode() {}
+
+   private void playSkirmish4Mode() {}
+
+   private void playTeamMode() {}
 
    
    //helpers
