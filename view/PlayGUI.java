@@ -1,0 +1,19 @@
+package view;
+
+import java.util.Scanner;
+
+import model.Player;
+
+public class PlayGUI {
+   //constructor.
+   public PlayGUI(Scanner s, Player p){
+      //display ship placement screen here
+      System.out.println("\nGUI Play Screen");
+      //get input here
+      }
+
+   public String getShotCoords() {
+      // TODO Auto-generated method stub
+      return null;
+   }
+}
