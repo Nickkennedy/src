@@ -3,6 +3,7 @@ import model.GameEngine;
 import model.GameModel;
 import model.GameRecord;
 import model.Player;
+import view.GUIDriver;
 import view.ScrDriver;
 import view.UI;
 
@@ -23,7 +24,8 @@ public class GameLogic
    {
       //create game 
       ui = new ScrDriver();
-      data = new GameEngine();
+//      ui = new GUIDriver();    //uncomment to get GUI screens
+      data = new GameEngine();   //uncomment to get char screens
       
       //play game
       do {
