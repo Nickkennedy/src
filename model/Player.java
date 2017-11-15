@@ -105,6 +105,16 @@ public class Player
          case 'H': index[1]=7;break;
          case 'I': index[1]=8;break;
          case 'J': index[1]=9;break;
+         case 'a': index[1]=0;break;
+         case 'b': index[1]=1;break;
+         case 'c': index[1]=2;break;
+         case 'd': index[1]=3;break;
+         case 'e': index[1]=4;break;
+         case 'f': index[1]=5;break;
+         case 'g': index[1]=6;break;
+         case 'h': index[1]=7;break;
+         case 'i': index[1]=8;break;
+         case 'j': index[1]=9;break;
       }
       return index; 
    }
