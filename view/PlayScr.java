@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import grid.SplashScreen;
+//import grid.SplashScreen;
 import model.Player;
 
 public class PlayScr {
@@ -72,9 +72,9 @@ public class PlayScr {
 			System.out.println("Invalid enermy. Try again.");
 			whotoattach(attacker);
 		}
-		if (attackint > SplashScreen.intnumberplayer) {
-			System.out.println("Invalid enermy. Try again.");
-			whotoattach(attacker);
-		}
+//		if (attackint > SplashScreen.intnumberplayer) {
+//			System.out.println("Invalid enermy. Try again.");
+//			whotoattach(attacker);
+//		}
 	}
 }

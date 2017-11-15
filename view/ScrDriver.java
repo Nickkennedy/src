@@ -50,7 +50,9 @@ public class ScrDriver implements UI
    public void dspPlayScr(Player p){
       plays = new PlayScr(s,p);}
    public String getShotCoords(){
-      return plays.getShotCoords(null);}
+//      return plays.getShotCoords(null);
+      return "";
+   }
    public void dspShot(){}
    
    //Handoff Screen   
