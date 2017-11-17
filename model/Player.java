@@ -93,7 +93,7 @@ public class Player
    private int[] translateCoords(String coords) {
       int[] index = {0,0};
       char[] chars = coords.toCharArray();
-      index[0]=Character.getNumericValue(chars[1])-1;
+      index[0]=Character.getNumericValue(chars[1])-1;  //bug -need to deal with 10
       switch(chars[0]) {
          case 'A': index[1]=0;break;
          case 'B': index[1]=1;break;
