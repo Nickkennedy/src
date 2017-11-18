@@ -2,28 +2,36 @@ package view;
 
 import java.util.Scanner;
 
+import grid.AI;
 //import grid.SplashScreen;
 import model.Player;
-
+/**
+ * @author Nicholas Kennedy s3674937
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Purpose:       1)Prints out the players grid with all the latest cell data.
+ *                2)Asks the user to enter in coordinates.
+ *                3)If the user is playing more then 2 players, asks the user which player they want to fire on.
+ * Location:      View 
+ */
 public class PlayScr {
 
 	public static Scanner KEYBOARD = new Scanner(System.in);
 	public static Scanner attacker = new Scanner(System.in);
 	public static String text;
 	public static String attack;
-	public static int col = 0;
-	public static int row = 0;
 	public static int attackint;
 
+	//Passes in a scanner and a player and then prints their name and all of there Ships and shots.
 	public PlayScr(Scanner s, Player p) {
-		System.out.println(
-				"--------------------------------------------------------------------------------------------");
+		System.out.println("--------------------------------------------------------------------------------------------");
 		System.out.println("					   " + p.getPlayerAlias() + "									");
 		System.out.println("	   	 My Ships					My Shots");
 		System.out.println("--------------------------------------------------------------------------------------------");
 		System.out.println("     A   B   C   D   E   F   G   H   I   J  	    A   B   C   D   E   F   G   H   I   J");
 		System.out.println("--------------------------------------------	--------------------------------------------");
-		// I and P are used for formatting purposes
+		//i and P2 are nested values which help call each cell.
 		int i = 0;
 		int p2 = 0;
 		for (p2 = 0; p2 < 10; p2++) {
@@ -48,18 +56,22 @@ public class PlayScr {
 			System.out.println(
 					"--------------------------------------------	--------------------------------------------");
 		}
+		//Asks the user where they want to fire upon.
 		System.out.print("\nEnter Coordinates and press Enter to Fire:");
 		text = s.next();
 		p.loadPlayerShot(text);
 	}
-
+	
+	//If the user chooses to play multiplayer. it asks the uses to choose which enemy they want to fire on.
 	public static void whotoattach(Scanner scan) {
 		System.out.print("Which Enermy would you like to fire upon?");
 		attack = scan.nextLine();
 		validenermyentry(attack);
 	}
-
+	
+	//Checks to see if the users entry was valid.
 	public static void validenermyentry(String s) {
+		//Loops through all game options and checks i its valid. If not, asks the user to try again. 
 		if (s.equals("1")) {
 			attackint = 1;
 		} else if (s.equals("2")) {
@@ -72,9 +84,5 @@ public class PlayScr {
 			System.out.println("Invalid enermy. Try again.");
 			whotoattach(attacker);
 		}
-//		if (attackint > SplashScreen.intnumberplayer) {
-//			System.out.println("Invalid enermy. Try again.");
-//			whotoattach(attacker);
-//		}
 	}
 }
