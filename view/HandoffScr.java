@@ -64,6 +64,8 @@ public class HandoffScr {
   public HandoffScr(Scanner s, Player last, Player current){
      ///Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
      
+	  if(last==null) return; 
+	  
      System.out.println("\n\n\n\n\n\n\t\t\t\t\t =================");
      System.out.println("\t\t\t\t\t NOSRC Battleships");
      System.out.println("\t\t\t\t\t =================");
@@ -77,7 +79,6 @@ public class HandoffScr {
 	   
   ///The method enables to the user to enter the "Enter" keyboard command.
      
-  s.nextLine();
-  s.close();     
+  s.nextLine();    
   }
 }
