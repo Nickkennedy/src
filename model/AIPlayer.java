@@ -11,7 +11,11 @@ import java.util.Random;
  *                3)If the user is playing more then 2 players, asks the user which player they want to fire on.
  * Location:      View 
  */
-public class AIPlayer {
+public class AIPlayer extends Player{
+	public AIPlayer(String a) {
+		super(a);
+	}
+
 	//Array used to build the string to fire on coordinates;
 	static char co[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
 	static String coord;
