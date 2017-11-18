@@ -4,6 +4,7 @@ import model.GameModel;
 import model.GameRecord;
 import model.Player;
 import view.GUIDriver;
+import view.PlayScr;
 import view.ScrDriver;
 import view.UI;
 
@@ -12,6 +13,7 @@ public class GameLogic
    //attributes
    private GameModel data;
    private UI ui;
+   private PlayScr play;
    private PlayMode playMode = PlayMode.STANDARD;
    private int playerCount=2;
    private Boolean win=false, hit=false, blocked=false, exit=false;
@@ -25,6 +27,7 @@ public class GameLogic
       //create game 
       ui = new ScrDriver();
 //      ui = new GUIDriver();    //uncomment to get GUI screens
+      play = new PlayScr();
       data = new GameEngine();   //uncomment to get char screens
       
       //play game
