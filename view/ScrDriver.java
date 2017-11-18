@@ -48,7 +48,7 @@ public class ScrDriver implements UI
    
    //Play Screen   
    public void dspPlayScr(Player p){
-      plays = new PlayScr(s,p);}
+      plays = new PlayScr();}
    public String getShotCoords(){
 //      return plays.getShotCoords(null);
       return "";
