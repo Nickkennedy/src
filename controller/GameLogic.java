@@ -76,7 +76,7 @@ public class GameLogic
          for(int i=1; i<=playerCount; i++){
             if(i==1) enemyID=2; else enemyID=1;
             ui.dspHandoffScr(data.getPlayer(enemyID), data.getPlayer(i));
-            ui.dspPlayScr(data.getPlayer(i));
+            play.dspPlayScr(data.getPlayer(i));
             processPlayInput();                
             data.getPlayer(enemyID).isShipPresent(coords,0,0);
             data.getPlayer(i).loadPlayerShot(coords);

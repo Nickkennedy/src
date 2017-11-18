@@ -67,7 +67,7 @@ public class PlayScr implements UI {
 					"--------------------------------------------	--------------------------------------------");
 		}
 		//Asks the user where they want to fire upon.
-		getPlaceCoords(p);
+		getShotCoords(p);
 	}
 	
 	//If the user chooses to play multiplayer. it asks the uses to choose which enemy they want to fire on.
