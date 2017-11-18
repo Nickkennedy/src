@@ -55,15 +55,17 @@ public class HandoffScr {
 package view;
 
 import java.util.Scanner;
-import model.Player;
 
+import model.Player;
 
 public class HandoffScr {
    
    
-  public HandoffScr(Player last, Player current){
+  public HandoffScr(Scanner s, Player last, Player current){
      ///Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
      
+     if(last==null) return; 
+	  
      System.out.println("\n\n\n\n\n\n\t\t\t\t\t =================");
      System.out.println("\t\t\t\t\t NOSRC Battleships");
      System.out.println("\t\t\t\t\t =================");
@@ -71,14 +73,12 @@ public class HandoffScr {
      System.out.println("\n\t\t\t\t"+ last.getPlayerAlias() + "has finished their turn...");
      System.out.println("\n\t\t\t"+ current.getPlayerAlias() + ", Press \"ENTER\" to continue...");
      
-     promptKey();
+     promptKey(s);
   }
-  public static void promptKey(){
+  public static void promptKey(Scanner s){
 	   
   ///The method enables to the user to enter the "Enter" keyboard command.
      
-  Scanner scanner = new Scanner(System.in);
-  scanner.nextLine();
-  scanner.close();     
+  s.nextLine();    
   }
 }
