@@ -42,20 +42,18 @@ public class WinScr {
 	    System.out.print("\t\t\t\t\t    Selection: ");
 	    endGameSelection(s);
 	}
-	/// Detects whether all of a players ships have been hit. Will need to be changed depending on how 
-	/// we decide to program players/ ships. Will return either true or false. Updated 10/11 Rob
+	/// Detects whether a player has any ships alive, returns either true or false. Updated  18/11 Rob
+
 	
-/*	public static boolean endGameDetection(Player p) {
+	public static boolean endGameDetection(Player p) {
 		boolean gameOver = false;
-		int total = p.BATTLESHIP.getHitPoints() + p.CARRIER.getHitPoints()
-		+ p.SUBMARINE.getHitPoints() + p.DESTROYER.getHitPoints() + p.PATROL.getHitPoints();
-		if(total==0) {
+		if(p.getShipsLeft()==0) {
 			gameOver=true;
 		}
 		return gameOver;
 		
 	}
-*/	
+	
 	/// Waits until the user selects a valid input.
 	
 	public static String endGameSelection(Scanner s) {
@@ -67,6 +65,5 @@ public class WinScr {
 			selection = s.nextLine().toUpperCase();
 		}
 		return selection;
-	}
-	
+	}	
 }
