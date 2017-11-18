@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import grid.AI;
+//import grid.AI;
 import model.DirectionType;
 import model.GameModel;
 //import grid.SplashScreen;
