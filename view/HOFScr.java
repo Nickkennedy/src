@@ -17,14 +17,14 @@ public class HOFScr
    public HOFScr(GameModel m)
    {
       int i = 0;
-      System.out.println("    ======================================");
-      System.out.println("    |           Hall Of Fame             |");       
-      System.out.println("    |                                    |");                                          
-      System.out.println("    | rank winner ships shots/hit rating |");
+      System.out.println("\t\t\t======================================");
+      System.out.println("\t\t\t|           Hall Of Fame             |");       
+      System.out.println("\t\t\t|                                    |");                                          
+      System.out.println("\t\t\t| rank winner ships shots/hit rating |");
       if(m.getHallOfFame().size()==0) {
-      System.out.println("    |      you are the first players!    |");};          
+      System.out.println("\t\t\t|      you are the first players!    |");};          
       for(GameRecord r : m.getHallOfFame()) { 
-      System.out.println("    |   "+(++i)+"   "+r.toString()+"  |");};        
-      System.out.println("    ======================================");
+      System.out.println("\t\t\t|   "+(++i)+"   "+r.toString()+"  |");};        
+      System.out.println("\t\t\t======================================");
       System.out.println("");}
 }
