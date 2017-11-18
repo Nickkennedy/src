@@ -2,12 +2,24 @@ package view;
 
 import java.util.Scanner;
 
+import model.Cell;
+import model.CellStatus;
 import model.DirectionType;
 import model.Player;
 import model.ShipType;
 
 public class PlaceScr 
 {   
+	
+	static String[] ship = {"PATROL", "SUBMARINE", "DESTROYER", "BATTLESHIP", "CARRIER" };
+	public static int col;
+	public static int row;
+	static int shiptype;
+	static String Coords;
+	static String Direction;
+	static ShipType tempship = ShipType.setship();
+	static Cell tempcell = new Cell(CellStatus.EMPTY);
+	static int temp = 4;
    //constructor.
    public PlaceScr(Scanner s, Player p){
       //display ship placement screen here

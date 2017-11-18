@@ -12,8 +12,10 @@ import java.util.Random;
  * Location:      View 
  */
 public class AIPlayer extends Player{
+	
 	public AIPlayer(String a) {
 		super(a);
+		
 	}
 
 	//Array used to build the string to fire on coordinates;

@@ -107,7 +107,7 @@ public class PlayScr implements UI {
 	}
 
 	public void dspPlaceScr(Player p) {
-		place = new PlaceScr(KEYBOARD, p);
+		place = new PlaceScr(null, p);
 	}
 
 	public String getPlaceCoords(Player p) {
@@ -120,7 +120,7 @@ public class PlayScr implements UI {
 	}
 
 	public DirectionType getDirection() {
-		return place.getDirection();
+		return ((UI) place).getDirection();
 	}
 	
 	public void dspShot(Player p) {
