@@ -17,7 +17,7 @@ public class PlaceScr
 	static int shiptype;
 	static String Coords;
 	static String Direction;
-	static ShipType tempship = ShipType.setship();
+	static ShipType tempship = ShipType.CARRIER;
 	static Cell tempcell = new Cell(CellStatus.EMPTY);
 	static int temp = 4;
    //constructor.
