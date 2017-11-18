@@ -26,7 +26,7 @@ public class WinScr {
 	
 	///Displays end game screen.
 	
-	public WinScr(Player p, GameModel m) {
+	public WinScr(Scanner s, Player p, GameModel m) {
 		
 		System.out.println("\n\n\n\n\n\n\t\t\t\t\t =================");
 	    System.out.println("\t\t\t\t\t NOSRC Battleships");
@@ -40,7 +40,7 @@ public class WinScr {
 	    System.out.println("\n\t\t\t\t\tTo play again enter 'Y'");
 	    System.out.println("\t\t\t\t\t To exit enter 'X'");
 	    System.out.print("\t\t\t\t\t    Selection: ");
-	    endGameSelection();
+	    endGameSelection(s);
 	}
 	/// Detects whether all of a players ships have been hit. Will need to be changed depending on how 
 	/// we decide to program players/ ships. Will return either true or false. Updated 10/11 Rob
@@ -58,17 +58,14 @@ public class WinScr {
 */	
 	/// Waits until the user selects a valid input.
 	
-	public static String endGameSelection() {
+	public static String endGameSelection(Scanner s) {
 		
 		String selection;
-		
-		Scanner sc = new Scanner(System.in);
-		
-		selection = sc.nextLine().toUpperCase();
+				
+		selection = s.nextLine().toUpperCase();
 		while(!selection.matches("Y|X")) {
-			selection = sc.nextLine().toUpperCase();
+			selection = s.nextLine().toUpperCase();
 		}
-		sc.close();
 		return selection;
 	}
 	
