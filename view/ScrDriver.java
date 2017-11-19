@@ -80,4 +80,28 @@ public class ScrDriver implements UI {
 
 	}
 
+	@Override
+	public String getPlaceCoords(Player p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ShipType getShipType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DirectionType getDirection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getShotCoords(Player p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
