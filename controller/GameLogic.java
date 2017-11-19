@@ -45,6 +45,7 @@ public class GameLogic
             else {enemy = data.getPlayer(1);System.out.println("enemy ="+data.getPlayer(1).getPlayerAlias());}
             ui.dspHandoffScr(enemy, data.getPlayer(i));
             ui.dspPlaceScr(data.getPlayer(i));}
+         System.out.println("after placing ships: ");
             
          //play the game using the selected 'Play Mode'
          playMode = PlayMode.STANDARD;

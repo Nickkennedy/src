@@ -47,6 +47,7 @@ public class ScrDriver implements UI {
 	// Place Screen
 	@SuppressWarnings("static-access")
 	public void dspPlaceScr(Player p) {
+	   System.out.println("ScrDriver: dspPlaceScr: Player="+p.getPlayerAlias());
 		ps = new PlaceScr();
 		grid = new GridScr();
 		
@@ -81,6 +82,7 @@ public class ScrDriver implements UI {
 
 	// Handoff Screen
 	public void dspHandoffScr(Player last, Player current) {
+	   System.out.println("ScrDriver: dspHandoffScr:");
 		hs = new HandoffScr(s, last, current);
 	}
 
