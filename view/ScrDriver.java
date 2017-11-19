@@ -44,11 +44,10 @@ public class ScrDriver implements UI {
 		ps = new PlaceScr();
 		
 		while (ps.remainingShips() == true){
-			ps.getPlaceCoords(p);
+			String coords = ps.getPlaceCoords(p);
+			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
 			ps.getDirection();
-			ps.placeShips(p);
-			plays.dspPlayScr(p);
-			
+			ps.placeShips(p);		
 		}
 	}
 	
