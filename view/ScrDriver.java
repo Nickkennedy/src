@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import com.sun.javafx.scene.traversal.Direction;
+
 import model.DirectionType;
 import model.GameModel;
 import model.Player;
@@ -47,7 +49,7 @@ public class ScrDriver implements UI {
 			String coords = ps.getPlaceCoords(p);
 			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
 			ps.getDirection();
-			ps.placeShips(p);		
+			p.loadPlayerShip(coords,ShipType.PATROL,DirectionType.UP);		
 		}
 	}
 	
