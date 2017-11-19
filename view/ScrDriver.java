@@ -18,7 +18,11 @@ public class ScrDriver implements UI {
 	Scanner s = new Scanner(System.in);
 	private SplashScr ss;
 	private PlaceScr ps;
+	private PlayScr plays;
 	private GridScr grid;
+	private HandoffScr hs;
+	private WinScr ws;
+	int temp;
 
 	// constructor.
 	public ScrDriver() {
@@ -37,72 +41,43 @@ public class ScrDriver implements UI {
 		return ss.getAliases();
 	}
 
-	
 	// Place Screen
-	@SuppressWarnings("static-access")
 	public void dspPlaceScr(Player p) {
-	   System.out.println("ScrDriver: dspPlaceScr: Player="+p.getPlayerAlias());
-		ps = new PlaceScr();
-		grid = new GridScr();
-		int temp = 4;
-		
-		while (ps.remainingShips(temp) == true){
-			String coords = ps.getPlaceCoords(p);
-			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
-			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));
+		System.out.println("ScrDriver: dspPlaceScr: Player=" + p.getPlayerAlias());
+		ps = new PlaceScr(s, p);
+		grid = new GridScr(p);
+		temp = 5;
+		while (ps.remainingShips(0) == true) {
+			String coords = ps.getPlaceCoords(s, grid, p);
+			System.out.println("ScrDriver: dspPlaceScr: coords input=" + coords);
+			p.loadPlayerShip(coords, PlaceScr.tempship, PlaceScr.validgetDirection(ps.getDirection()));
 			temp--;
-			if(PlaceScr.tempship == ShipType.CARRIER){
-				grid.dspPlayScr(p);
-				PlaceScr.tempship = ShipType.PATROL;
-			}
+			if (PlaceScr.tempship == ShipType.CARRIER)
+				grid.display(p);
 		}
 	}
-	
-   public String getPlaceCoords(Player p) {
-      return ps.getPlaceCoords(p);}
-   
-	// public ShipType getShipType() {
-	// return (ps).getShipType();
-	// }
 
-	public String getShotCoords(Player p) {
-		// return plays.getShotCoords(null);
-		return "";
-	}
-
-	public void dspShot() {
-	}
-
-	@Override
-	public ShipType getShipType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DirectionType getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void dspHandoffScr(Player l, Player p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean dspWinScr(Player p, GameModel m) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
+	// Play Screen
 	public void dspPlayScr(Player p) {
-		// TODO Auto-generated method stub
-		
+		plays = new PlayScr(s, grid, p);
 	}
 
+	// Handoff Screen
+	public void dspHandoffScr(Player last, Player current) {
+		System.out.println("ScrDriver: dspHandoffScr:");
+		hs = new HandoffScr(s, last, current);
+	}
 
+	// Win Screen
+	public boolean dspWinScr(Player p, GameModel m) {
+		ws = new WinScr(s, p, m);
+		return true;
+	}
+
+	@Override
+	public void dspShot() {
+		// TODO Auto-generated method stub
+
+	}
 
 }
