@@ -70,7 +70,7 @@ public HandoffScr(Scanner s, Player last, Player current){
      System.out.println("\t\t\t\t\t NOSRC Battleships");
      System.out.println("\t\t\t\t\t =================");
      
-     System.out.println("\n\t\t\t\t"+ last.getPlayerAlias() + "has finished their turn...");
+     System.out.println("\n\t\t\t\t"+ last.getPlayerAlias() + " has finished their turn...");
      System.out.println("\n\t\t\t\t"+ current.getPlayerAlias() + ", Press \"ENTER\" to continue...");
      
      promptKey(handoff);
