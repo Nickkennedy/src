@@ -36,17 +36,11 @@ public class GameLogic
          ui.dspSplashScr(data);
          processGameConfigInput();
             
-         //each player places their ships
+         //each player place their ships
          for(int i=1; i<=playerCount; i++){
             if(i==1) enemy = null; else enemy = data.getPlayer(1);
             ui.dspHandoffScr(enemy, data.getPlayer(i));
-            do {
-               ui.dspPlaceScr(data.getPlayer(i));
-               System.out.println("before processPlaceInput:");
-               blocked = processPlaceInput(data.getPlayer(i));
-               System.out.println("after processPlaceInput:" + blocked);
-            } while(blocked);
-         }
+            ui.dspPlaceScr(data.getPlayer(i));}
             
          //play the game using the selected 'Play Mode'
          playMode = PlayMode.STANDARD;
@@ -73,6 +67,7 @@ public class GameLogic
    
    //play mode helper methods
    private void playStandardMode() {
+      System.out.println("GameLogic: playStandardMode: ");
       do {
          for(int i=1; i<=playerCount; i++){
             if(i==1) enemyID=2; else enemyID=1;
@@ -106,15 +101,7 @@ public class GameLogic
       data.addPlayer(player);                            //test data
       data.addPlayer(enemy);                             //test data
       playerCount = 2;}                                  //test data
-         
-   private boolean processPlaceInput(Player p) {
-      System.out.println("processPlaceInput:" + p.getPlayerAlias());
-      coords = ui.getPlaceCoords(p);
-      System.out.println("place coords: "+coords);
-      p.isShipPresent(coords,0,0);
-      return false;
-   }
-   
+          
    private void processPlayInput(Player p){
       System.out.println("processPlayInput:");
       coords = ui.getPlaceCoords(p);
