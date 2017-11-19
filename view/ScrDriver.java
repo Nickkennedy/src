@@ -18,9 +18,12 @@ public class ScrDriver implements UI {
 	Scanner s = new Scanner(System.in);
 	private SplashScr ss;
 	private PlaceScr ps;
+	@SuppressWarnings("unused")
 	private PlayScr plays;
 	private GridScr grid;
+	@SuppressWarnings("unused")
 	private HandoffScr hs;
+	@SuppressWarnings("unused")
 	private WinScr ws;
 
 	// constructor.
@@ -42,6 +45,7 @@ public class ScrDriver implements UI {
 
 	
 	// Place Screen
+	@SuppressWarnings("static-access")
 	public void dspPlaceScr(Player p) {
 		ps = new PlaceScr();
 		grid = new GridScr();
@@ -50,7 +54,8 @@ public class ScrDriver implements UI {
 			String coords = ps.getPlaceCoords(p);
 			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
 			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));	
-			grid.dspPlayScr(p);
+			if(PlaceScr.tempship == ShipType.CARRIER)
+				grid.dspPlayScr(p);
 		}
 	}
 	
