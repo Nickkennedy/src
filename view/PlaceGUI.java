@@ -20,7 +20,7 @@ public class PlaceGUI {
       return false;
    }
 
-   public String getPlaceCoords() {
+   public String getPlaceCoords(Player p) {
       // TODO Auto-generated method stub
       return null;
    }

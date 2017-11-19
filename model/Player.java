@@ -57,7 +57,7 @@ public class Player
       return true;}
    
    public boolean isShipPresent(String coords,int row,int col){
-      System.out.println("Player: isShipPresent");
+      System.out.println("Player: isShipPresent " + coords );
       index = translateCoords(coords);
       if(myShips.getGrid()[index[0]][index[1]].getCellState()==CellStatus.EMPTY){
          System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);

@@ -34,8 +34,8 @@ package view;
          do{
             ps = new PlaceGUI(s,p);
          } while(ps.remainingShips());} 
-      public String getPlaceCoords(){
-         return ps.getPlaceCoords();}
+      public String getPlaceCoords(Player p){
+         return ps.getPlaceCoords(p);}
       public ShipType getShipType(){
          return ps.getShipType();}
       public DirectionType getDirection(){
@@ -44,8 +44,8 @@ package view;
       //Play Screen   
       public void dspPlayScr(Player p){
          plays = new PlayGUI(s,p);}
-      public String getShotCoords(){
-         return plays.getShotCoords();}
+      public String getShotCoords(Player p){
+         return plays.getShotCoords(p);}
       public void dspShot(){}
       
       //Handoff Screen   

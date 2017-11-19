@@ -12,7 +12,7 @@ public class PlayGUI {
       //get input here
       }
 
-   public String getShotCoords() {
+   public String getShotCoords(Player p) {
       // TODO Auto-generated method stub
       return null;
    }

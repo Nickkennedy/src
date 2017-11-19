@@ -2,8 +2,6 @@ package view;
 
 import java.util.Scanner;
 
-import com.sun.javafx.scene.traversal.Direction;
-
 import model.DirectionType;
 import model.GameModel;
 import model.Player;
@@ -41,6 +39,7 @@ public class ScrDriver implements UI {
 		return ss.getAliases();
 	}
 
+	
 	// Place Screen
 	public void dspPlaceScr(Player p) {
 		ps = new PlaceScr();
@@ -52,7 +51,9 @@ public class ScrDriver implements UI {
 		}
 	}
 	
-
+   public String getPlaceCoords(Player p) {
+      return ps.getPlaceCoords(p);}
+   
 	// public ShipType getShipType() {
 	// return (ps).getShipType();
 	// }
@@ -62,7 +63,7 @@ public class ScrDriver implements UI {
 		plays = new PlayScr();
 	}
 
-	public String getShotCoords() {
+	public String getShotCoords(Player p) {
 		// return plays.getShotCoords(null);
 		return "";
 	}
@@ -81,11 +82,7 @@ public class ScrDriver implements UI {
 		return true;
 	}
 
-	@Override
-	public String getPlaceCoords() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public ShipType getShipType() {
@@ -98,5 +95,7 @@ public class ScrDriver implements UI {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
