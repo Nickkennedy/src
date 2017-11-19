@@ -21,8 +21,6 @@ import model.ShipType;
 //copied from zip/
 public class PlayScr {
 
-	public static Scanner KEYBOARD = new Scanner(System.in);
-	public static Scanner attacker = new Scanner(System.in);
 	public static String text;
 	public static String attack;
 	public static int attackint;
@@ -59,10 +57,6 @@ public class PlayScr {
 			System.out.println("Invalid enemy. Try again.");
 			whotoattach(s);
 		}
-	}
-
-	public void dspSplashScr(GameModel m) {
-		splash = new SplashScr(KEYBOARD, m);
 	}
 
 	public int getPlayerCount() {

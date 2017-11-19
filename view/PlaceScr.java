@@ -7,6 +7,7 @@ import model.DirectionType;
 import model.GameModel;
 import model.Player;
 import model.ShipType;
+
 //copied from zip/
 // declare class
 public class PlaceScr {
@@ -21,8 +22,9 @@ public class PlaceScr {
 	static int temp = 4;
 	DirectionType dir;
 
-	//constructor
-	public PlaceScr(Scanner s, Player p) {}
+	// constructor
+	public PlaceScr(Scanner s, Player p) {
+	}
 
 	/*
 	 * public public static void shiptypeinput() { // displays the ships left
@@ -35,10 +37,11 @@ public class PlaceScr {
 	 * shiptypeinput.nextLine(); if(validshiptype(shiptype) == false){
 	 * shiptypeinput(); } }
 	 */
-	
+
 	public String getPlaceCoords(Scanner s, GridScr g, Player p) {
-	   System.out.println("PlaceScr: getPlaceCoords() player="+p.getPlayerAlias());
-		if (shiptype == 5) shiptype = 0;
+		System.out.println("PlaceScr: getPlaceCoords() player=" + p.getPlayerAlias());
+		if (shiptype == 5)
+			shiptype = 0;
 		g.display(p);
 		System.out.println("Enter coordinates (e.g. C4) to place your " + ship[shiptype] + ":");
 		coords = s.nextLine();
@@ -53,6 +56,7 @@ public class PlaceScr {
 		Scanner DirectionInput = new Scanner(System.in);
 		System.out.println("Enter orienation(e.g. right):");
 		Direction = DirectionInput.nextLine();
+
 		return Direction = Direction.toUpperCase();
 	}
 
@@ -109,7 +113,7 @@ public class PlaceScr {
 			System.out.println("Invalid Row");
 		}
 	}
-	
+
 	public static DirectionType validgetDirection(String s) {
 		if (s.equals("RIGHT")) {
 			return DirectionType.RIGHT;
@@ -125,7 +129,7 @@ public class PlaceScr {
 		}
 		return DirectionType.valueOf(s);
 	}
-	
+
 	public static boolean validshiptype(int i) {
 
 		if (i == 0) {
@@ -177,5 +181,6 @@ public class PlaceScr {
 		}
 		return false;
 	}
+
 }
 //
