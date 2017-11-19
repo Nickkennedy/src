@@ -39,6 +39,7 @@ public class GameLogic
          //each player place their ships
          System.out.println("before placing ships: no players="+playerCount);
          for(int i=1; i<=playerCount+1; i++){
+            System.out.println("in ship placing loop: player index is="+i);
             if(i==1) enemy = null; else enemy = data.getPlayer(1);
             ui.dspHandoffScr(enemy, data.getPlayer(i));
             ui.dspPlaceScr(data.getPlayer(i));}
