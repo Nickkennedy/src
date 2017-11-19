@@ -19,8 +19,6 @@ public class PlaceScr {
 	static String Coords;
 	static String Direction;
 	static ShipType tempship = null;
-	static Cell tempcell = new Cell(CellStatus.EMPTY);
-	private static PlayScr play = new PlayScr();
 	DirectionType dir;
 
 	public PlaceScr() {

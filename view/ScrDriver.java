@@ -18,13 +18,7 @@ public class ScrDriver implements UI {
 	Scanner s = new Scanner(System.in);
 	private SplashScr ss;
 	private PlaceScr ps;
-	@SuppressWarnings("unused")
-	private PlayScr plays;
 	private GridScr grid;
-	@SuppressWarnings("unused")
-	private HandoffScr hs;
-	@SuppressWarnings("unused")
-	private WinScr ws;
 
 	// constructor.
 	public ScrDriver() {
@@ -71,11 +65,6 @@ public class ScrDriver implements UI {
 	// return (ps).getShipType();
 	// }
 
-	// Play Screen
-	public void dspPlayScr(Player p) {
-		plays = new PlayScr();
-	}
-
 	public String getShotCoords(Player p) {
 		// return plays.getShotCoords(null);
 		return "";
@@ -83,20 +72,6 @@ public class ScrDriver implements UI {
 
 	public void dspShot() {
 	}
-
-	// Handoff Screen
-	public void dspHandoffScr(Player last, Player current) {
-	   System.out.println("ScrDriver: dspHandoffScr:");
-		hs = new HandoffScr(s, last, current);
-	}
-
-	// Win Screen
-	public boolean dspWinScr(Player p, GameModel m) {
-		ws = new WinScr(s, p, m);
-		return true;
-	}
-
-
 
 	@Override
 	public ShipType getShipType() {
@@ -108,6 +83,24 @@ public class ScrDriver implements UI {
 	public DirectionType getDirection() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void dspHandoffScr(Player l, Player p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean dspWinScr(Player p, GameModel m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void dspPlayScr(Player p) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
