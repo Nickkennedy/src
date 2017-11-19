@@ -4,7 +4,7 @@ import java.util.Scanner;
 import controller.PlayMode;
 import model.GameModel;
 import view.HOFScr;
-
+//copied from zip/
 public class SplashScr 
 {
    // constants
@@ -106,3 +106,4 @@ public class SplashScr
       System.out.println("\n\t\t=====================================================");
    }
 }
+//

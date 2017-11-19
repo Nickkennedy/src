@@ -56,7 +56,7 @@ package view;
 
 import java.util.Scanner;
 import model.Player;
-
+//copied from zip/
 public class HandoffScr { 
    
 public HandoffScr(Scanner s, Player last, Player current){
@@ -73,3 +73,4 @@ public HandoffScr(Scanner s, Player last, Player current){
      s.nextLine();
   }
 }
+//

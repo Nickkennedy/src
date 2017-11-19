@@ -4,7 +4,7 @@ import model.DirectionType;
 import model.GameModel;
 import model.Player;
 import model.ShipType;
-
+//copied from zip/
 public interface UI 
 {
    //Constants.
@@ -17,14 +17,11 @@ public interface UI
    
    //Place Screen
    public void dspPlaceScr(Player p);
-   public String getPlaceCoords(Player p);
-   public ShipType getShipType();
-   public DirectionType getDirection();
    
    //Play Screen
    public void dspPlayScr(Player p);
+   
    public void dspShot();
-   public String getShotCoords(Player p);
    
    //Handoff Screen
    public void dspHandoffScr(Player l, Player p);
@@ -32,3 +29,4 @@ public interface UI
    //Win Screen
    public boolean dspWinScr(Player p, GameModel m);
 }
+//

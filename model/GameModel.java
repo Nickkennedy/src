@@ -10,6 +10,7 @@ import java.util.Collection;
  * Location:      Model 
  * Source:        own work 
  */
+//copied from zip/
 public interface GameModel 
 {
    //constants
@@ -31,3 +32,4 @@ public interface GameModel
    public void readInGameHistory();
    public void writeOutGameHistory();
 }
+//

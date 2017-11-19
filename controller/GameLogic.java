@@ -8,7 +8,7 @@ import view.GridScr;
 import view.PlayScr;
 import view.ScrDriver;
 import view.UI;
-
+//copied from zip/
 public class GameLogic 
 {
    //attributes
@@ -41,7 +41,6 @@ public class GameLogic
          for(int i=1; i<=playerCount; i++){
             System.out.println("in ship placing loop: no players="+playerCount+" player index is="+i);
             System.out.println("player ="+data.getPlayer(i).getPlayerAlias());
-            
             if(i==1) {enemy = null; System.out.println("enemy =null");} 
             else {enemy = data.getPlayer(1);System.out.println("enemy ="+data.getPlayer(1).getPlayerAlias());}
             ui.dspHandoffScr(enemy, data.getPlayer(i));
@@ -121,3 +120,4 @@ public class GameLogic
          System.out.println("HOF: "+r.toString());}
    }
 }
+//

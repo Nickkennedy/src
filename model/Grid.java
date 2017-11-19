@@ -1,5 +1,5 @@
 package model;
-
+//copied from zip/
 public class Grid 
 {
    //attributes
@@ -23,3 +23,4 @@ public class Grid
       return;
    }
 }
+//

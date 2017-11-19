@@ -32,6 +32,7 @@ import model.Player;
     * Location:      Model 
     * Source:        own work 
     */
+//copied from zip/
 public class GameEngine implements GameModel
 {
    //attributes
@@ -114,3 +115,4 @@ public class GameEngine implements GameModel
       catch(IOException e) {e.printStackTrace();}
    }
 }
+/

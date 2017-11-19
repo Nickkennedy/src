@@ -7,7 +7,7 @@ import model.DirectionType;
 import model.GameModel;
 import model.Player;
 import model.ShipType;
-
+//copied from zip/
 // declare class
 public class PlaceScr {
 	static String[] ship = { "PATROL", "SUBMARINE", "DESTROYER", "BATTLESHIP", "CARRIER" };
@@ -18,7 +18,7 @@ public class PlaceScr {
 	static String Direction;
 	static ShipType tempship = null;
 	static Cell tempcell = new Cell(CellStatus.EMPTY);
-	
+	static int temp = 4;
 	DirectionType dir;
 
 	//constructor
@@ -39,6 +39,7 @@ public class PlaceScr {
 	public String getPlaceCoords(Scanner s, GridScr g, Player p) {
 	   System.out.println("PlaceScr: getPlaceCoords() player="+p.getPlayerAlias());
 		if (shiptype == 5) shiptype = 0;
+		g.display(p);
 		System.out.println("Enter coordinates (e.g. C4) to place your " + ship[shiptype] + ":");
 		coords = s.nextLine();
 		validentry(coords);
@@ -169,7 +170,7 @@ public class PlaceScr {
 		}
 	}
 
-	public boolean remainingShips(int temp) {
+	public boolean remainingShips() {
 		if (temp >= 0) {
 			temp--;
 			return true;
@@ -177,3 +178,4 @@ public class PlaceScr {
 		return false;
 	}
 }
+//

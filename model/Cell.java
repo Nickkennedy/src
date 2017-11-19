@@ -1,5 +1,5 @@
 package model;
-
+//copied from zip/
 public class Cell 
 {
    //attributes
@@ -40,3 +40,4 @@ public class Cell
 //      return cellstate.name() + " " + shiptype.name();
    }
 }
+//

@@ -1,7 +1,7 @@
 package view;
 import java.util.Scanner;
 import model.GameModel;
-
+//copied from zip/
 public class SplashGUI {
 
    //constructor.
@@ -21,3 +21,4 @@ public class SplashGUI {
       return null;
    }
 }
+//

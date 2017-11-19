@@ -5,7 +5,7 @@ import java.util.Scanner;
 import model.DirectionType;
 import model.Player;
 import model.ShipType;
-
+//copied from zip/
 public class PlaceGUI {
 
    //constructor.
@@ -35,3 +35,5 @@ public class PlaceGUI {
       return null;
    }
 }
+
+//

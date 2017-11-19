@@ -21,7 +21,7 @@ package view;
 import java.util.Scanner;
 import model.Player;
 import model.GameModel;
-
+//copied from zip/
 public class WinScr {
 	
 	///Displays end game screen.
@@ -67,3 +67,4 @@ public class WinScr {
 		return selection;
 	}	
 }
+

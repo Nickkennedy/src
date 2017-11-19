@@ -1,13 +1,15 @@
 package view;
 
 import model.Player;
+//copied from zip/
+public class GridScr 
+{
+   //constructor
+	public GridScr(Player p){
+	   display(p);}
 
-public class GridScr {
-	
-	public GridScr(){
-	}
-
-	public static void dspPlayScr(Player p) {
+	//method   
+	public void display(Player p) {
 		System.out.println("--------------------------------------------------------------------------------------------");
 		System.out.println("					   " + p.getPlayerAlias() + "									");
 		System.out.println("	   	 My Ships					My Shots");
@@ -41,3 +43,4 @@ public class GridScr {
 		}		
 	}
 }
+//

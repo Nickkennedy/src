@@ -1,5 +1,5 @@
 package model;
-
+//copied from zip/
 public enum DirectionType
 {
    UP,
@@ -7,3 +7,4 @@ public enum DirectionType
    LEFT,
    RIGHT,
 }
+//

@@ -12,7 +12,7 @@ import view.PlayScr;
 import view.SplashScr;
 import view.WinScr;
 import view.UI;
-
+//copied from zip/
 public class ScrDriver implements UI {
 	// attributes
 	Scanner s = new Scanner(System.in);
@@ -22,86 +22,63 @@ public class ScrDriver implements UI {
 	private GridScr grid;
 	private HandoffScr hs;
 	private WinScr ws;
-	int temp;
 
 	// constructor.
-	public ScrDriver() {
-	}
+	public ScrDriver() {}
 
 	// Splash Screen
 	public void dspSplashScr(GameModel m) {
-		ss = new SplashScr(s, m);
-	}
+		ss = new SplashScr(s, m);}
 
 	public int getPlayerCount() {
-		return ss.getCount();
-	}
+		return ss.getCount();	}
 
 	public String[] getPlayerAliases() {
-		return ss.getAliases();
-	}
+		return ss.getAliases();}
 
+	
+	
+	
 	// Place Screen
 	public void dspPlaceScr(Player p) {
-		System.out.println("ScrDriver: dspPlaceScr: Player=" + p.getPlayerAlias());
+	   System.out.println("ScrDriver: dspPlaceScr: Player="+p.getPlayerAlias());
 		ps = new PlaceScr(s, p);
 		grid = new GridScr(p);
-		temp = 5;
-		while (ps.remainingShips(0) == true) {
+		
+		while (ps.remainingShips() == true){
 			String coords = ps.getPlaceCoords(s, grid, p);
-			System.out.println("ScrDriver: dspPlaceScr: coords input=" + coords);
-			p.loadPlayerShip(coords, PlaceScr.tempship, PlaceScr.validgetDirection(ps.getDirection()));
-			temp--;
-			if (PlaceScr.tempship == ShipType.CARRIER)
+			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
+			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));	
+			if(PlaceScr.tempship == ShipType.CARRIER)
 				grid.display(p);
 		}
 	}
+	
+
 
 	// Play Screen
 	public void dspPlayScr(Player p) {
-		plays = new PlayScr(s, grid, p);
-	}
+		plays = new PlayScr(s,grid, p);}
+
+
 
 	// Handoff Screen
 	public void dspHandoffScr(Player last, Player current) {
-		System.out.println("ScrDriver: dspHandoffScr:");
-		hs = new HandoffScr(s, last, current);
-	}
+	   System.out.println("ScrDriver: dspHandoffScr:");
+		hs = new HandoffScr(s, last, current);}
+	
+	
 
 	// Win Screen
 	public boolean dspWinScr(Player p, GameModel m) {
 		ws = new WinScr(s, p, m);
-		return true;
-	}
+		return true;}
 
-	@Override
-	public void dspShot() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getPlaceCoords(Player p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ShipType getShipType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DirectionType getDirection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getShotCoords(Player p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public void dspShot() {
+      // TODO Auto-generated method stub
+      
+   }
 
 }
+//

@@ -1,5 +1,5 @@
 package view;
-
+//copied from zip/
 import java.util.Scanner;
 
 import model.Player;
@@ -12,3 +12,4 @@ public class HandoffGUI {
       //get keyboard input
    }
 }
+//

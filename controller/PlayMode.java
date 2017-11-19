@@ -1,5 +1,5 @@
 package controller;
-
+//copied from zip/
 public enum PlayMode 
 {
    STANDARD,
@@ -8,3 +8,4 @@ public enum PlayMode
    SKIRMISH4,
    TEAM,
 }
+//

@@ -1,7 +1,7 @@
 package model;
 import model.Cell; 
 import model.Grid;
-
+//copied from zip/
 public class Player
 {
    //attributes
@@ -119,3 +119,4 @@ public class Player
       return index; 
    }
 }
+//

@@ -11,6 +11,7 @@ import java.util.Random;
  *                3)If the user is playing more then 2 players, asks the user which player they want to fire on.
  * Location:      View 
  */
+//copied from zip/
 public class AIPlayer extends Player{
 	
 	public AIPlayer(String a) {
@@ -72,3 +73,4 @@ public class AIPlayer extends Player{
 	}
 
 }
+//

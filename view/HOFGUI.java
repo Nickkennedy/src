@@ -15,6 +15,7 @@ import model.GameRecord;
  * Location:      Model 
  * Source:        own work
  */
+//copied from zip/
 public class HOFGUI extends JPanel
 {
    //attributes
@@ -93,3 +94,4 @@ public class HOFGUI extends JPanel
 //      System.out.println("    |   "+(++i)+"   "+r.toString()+"  |");};        
 //      System.out.println("    ======================================");
 //      System.out.println("");}
+//

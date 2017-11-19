@@ -18,6 +18,7 @@ import model.ShipType;
  *                3)If the user is playing more then 2 players, asks the user which player they want to fire on.
  * Location:      View 
  */
+//copied from zip/
 public class PlayScr {
 
 	public static Scanner KEYBOARD = new Scanner(System.in);
@@ -29,35 +30,34 @@ public class PlayScr {
 	private PlaceScr place;
 
 	//Constructor
-	public PlayScr(){};
-
-	//Passes in a player and then prints their name and all of there Ships and shots.
-	public void dspPlayScr(Player p) {
-		GridScr.dspPlayScr(p);
-		getShotCoords(p);
-	}
+	public PlayScr(Scanner s, GridScr g, Player p){
+	   g.display(p);
+	   getShotCoords(s, p);
+	};
+	
+	
 	
 	//If the user chooses to play multiplayer. it asks the uses to choose which enemy they want to fire on.
-	public static void whotoattach(Scanner scan) {
-		System.out.print("Which Enermy would you like to fire upon?");
-		attack = scan.nextLine();
-		validenermyentry(attack);
+	public static void whotoattach(Scanner s) {
+		System.out.print("Which Enemy would you like to fire upon?");
+		attack = s.nextLine();
+		validenemyentry(s, attack);
 	}
 	
 	//Checks to see if the users entry was valid.
-	public static void validenermyentry(String s) {
+	public static void validenemyentry(Scanner s, String str) {
 		//Loops through all game options and checks i its valid. If not, asks the user to try again. 
-		if (s.equals("1")) {
+		if (str.equals("1")) {
 			attackint = 1;
-		} else if (s.equals("2")) {
+		} else if (str.equals("2")) {
 			attackint = 2;
-		} else if (s.equals("3")) {
+		} else if (str.equals("3")) {
 			attackint = 3;
-		} else if (s.equals("4")) {
+		} else if (str.equals("4")) {
 			attackint = 4;
 		} else {
-			System.out.println("Invalid enermy. Try again.");
-			whotoattach(attacker);
+			System.out.println("Invalid enemy. Try again.");
+			whotoattach(s);
 		}
 	}
 
@@ -73,22 +73,23 @@ public class PlayScr {
 		return splash.getAliases();
 	}
 
-	public void dspPlaceScr(Player p) {
-		place = new PlaceScr();
-	}
+//	public void display(Player p) {
+//		place = new PlaceScr();
+//	}
 
-	public DirectionType getDirection() {
-		return ((UI) place).getDirection();
-	}
+//	public DirectionType getDirection() {
+//		return ((UI) place).getDirection();
+//	}
 	
-	public void dspShot(Player p) {
-		dspPlayScr(p);
+	public void dspShot(GridScr g, Player p) {
+		g.display(p);
 	}
 
-	public String getShotCoords(Player p) {
+	public String getShotCoords(Scanner s, Player p) {
 		System.out.print("\nEnter Coordinates and press Enter to Fire:");
-		text = KEYBOARD.next();
+		text = s.next();
 		p.loadPlayerShot(text);
 		return text;
 	}
 }
+//

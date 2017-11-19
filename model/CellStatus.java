@@ -1,5 +1,5 @@
 package model;
-
+//copied from zip/
 public enum CellStatus
 {
    EMPTY,
@@ -7,3 +7,4 @@ public enum CellStatus
    HIT,
    MISS,
 }
+//

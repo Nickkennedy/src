@@ -13,6 +13,7 @@ import java.io.Serializable;
  * Location:      Model 
  * Source:        own work 
  */
+//copied from zip/
 public class GameRecord implements Serializable
 {
    //attributes
@@ -44,3 +45,4 @@ public class GameRecord implements Serializable
             +String.format("%1$,.1f",Math.round(hitrate*100)/100.0)+"     "
             +(String.format("%1$,.1f",Math.round(rating*100)/100.0)));}
 }
+//

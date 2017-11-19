@@ -1,5 +1,5 @@
 package model;
-
+//copied from zip/
 public enum ShipType 
 {
    CARRIER   ("Carrier",5),
@@ -18,3 +18,4 @@ public enum ShipType
    public String getName() {return name;}
    public int getLength()  {return length;}
 }
+//

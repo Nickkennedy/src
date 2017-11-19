@@ -11,6 +11,7 @@ import model.GameRecord;
  * Location:      Model 
  * Source:        own work
  */
+//copied from zip/
 public class HOFScr 
 {
    //constructor
@@ -28,3 +29,4 @@ public class HOFScr
       System.out.println("\t\t\t======================================");
       System.out.println("");}
 }
+//
