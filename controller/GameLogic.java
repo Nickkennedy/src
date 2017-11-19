@@ -4,6 +4,7 @@ import model.GameModel;
 import model.GameRecord;
 import model.Player;
 import view.GUIDriver;
+import view.GridScr;
 import view.PlayScr;
 import view.ScrDriver;
 import view.UI;
@@ -20,7 +21,7 @@ public class GameLogic
    private int enemyID = 2;
    private Player player = null, enemy = null, winner = null;
    String coords = "";
-   
+   private GridScr grid;
    //contructor -main game logic
    public GameLogic()
    {
@@ -29,7 +30,7 @@ public class GameLogic
 //      ui = new GUIDriver();    //uncomment to get GUI screens
       play = new PlayScr();
       data = new GameEngine();   //uncomment to get char screens
-      
+      grid = new GridScr();
       //play game
       do {
          //display splash screen & get game configuration from the players
@@ -77,7 +78,7 @@ public class GameLogic
          for(int i=1; i<=playerCount; i++){
             if(i==1) enemyID=2; else enemyID=1;
             ui.dspHandoffScr(data.getPlayer(enemyID), data.getPlayer(i));
-            play.dspPlayScr(data.getPlayer(i));
+            //grid.dspPlayScr(data.getPlayer(i));
             processPlayInput(data.getPlayer(i));                
             data.getPlayer(enemyID).isShipPresent(coords,0,0);
             data.getPlayer(i).loadPlayerShot(coords);
