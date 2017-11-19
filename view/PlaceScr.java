@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import model.Cell;
 import model.CellStatus;
+import model.DirectionType;
 import model.Player;
 import model.ShipType;
 
@@ -21,6 +22,7 @@ public class PlaceScr {
 	static Cell tempcell = new Cell(CellStatus.EMPTY);
 	static int temp = 4;
 	private static PlayScr play = new PlayScr();
+	DirectionType dir;
 
 	public PlaceScr() {
 
@@ -37,7 +39,7 @@ public class PlaceScr {
 	 * shiptypeinput.nextLine(); if(validshiptype(shiptype) == false){
 	 * shiptypeinput(); } }
 	 */
-	public static String getPlaceCoords(Player p) {
+	public String getPlaceCoords(Player p) {
 	   System.out.println("PlaceScr: getPlaceCoords() player="+p.getPlayerAlias());
 		if (shiptype == 5)
 			shiptype = 0;
@@ -52,14 +54,12 @@ public class PlaceScr {
 		return Coords;
 	}
 
-	public void getDirection() {
+	public String getDirection() {
 		@SuppressWarnings("resource")
 		Scanner DirectionInput = new Scanner(System.in);
 		System.out.println("Enter orienation(e.g. right):");
 		Direction = DirectionInput.nextLine();
-		Direction = Direction.toUpperCase();
-		if (validgetDirection(Direction) == false)
-			getDirection();
+		return Direction = Direction.toUpperCase();
 	}
 
 	public static void validentry(String s) {
@@ -115,41 +115,23 @@ public class PlaceScr {
 			System.out.println("Invalid Row");
 		}
 	}
-
-	public static boolean validgetDirection(String s) {
+	
+	public static DirectionType validgetDirection(String s) {
 		if (s.equals("RIGHT")) {
-			return true;
+			return DirectionType.RIGHT;
 		}
 		if (s.equals("LEFT")) {
-			return true;
+			return DirectionType.LEFT;
 		}
 		if (s.equals("DOWN")) {
-			return true;
+			return DirectionType.DOWN;
 		}
 		if (s.equals("UP")) {
-			return true;
+			return DirectionType.UP;
 		}
-		return false;
+		return DirectionType.valueOf(s);
 	}
-
-	public boolean validcoords(String coords, String orientation, int lenght) {
-		validentry(coords);
-		if (col + lenght > 9 && orientation == "RIGHT") {
-			System.out.println("Ship to long. Try again");
-			return false;
-		} else if (col + lenght <= 0 && orientation == "LEFT") {
-			System.out.println("Ship to long. Try again");
-			return false;
-		} else if (row + lenght > 0 && orientation == "UP") {
-			System.out.println("Ship to long. Try again");
-			return false;
-		} else if (col + lenght < 9 && orientation == "DOWN") {
-			System.out.println("Ship to long. Try again");
-			return false;
-		} else
-			return true;
-	}
-
+	
 	public static boolean validshiptype(int i) {
 
 		if (i == 0) {

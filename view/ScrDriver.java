@@ -48,8 +48,7 @@ public class ScrDriver implements UI {
 		while (ps.remainingShips() == true){
 			String coords = ps.getPlaceCoords(p);
 			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
-			ps.getDirection();
-			p.loadPlayerShip(coords,ShipType.PATROL,DirectionType.UP);		
+			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));		
 		}
 	}
 	
