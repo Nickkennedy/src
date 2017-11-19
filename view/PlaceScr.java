@@ -20,7 +20,6 @@ public class PlaceScr {
 	static String Direction;
 	static ShipType tempship = null;
 	static Cell tempcell = new Cell(CellStatus.EMPTY);
-	static int temp = 4;
 	private static PlayScr play = new PlayScr();
 	DirectionType dir;
 
@@ -170,7 +169,7 @@ public class PlaceScr {
 		return false;
 	}
 
-	public boolean remainingShips() {
+	public boolean remainingShips(int temp) {
 		if (temp >= 0) {
 			temp--;
 			return true;

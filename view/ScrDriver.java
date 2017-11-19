@@ -50,13 +50,17 @@ public class ScrDriver implements UI {
 	   System.out.println("ScrDriver: dspPlaceScr: Player="+p.getPlayerAlias());
 		ps = new PlaceScr();
 		grid = new GridScr();
+		int temp = 4;
 		
-		while (ps.remainingShips() == true){
+		while (ps.remainingShips(temp) == true){
 			String coords = ps.getPlaceCoords(p);
 			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
-			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));	
-			if(PlaceScr.tempship == ShipType.CARRIER)
+			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));
+			temp--;
+			if(PlaceScr.tempship == ShipType.CARRIER){
 				grid.dspPlayScr(p);
+				PlaceScr.tempship = ShipType.PATROL;
+			}
 		}
 	}
 	

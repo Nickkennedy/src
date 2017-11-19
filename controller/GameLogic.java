@@ -28,9 +28,7 @@ public class GameLogic
       //create game 
       ui = new ScrDriver();
 //      ui = new GUIDriver();    //uncomment to get GUI screens
-      play = new PlayScr();
       data = new GameEngine();   //uncomment to get char screens
-      grid = new GridScr();
       //play game
       do {
          //display splash screen & get game configuration from the players
@@ -39,13 +37,22 @@ public class GameLogic
             
          //each player place their ships
          System.out.println("before placing ships: no players="+playerCount);
-         for(int i=1; i<=playerCount; i++){
+         for(int i = 1; i <= playerCount;i++){
             System.out.println("in ship placing loop: no players="+playerCount+" player index is="+i);
             System.out.println("player ="+data.getPlayer(i).getPlayerAlias());
-            if(i==1) {enemy = null; System.out.println("enemy =null");} 
-            else {enemy = data.getPlayer(1);System.out.println("enemy ="+data.getPlayer(1).getPlayerAlias());}
-            ui.dspHandoffScr(enemy, data.getPlayer(i));
-            ui.dspPlaceScr(data.getPlayer(i));}
+            if(i == 2) {
+            	enemy = data.getPlayer(2); 
+            	System.out.println("enemy =null");
+            	ui.dspHandoffScr(enemy, data.getPlayer(i));
+                ui.dspPlaceScr(data.getPlayer(i));
+            } 
+            else if (i == 1){
+            	enemy = data.getPlayer(1);
+            	System.out.println("enemy ="+data.getPlayer(1).getPlayerAlias());
+            	ui.dspHandoffScr(enemy, data.getPlayer(i));
+                ui.dspPlaceScr(data.getPlayer(i));
+            	}
+            }
          System.out.println("after placing ships: ");
             
          //play the game using the selected 'Play Mode'
