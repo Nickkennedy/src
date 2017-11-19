@@ -59,7 +59,13 @@ public class PlaceScr {
 		Scanner DirectionInput = new Scanner(System.in);
 		System.out.println("Enter orienation(e.g. right):");
 		Direction = DirectionInput.nextLine();
-		return Direction = Direction.toUpperCase();
+		Direction = Direction.toUpperCase();
+		if(validdirection(Direction) == false){
+			System.out.println("Orienation unknown. Try again.");
+			getDirection();
+		}
+		return Direction;
+		
 	}
 
 	public static void validentry(String s) {
@@ -153,27 +159,15 @@ public class PlaceScr {
 		tempship = null;
 		return false;
 	}
-
-	public static void placeShips(Player p) {
-
-		if (Direction.equals("RIGHT")) {
-			for (int i = col; i <= col + tempship.getLength(); i++) {
-				p.getPlayerShips().setGridCell(tempcell, row, i);
-				;
-			}
-		} else if (Direction.equals("LEFT")) {
-			for (int i = col; i < tempship.getLength() - 1; i--) {
-				p.getPlayerShips().setGridCell(tempcell, row, i);
-			}
-		} else if (Direction.equals("UP")) {
-			for (int i = row; i < tempship.getLength() - 1; i--) {
-				p.getPlayerShips().setGridCell(tempcell, i, col);
-			}
-		} else if (Direction.equals("DOWN")) {
-			for (int i = col; i < tempship.getLength() - 1; i++) {
-				p.getPlayerShips().setGridCell(tempcell, i, col);
-			}
+	
+	public boolean validdirection(String s){
+		switch(s){
+		 case "RIGHT": return true;
+		 case "DOWN": return true;
+		 case "LEFT": return true;
+		 case "UP": return true;
 		}
+		return false;
 	}
 
 	public boolean remainingShips() {
