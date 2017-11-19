@@ -2,12 +2,17 @@ package view;
 
 import model.Player;
 //copied from zip/
-public class GridScr 
+public class GridScr
 {
    //constructor
-	public GridScr(Player p){
-	   display(p);}
-
+	public GridScr(){
+	}
+	
+	//constructor
+	public void GridScr(Player p){
+		   display(p);}
+		
+	
 	//method   
 	public void display(Player p) {
 		System.out.println("--------------------------------------------------------------------------------------------");
