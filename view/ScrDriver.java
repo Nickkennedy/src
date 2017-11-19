@@ -19,6 +19,7 @@ public class ScrDriver implements UI {
 	private SplashScr ss;
 	private PlaceScr ps;
 	private PlayScr plays;
+	private GridScr grid;
 	private HandoffScr hs;
 	private WinScr ws;
 
@@ -43,11 +44,13 @@ public class ScrDriver implements UI {
 	// Place Screen
 	public void dspPlaceScr(Player p) {
 		ps = new PlaceScr();
+		grid = new GridScr();
 		
 		while (ps.remainingShips() == true){
 			String coords = ps.getPlaceCoords(p);
 			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
-			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));		
+			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection()));	
+			grid.dspPlayScr(p);
 		}
 	}
 	
