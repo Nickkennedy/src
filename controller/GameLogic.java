@@ -37,7 +37,8 @@ public class GameLogic
          processGameConfigInput();
             
          //each player place their ships
-         for(int i=1; i<=playerCount; i++){
+         System.out.println("before placing ships: no players="+playerCount);
+         for(int i=1; i<=playerCount+1; i++){
             if(i==1) enemy = null; else enemy = data.getPlayer(1);
             ui.dspHandoffScr(enemy, data.getPlayer(i));
             ui.dspPlaceScr(data.getPlayer(i));}
