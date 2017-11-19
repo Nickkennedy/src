@@ -14,14 +14,14 @@ public class GameLogic
    //attributes
    private GameModel data;
    private UI ui;
-   private PlayScr play;
    private PlayMode playMode = PlayMode.STANDARD;
    private int playerCount=2;
-   private Boolean win=false, hit=false, blocked=false, exit=false;
+   private Boolean win=false, exit=false;
    private int enemyID = 2;
    private Player player = null, enemy = null, winner = null;
    String coords = "";
-   private GridScr grid;
+
+   
    //contructor -main game logic
    public GameLogic()
    {
@@ -29,6 +29,7 @@ public class GameLogic
       ui = new ScrDriver();
 //      ui = new GUIDriver();    //uncomment to get GUI screens
       data = new GameEngine();   //uncomment to get char screens
+
       //play game
       do {
          //display splash screen & get game configuration from the players
@@ -37,22 +38,14 @@ public class GameLogic
             
          //each player place their ships
          System.out.println("before placing ships: no players="+playerCount);
-         for(int i = 1; i <= playerCount;i++){
+         for(int i=1; i<=playerCount; i++){
             System.out.println("in ship placing loop: no players="+playerCount+" player index is="+i);
             System.out.println("player ="+data.getPlayer(i).getPlayerAlias());
-            if(i == 2) {
-            	enemy = data.getPlayer(2); 
-            	System.out.println("enemy =null");
-            	ui.dspHandoffScr(enemy, data.getPlayer(i));
-                ui.dspPlaceScr(data.getPlayer(i));
-            } 
-            else if (i == 1){
-            	enemy = data.getPlayer(1);
-            	System.out.println("enemy ="+data.getPlayer(1).getPlayerAlias());
-            	ui.dspHandoffScr(enemy, data.getPlayer(i));
-                ui.dspPlaceScr(data.getPlayer(i));
-            	}
-            }
+            
+            if(i==1) {enemy = null; System.out.println("enemy =null");} 
+            else {enemy = data.getPlayer(1);System.out.println("enemy ="+data.getPlayer(1).getPlayerAlias());}
+            ui.dspHandoffScr(enemy, data.getPlayer(i));
+            ui.dspPlaceScr(data.getPlayer(i));}
          System.out.println("after placing ships: ");
             
          //play the game using the selected 'Play Mode'
@@ -85,10 +78,7 @@ public class GameLogic
          for(int i=1; i<=playerCount; i++){
             if(i==1) enemyID=2; else enemyID=1;
             ui.dspHandoffScr(data.getPlayer(enemyID), data.getPlayer(i));
-            //grid.dspPlayScr(data.getPlayer(i));
-            processPlayInput(data.getPlayer(i));                
-            data.getPlayer(enemyID).isShipPresent(coords,0,0);
-            data.getPlayer(i).loadPlayerShot(coords);
+            ui.dspPlayScr(data.getPlayer(i));
             ui.dspShot();
             if(win = data.detectEndGame()) {winner = data.getPlayer(i);}
          }
@@ -114,14 +104,6 @@ public class GameLogic
       data.addPlayer(player);                            //test data
       data.addPlayer(enemy);                             //test data
       playerCount = 2;}                                  //test data
-          
-   private void processPlayInput(Player p){
-      System.out.println("processPlayInput:");
-      coords = ui.getPlaceCoords(p);
-      coords = "C5";
-      enemy.isShipPresent(coords,0,0);
-      player.loadPlayerShot(coords);
-   }
    
    //load test data
    private void loadTestData(){
