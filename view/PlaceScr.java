@@ -7,6 +7,7 @@ import model.DirectionType;
 import model.GameModel;
 import model.Player;
 import model.ShipType;
+import view.GridScr;
 
 //copied from zip/
 // declare class
@@ -24,6 +25,7 @@ public class PlaceScr {
 
 	// constructor
 	public PlaceScr(Scanner s, Player p) {
+	   new GridScr(p);
 	}
 
 	/*

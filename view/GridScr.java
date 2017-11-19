@@ -4,12 +4,7 @@ import model.Player;
 //copied from zip/
 public class GridScr
 {
-   //constructor
-	public GridScr(){
-	}
-	
-	//constructor
-	public void GridScr(Player p){
+	public GridScr(Player p) {
 		   display(p);}
 		
 	

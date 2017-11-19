@@ -43,7 +43,7 @@ public class ScrDriver implements UI {
 	public void dspPlaceScr(Player p) {
 	   System.out.println("ScrDriver: dspPlaceScr: Player="+p.getPlayerAlias());
 		ps = new PlaceScr(s, p);
-		grid = new GridScr();
+		grid = new GridScr(p);
 		
 		while (ps.remainingShips() == true){
 			String coords = ps.getPlaceCoords(s, grid, p);
