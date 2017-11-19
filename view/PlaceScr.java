@@ -38,6 +38,7 @@ public class PlaceScr {
 	 * shiptypeinput(); } }
 	 */
 	public static String getPlaceCoords(Player p) {
+	   System.out.println("PlaceScr: getPlaceCoords() player="+p.getPlayerAlias());
 		if (shiptype == 5)
 			shiptype = 0;
 		GridScr.dspPlayScr(p);

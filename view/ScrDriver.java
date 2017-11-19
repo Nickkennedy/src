@@ -39,19 +39,18 @@ public class ScrDriver implements UI {
 		return ss.getAliases();
 	}
 
-	/*// Place Screen
+	// Place Screen
 	public void dspPlaceScr(Player p) {
 		ps = new PlaceScr();
 		
 		while (ps.remainingShips() == true){
-			ps.getPlaceCoords();
+			ps.getPlaceCoords(p);
 			ps.getDirection();
 			ps.placeShips(p);
 			plays.dspPlayScr(p);
 			
 		}
 	}
-	*/
 	
 
 	// public ShipType getShipType() {
@@ -100,9 +99,4 @@ public class ScrDriver implements UI {
 		return null;
 	}
 
-	@Override
-	public void dspPlaceScr(Player p) {
-		// TODO Auto-generated method stub
-		
-	}
 }
