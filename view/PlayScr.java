@@ -35,7 +35,7 @@ public class PlayScr {
       do{
          if(!first) System.out.print("Invalid Coordinates! Enter again and press Enter to Fire: ");
          first = false;
-         coords = s.next();}
+         coords = s.nextLine();}
       while(!p.areCoordsValid(coords));
       return coords;
    }
