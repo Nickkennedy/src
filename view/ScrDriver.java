@@ -70,25 +70,28 @@ public class ScrDriver implements UI {
 	   System.out.println("ScrDriver: dspPlayScr: Player="+p.getPlayerAlias());
 	   boolean hit;
 		plays = new PlayScr();
-		String coords = plays.getShotCoords(s, grid, p);
-		hit = e.loadPlayerShot(false,true,coords);   //load shot against the enemy
-		p.loadPlayerShot(hit, false, coords);        //load shot on own shot grid
-		grid.display(p);
+		do {
+		   String coords = plays.getShotCoords(s, grid, p);
+		   hit = e.loadPlayerShot(false,true,coords);   //load shot against the enemy
+		   p.loadPlayerShot(hit, false, coords);        //load shot on own shot grid
+		   grid.display(p);
 		
-		//print out stats for debug
-		System.out.println("ScrDriver: dspPlayScr: "
+		   //print out stats for debug
+		   System.out.println("ScrDriver: dspPlayScr: "
 		      +" player: "      + p.getPlayerAlias()
 		      +" shots by: "    + p.getShotCount()
             +" hits by: "     + p.getHitCount()
             +" ships left: "  + p.getShipsLeft()
             +" hits against: "+ p.getHitsAgainst());
 		
-	    System.out.println("ScrDriver: dspPlayScr: "
-	            +" enemy: "       + e.getPlayerAlias()
-	            +" shots by: "    + e.getShotCount()
-	            +" hits by: "     + e.getHitCount()
-	            +" ships left: "  + e.getShipsLeft()
-	            +" hits against: "+ e.getHitsAgainst());
+	      System.out.println("ScrDriver: dspPlayScr: "
+	         +" enemy: "       + e.getPlayerAlias()
+	         +" shots by: "    + e.getShotCount()
+	         +" hits by: "     + e.getHitCount()
+	         +" ships left: "  + e.getShipsLeft()
+	         +" hits against: "+ e.getHitsAgainst());
+		}
+		while(hit);
 	 }
 
    public void dspShot() {
