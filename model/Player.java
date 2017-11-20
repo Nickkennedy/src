@@ -42,7 +42,7 @@ public class Player
       return hitsTaken;
    }
 
-   
+   //information getters
    public boolean willShipFit(String coords, ShipType shiptype, DirectionType direction){
       System.out.println("Player: willShipFit " + coords );
       //convert coordinates from string ("C4") to row, col index from 0
