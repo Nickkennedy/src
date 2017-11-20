@@ -62,13 +62,20 @@ public class HandoffScr {
 public HandoffScr(Scanner s, Player last, Player current){
      ///Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
      if(last==null) return;
-	  
+     for(int count=0; count<10;count++) { 
+    	 System.out.println("\n"); 
+     }
+     
      System.out.println("\n\n\n\n\n\n\t\t\t\t\t =================");
      System.out.println("\t\t\t\t\t NOSRC Battleships");
      System.out.println("\t\t\t\t\t =================");
      
      System.out.println("\n\t\t\t\t"+ last.getPlayerAlias() + " has finished his/her turn...");
      System.out.println("\n\t\t\t\t"+ current.getPlayerAlias() + ", Press \"ENTER\" to continue...");
+    
+     for(int count=0; count<5;count++) { 
+    	 System.out.println("\n"); 
+     }
      
      s.nextLine();
   }

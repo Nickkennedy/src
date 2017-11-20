@@ -71,14 +71,6 @@ public class PlayScr {
 	public String[] getPlayerAliases(Player p) {
 		return splash.getAliases();
 	}
-
-//	public void display(Player p) {
-//		place = new PlaceScr();
-//	}
-
-//	public DirectionType getDirection() {
-//		return ((UI) place).getDirection();
-//	}
 	
 	public void dspShot(GridScr g, Player p) {
 		g.display(p);
