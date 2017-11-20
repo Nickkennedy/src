@@ -117,27 +117,30 @@ public class Player
       //convert coordinates from string ("C4") to row, col index from 0
       int[] index = {0,0};
       index = translateCoords(coords);
-
-      //determine if a hit
-      if(isShipPresent("", index[0], index[1])) {
-         myShots.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);
-         //record stats
-         if(enemy) {
-            hitsTaken++;
-            //determine if ship sunk here
-            }
-         else {
-            myShotCount++;
-            myHitCount++;} 
-         return true;}           //return true to indicate a hit against the enemy
+      
+      //update the enemy's data
+      if(enemy) {
+         if(isShipPresent("", index[0], index[1])) {  //determine if a hit
+            myShips.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);  //record a hit
+            hitsTaken++;                              //record stats                         
+                                                      //determine if ship sunk here            
+            return true;}                             //return true to indicate a hit against the enemy
+         else {                                                                   
+            myShips.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]); //record a miss
+            return false;}                            //return false to indicate a miss against the enemy  
+      }     
+      //update the player's data
       else {
-         myShots.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);
-         if(enemy) {
-            }
-         else {
+         if(hit) {
+            myShots.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);
             myShotCount++;
-            } 
-         return false;}          //return false to indicate a miss against the enemy
+            myHitCount++; 
+            return true;}                             //return true -but not used
+         else {
+            myShots.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);
+            myShotCount++;
+            return false;}                            //return false -but not used      
+      }
    }
    
    //helpers
