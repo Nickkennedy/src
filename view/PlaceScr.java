@@ -21,11 +21,12 @@ public class PlaceScr {
 	static ShipType tempship = null;
 	static Cell tempcell = new Cell(CellStatus.EMPTY);
 	private int temp = 4;
+	String direction;
 	DirectionType dir;
 
 	// constructor
 	public PlaceScr() {
-	   temp = 4;
+		temp = 4;
 	}
 
 	/*
@@ -41,8 +42,10 @@ public class PlaceScr {
 	 */
 
 	public String getPlaceCoords(Scanner s, GridScr g, Player p) {
-//		System.out.println("PlaceScr: getPlaceCoords() player=" + p.getPlayerAlias());
-		if (shiptype == 5) shiptype = 0;
+		// System.out.println("PlaceScr: getPlaceCoords() player=" +
+		// p.getPlayerAlias());
+		if (shiptype == 5)
+			shiptype = 0;
 		g.display(p);
 		System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
 		coords = s.nextLine();
@@ -54,8 +57,12 @@ public class PlaceScr {
 
 	public String getDirection(Scanner s) {
 		System.out.print("Enter orientation(e.g. right): ");
-		String direction = s.nextLine();
-		return direction.toUpperCase();
+		direction = s.nextLine();
+		direction = direction.toUpperCase();
+		if (validdirection(direction) == false){
+			getDirection(s);
+		}
+		return direction;
 	}
 
 	public static void validentry(String s) {
@@ -63,52 +70,43 @@ public class PlaceScr {
 		char colchar = s.charAt(0);
 		String rowchar = s.substring(1);
 
-		if (colchar == 'A' || colchar == 'a')
-			col = 0;
-		else if (colchar == 'B' || colchar == 'b')
-			col = 1;
-		else if (colchar == 'C' || colchar == 'c')
-			col = 2;
-		else if (colchar == 'D' || colchar == 'd')
-			col = 3;
-		else if (colchar == 'E' || colchar == 'e')
-			col = 4;
-		else if (colchar == 'F' || colchar == 'f')
-			col = 5;
-		else if (colchar == 'G' || colchar == 'g')
-			col = 6;
-		else if (colchar == 'H' || colchar == 'h')
-			col = 7;
-		else if (colchar == 'I' || colchar == 'i')
-			col = 8;
-		else if (colchar == 'J' || colchar == 'j')
-			col = 9;
-		else {
-			System.out.println("Invalid column");
+		switch (colchar) {
+		case 'A': col = 0; break;
+		case 'a': col = 0; break;
+		case 'B': col = 1; break;
+		case 'b': col = 1; break;
+		case 'C': col = 2; break;
+		case 'c': col = 2; break;
+		case 'D': col = 3; break;
+		case 'd': col = 3; break;
+		case 'E': col = 4; break;
+		case 'e': col = 4; break;
+		case 'F': col = 5; break;
+		case 'f': col = 5; break;
+		case 'G': col = 6; break;
+		case 'g': col = 6; break;
+		case 'H': col = 7; break;
+		case 'h': col = 7; break;
+		case 'I': col = 8; break;
+		case 'i': col = 8; break;
+		case 'J': col = 9; break;
+		case 'j': col = 9; break;
+		default: System.out.println("Invalid column");
 		}
 
-		if (rowchar.contentEquals("1"))
-			row = 0;
-		else if (rowchar.contentEquals("2"))
-			row = 1;
-		else if (rowchar.contentEquals("3"))
-			row = 2;
-		else if (rowchar.contentEquals("4"))
-			row = 3;
-		else if (rowchar.contentEquals("5"))
-			row = 4;
-		else if (rowchar.contentEquals("6"))
-			row = 5;
-		else if (rowchar.contentEquals("7"))
-			row = 6;
-		else if (rowchar.contentEquals("8"))
-			row = 7;
-		else if (rowchar.contentEquals("9"))
-			row = 8;
-		else if (rowchar.contentEquals("10"))
-			row = 9;
-		else {
-			System.out.println("Invalid Row");
+		switch (rowchar) {
+		case "1": col = 0; break;
+		case "2": col = 1; break;
+		case "3": col = 2; break;
+		case "4": col = 3; break;
+		case "5": col = 4; break;
+		case "6": col = 5; break;
+		case "7": col = 6; break;
+		case "8": col = 7; break;
+		case "9": col = 8; break;
+		case "10": col = 9;	break;
+		default:
+			System.out.println("Invalid row");
 		}
 	}
 
@@ -150,6 +148,16 @@ public class PlaceScr {
 		return false;
 	}
 
+	public boolean validdirection(String s){
+		switch(s){
+		 case "RIGHT": return true;
+		 case "DOWN": return true;
+		 case "LEFT": return true;
+		 case "UP": return true;
+		}
+		return false;
+	}
+
 	public static void placeShips(Player p) {
 
 		if (Direction.equals("RIGHT")) {
@@ -173,7 +181,7 @@ public class PlaceScr {
 	}
 
 	public boolean remainingShips() {
-//	   System.out.println("remainingShips="+temp);
+		// System.out.println("remainingShips="+temp);
 		if (temp >= 0) {
 			temp--;
 			return true;
