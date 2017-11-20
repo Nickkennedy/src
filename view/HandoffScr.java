@@ -66,7 +66,7 @@ public HandoffScr(Scanner s, Player last, Player current){
     	 System.out.println("\n"); 
      }
      
-     System.out.println("\n\n\n\n\n\n\t\t\t\t\t =================");
+     System.out.println("\t\t\t\t\t =================");
      System.out.println("\t\t\t\t\t NOSRC Battleships");
      System.out.println("\t\t\t\t\t =================");
      
