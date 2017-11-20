@@ -62,6 +62,10 @@ public class HandoffScr {
 public HandoffScr(Scanner s, Player last, Player current){
      ///Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
      if(last==null) return;
+     
+     System.out.println(last.getPlayerAlias() + " Press \"ENTER\" to continue..." );
+     s.nextLine();
+     
      for(int count=0; count<10;count++) { 
     	 System.out.println("\n"); 
      }
@@ -80,4 +84,3 @@ public HandoffScr(Scanner s, Player last, Player current){
      s.nextLine();
   }
 }
-//
