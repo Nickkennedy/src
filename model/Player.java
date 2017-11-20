@@ -111,8 +111,7 @@ public class Player
       return true;}
    
    /* loadPlayerShot() records shots against both the enemy and the player
-    * Different statistics are recorded if this player is the enemy
-    */
+    * Different statistics are recorded if this player is the enemy*/
    public boolean loadPlayerShot(boolean hit, boolean enemy, String coords){
       //convert coordinates from string ("C4") to row, col index from 0
       int[] index = {0,0};
@@ -123,7 +122,7 @@ public class Player
          if(isShipPresent("", index[0], index[1])) {  //determine if a hit
             myShips.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);  //record a hit
             hitsTaken++;                              //record stats                         
-                                                      //determine if ship sunk here            
+            if(shipHasBeenSunk(index[0], index[1])) shipsLeft--; //determine if ship sunk here            
             return true;}                             //return true to indicate a hit against the enemy
          else {                                                                   
             myShips.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]); //record a miss
@@ -143,7 +142,14 @@ public class Player
       }
    }
    
+   
+   
    //helpers
+   /*looks at cells around the shot to see if all ship cells have been hit*/
+   private boolean shipHasBeenSunk(int row, int col) {
+      return false;
+   }  
+   
    private int[] translateCoords(String coords) {
 //      System.out.println("Player: translateCoords " + coords + " length="+coords.length());
       int length = coords.length();
