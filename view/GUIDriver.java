@@ -15,11 +15,14 @@ package view;
       private SplashGUI ss;
       private PlaceGUI ps;
       private PlayGUI plays;
+      private GridGUI grid;
       private HandoffGUI hs;
       private WinGUI ws;
       
       //constructor.
-      public GUIDriver(){}
+      public GUIDriver(){
+         grid = new GridGUI();
+      }
       
       //Splash Screen
       public void dspSplashScr(GameModel m){
@@ -42,7 +45,7 @@ package view;
          return ps.getDirection();}
       
       //Play Screen   
-      public void dspPlayScr(Player p){
+      public void dspPlayScr(Player e, Player p){
          plays = new PlayGUI(s,p);}
       public String getShotCoords(Player p){
          return plays.getShotCoords(p);}

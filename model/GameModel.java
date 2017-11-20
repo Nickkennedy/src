@@ -6,8 +6,9 @@ import java.util.Collection;
  * @version 1.0
  * Subject:       CPT111 BITS 
  * Study Period:  SP3 2017
- * Purpose:       Provide the methods for holding and accessing data
- * Location:      Model 
+ * Project Title: Battleships
+ * Purpose:       1)Specifies the contract for writing and accessing data
+ * Package:       model 
  * Source:        own work 
  */
 //copied from zip/

@@ -3,11 +3,20 @@ import model.GameEngine;
 import model.GameModel;
 import model.GameRecord;
 import model.Player;
-import view.GUIDriver;
-import view.GridScr;
-import view.PlayScr;
 import view.ScrDriver;
 import view.UI;
+
+/**
+ * @author Kevin Purnell s3611540
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Project Title: Battleships
+ * Purpose:       1)handles game play logic
+ *                2)handles different playing modes
+ * Package:       controller
+ * Source:        own work 
+ */
 //copied from zip/
 public class GameLogic 
 {
@@ -17,7 +26,6 @@ public class GameLogic
    private PlayMode playMode = PlayMode.STANDARD;
    private int playerCount=2;
    private Boolean win=false, exit=false;
-   private int enemyID = 2;
    private Player player = null, enemy = null, winner = null;
    String coords = "";
 
@@ -37,15 +45,11 @@ public class GameLogic
          processGameConfigInput();
             
          //each player place their ships
-         System.out.println("before placing ships: no players="+playerCount);
+//         System.out.println("before placing ships: no players="+playerCount);
          for(int i=1; i<=playerCount; i++){
-            System.out.println("in ship placing loop: no players="+playerCount+" player index is="+i);
-            System.out.println("player ="+data.getPlayer(i).getPlayerAlias());
-            if(i==1) {enemy = null; System.out.println("enemy =null");} 
-            else {enemy = data.getPlayer(1);System.out.println("enemy ="+data.getPlayer(1).getPlayerAlias());}
-            ui.dspHandoffScr(enemy, data.getPlayer(i));
+            if(i!=1) ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i));
             ui.dspPlaceScr(data.getPlayer(i));}
-         System.out.println("after placing ships: ");
+//         System.out.println("after placing ships: ");
             
          //play the game using the selected 'Play Mode'
          playMode = PlayMode.STANDARD;
@@ -75,11 +79,15 @@ public class GameLogic
       System.out.println("GameLogic: playStandardMode: ");
       do {
          for(int i=1; i<=playerCount; i++){
-            if(i==1) enemyID=2; else enemyID=1;
-            ui.dspHandoffScr(data.getPlayer(enemyID), data.getPlayer(i));
-            ui.dspPlayScr(data.getPlayer(i));
-            ui.dspShot();
-            if(win = data.detectEndGame()) {winner = data.getPlayer(i);}
+            if(i==1) {
+               ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(i));
+               ui.dspPlayScr   (data.getPlayer(2), data.getPlayer(i));
+               if(data.getPlayer(2).getShipsLeft()==0) win=true;}
+            else {
+               ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i));
+               ui.dspPlayScr   (data.getPlayer(1), data.getPlayer(i));
+               if(data.getPlayer(1).getShipsLeft()==0) win=true;}
+            if(win) winner = data.getPlayer(i);
          }
       } while(!win); }
 

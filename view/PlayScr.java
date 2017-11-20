@@ -2,10 +2,6 @@ package view;
 
 import java.util.Scanner;
 
-//import grid.AI;
-import model.DirectionType;
-import model.GameModel;
-//import grid.SplashScreen;
 import model.Player;
 import model.ShipType;
 /**
@@ -21,22 +17,31 @@ import model.ShipType;
 //copied from zip/
 public class PlayScr {
 
-	public static String text;
+	public static String coords;
 	public static String attack;
 	public static int attackint;
 	private SplashScr splash;
 	private PlaceScr place;
 
 	//Constructor
-	public PlayScr(Scanner s, GridScr g, Player p){
-	   g.display(p);
-	   getShotCoords(s, p);
-	};
+	public PlayScr(){};
 	
 	
+
+   public String getShotCoords(Scanner s, GridScr g, Player p) {
+      boolean first = true;
+      g.display(p);
+      System.out.print("\nEnter Coordinates and press Enter to Fire: ");
+      do{
+         if(!first) System.out.print("Invalid Coordinates! Enter again and press Enter to Fire: ");
+         first = false;
+         coords = s.next();}
+      while(!p.areCoordsValid(coords));
+      return coords;
+   }
 	
 	//If the user chooses to play multiplayer. it asks the uses to choose which enemy they want to fire on.
-	public static void whotoattach(Scanner s) {
+	public static void whotoattack(Scanner s) {
 		System.out.print("Which Enemy would you like to fire upon?");
 		attack = s.nextLine();
 		validenemyentry(s, attack);
@@ -55,7 +60,7 @@ public class PlayScr {
 			attackint = 4;
 		} else {
 			System.out.println("Invalid enemy. Try again.");
-			whotoattach(s);
+			whotoattack(s);
 		}
 	}
 
@@ -77,13 +82,6 @@ public class PlayScr {
 	
 	public void dspShot(GridScr g, Player p) {
 		g.display(p);
-	}
-
-	public String getShotCoords(Scanner s, Player p) {
-		System.out.print("\nEnter Coordinates and press Enter to Fire:");
-		text = s.next();
-		p.loadPlayerShot(text);
-		return text;
 	}
 }
 //

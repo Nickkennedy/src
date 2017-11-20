@@ -7,8 +7,9 @@ import model.GameRecord;
  * @version 1.0
  * Subject:       CPT111 BITS 
  * Study Period:  SP3 2017
- * Purpose:       Display the "Hall-of-Fame" sub-screen
- * Location:      Model 
+ * Project Title: Battleships
+ * Purpose:       1)display the "Hall-of-Fame" sub-screen
+ * Package:       view 
  * Source:        own work
  */
 //copied from zip/

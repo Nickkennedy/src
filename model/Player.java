@@ -10,8 +10,8 @@ public class Player
    Grid myShots = null;
    int myShotCount = 0;
    int myHitCount = 0;
-   int myShipsLeft = 0;
-   int[] index = {0,0};
+   int hitsTaken = 0;
+   int shipsLeft = 0;
    
    //constructor.
    public Player(String a){
@@ -29,22 +29,28 @@ public class Player
    public Grid getPlayerShots(){
       return myShots;}
    
-   public int getShipsLeft(){
-      myShipsLeft = 2; //test data
-      return myShipsLeft;}
-   
    public int getShotCount(){
-      myShotCount = 32; //test data
       return myShotCount;}
    
    public int getHitCount(){
-      myHitCount = 15; //test data
       return myHitCount;}
    
+   public int getShipsLeft(){
+      return shipsLeft;}
+   
+   public int getHitsAgainst() {
+      return hitsTaken;
+   }
+
+   
    public boolean willShipFit(String coords, ShipType shiptype, DirectionType direction){
+      System.out.println("Player: willShipFit " + coords );
+      //convert coordinates from string ("C4") to row, col index from 0
+      int[] index = {0,0};
       index = translateCoords(coords);
       int row = index[0], col = index[1];
       int length = shiptype.getLength();
+      
       //check boundary conditions
       switch(direction) {
          case UP:   System.out.println("UP    "+row+" to "+(row-(length-1))); if((row-(length-1))<0)                     return false; else break;
@@ -53,24 +59,44 @@ public class Player
          case RIGHT:System.out.println("RIGHT "+col+" to "+(col+(length-1))); if((col+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
          default:                                          return false;}
       //check if another ship present (need to check all positions)
-      if(isShipPresent(coords,row,col)) return false;
+      if(isShipPresent("",row,col)) return false;
       return true;}
    
-   public boolean isShipPresent(String coords,int row,int col){
-      System.out.println("Player: isShipPresent " + coords );
+   public boolean areCoordsValid(String coords) {
+//      System.out.println("Player:  areCoordsValid: "+coords);
+      int[] index = {0,0};
       index = translateCoords(coords);
+      if((index[0]>=0 && index[0]<=9) && (index[1]>=0 && index[1]<=9)) {
+//         System.out.println("Player:  areCoordsValid: row="+index[0]+" col="+index[1]+" valid");
+         return true;}
+      else {
+//         System.out.println("Player:  areCoordsValid: row="+index[0]+" col="+index[1]+" invalid");
+         return false;}}
+   
+   public boolean isShipPresent(String coords,int row,int col){
+//      System.out.println("Player: isShipPresent " + coords );
+      //allows coordinates in 2 forms; "C4" string, or row, col index from 0
+      int[] index = {0,0};
+      if(coords!="") index = translateCoords(coords);
+      else {index[0] = row; index[1]=col;}
+      
+      //look at the content of the addressed cell
       if(myShips.getGrid()[index[0]][index[1]].getCellState()==CellStatus.EMPTY){
-         System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);
+//         System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);
          return false;}
       else{
-         System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);
+//         System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);
          return true;}}
    
    //setters
    public boolean loadPlayerShip(String coords, ShipType shiptype, DirectionType direction){
-      System.out.println("Player: loadPlayerShip");
+//      System.out.println("Player: loadPlayerShip");
+      //convert coordinates from string ("C4") to row, col index from 0
+      int[] index = {0,0};
       index = translateCoords(coords);
       int row = index[0], col = index[1];
+      
+      //load ship
       int length = shiptype.getLength();
       for(int i=0; i<length; i++) {
          switch(direction) {
@@ -80,20 +106,49 @@ public class Player
             case RIGHT:{myShips.setGridCell(new Cell(CellStatus.SHIP,shiptype), row, col+i); break;}
             default:   {                                                                   ; break;}
       }  }
+      shipsLeft++;
+      System.out.println("Player: loadPlayerShip:  shipsLeft= "+shipsLeft);
       return true;}
    
-   public void loadPlayerShot(String coords){
-      System.out.println("Player: loadPlayerShot");
+   /* loadPlayerShot() records shots against both the enemy and the player
+    * Different statistics are recorded if this player is the enemy
+    */
+   public boolean loadPlayerShot(boolean hit, boolean enemy, String coords){
+      //convert coordinates from string ("C4") to row, col index from 0
+      int[] index = {0,0};
       index = translateCoords(coords);
-      System.out.println("translateCoords(): coords="+coords+"  row="+index[0]+" col="+index[1]);
-      myShots.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);
-      return;}
+
+      //determine if a hit
+      if(isShipPresent("", index[0], index[1])) {
+         myShots.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);
+         //record stats
+         if(enemy) {
+            hitsTaken++;
+            //determine if ship sunk here
+            }
+         else {
+            myShotCount++;
+            myHitCount++;} 
+         return true;}           //return true to indicate a hit against the enemy
+      else {
+         myShots.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);
+         if(enemy) {
+            }
+         else {
+            myShotCount++;
+            } 
+         return false;}          //return false to indicate a miss against the enemy
+   }
    
    //helpers
    private int[] translateCoords(String coords) {
+//      System.out.println("Player: translateCoords " + coords + " length="+coords.length());
+      int length = coords.length();
       int[] index = {0,0};
       char[] chars = coords.toCharArray();
-      index[0]=Character.getNumericValue(chars[1])-1;  //bug -need to deal with 10
+//      System.out.println("Player: translateCoords:  chars.length="+chars.length);
+      if(length==2) index[0]=Character.getNumericValue(chars[1])-1; 
+      else          index[0] = 9;
       switch(chars[0]) {
          case 'A': index[1]=0;break;
          case 'B': index[1]=1;break;
@@ -115,6 +170,7 @@ public class Player
          case 'h': index[1]=7;break;
          case 'i': index[1]=8;break;
          case 'j': index[1]=9;break;
+         default: index[1]=99;
       }
       return index; 
    }

@@ -69,7 +69,7 @@ public class AIPlayer extends Player{
 			LastKnownhitrow = row;
 		}
 		//Returns the string to fire upon. 
-		p.loadPlayerShot(coord);
+		p.loadPlayerShot(true,true,coord);
 	}
 
 }

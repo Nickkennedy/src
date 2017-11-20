@@ -1,9 +1,18 @@
 package view;
 
-import model.DirectionType;
 import model.GameModel;
 import model.Player;
-import model.ShipType;
+
+/**
+ * @author Kevin Purnell s3611540
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Project Title: Battleships
+ * Purpose:       1)Specifies the contract for writing and reading screens
+ * Package:       view 
+ * Source:        own work 
+ */
 //copied from zip/
 public interface UI 
 {
@@ -19,7 +28,7 @@ public interface UI
    public void dspPlaceScr(Player p);
    
    //Play Screen
-   public void dspPlayScr(Player p);
+   public void dspPlayScr(Player e, Player p);
    
    public void dspShot();
    

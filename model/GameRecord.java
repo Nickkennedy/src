@@ -8,9 +8,10 @@ import java.io.Serializable;
  * @version 1.0
  * Subject:       CPT111 BITS 
  * Study Period:  SP3 2017
+ * Project Title: Battleships
  * Purpose:       1)holds a game static record
  *                2)is the object written to file (persistence)
- * Location:      Model 
+ * Location:      model 
  * Source:        own work 
  */
 //copied from zip/

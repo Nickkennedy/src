@@ -20,12 +20,12 @@ public class PlaceScr {
 	static String Direction;
 	static ShipType tempship = null;
 	static Cell tempcell = new Cell(CellStatus.EMPTY);
-	static int temp = 4;
+	private int temp = 4;
 	DirectionType dir;
 
 	// constructor
-	public PlaceScr(Scanner s, Player p) {
-	   new GridScr(p);
+	public PlaceScr() {
+	   temp = 4;
 	}
 
 	/*
@@ -41,11 +41,10 @@ public class PlaceScr {
 	 */
 
 	public String getPlaceCoords(Scanner s, GridScr g, Player p) {
-		System.out.println("PlaceScr: getPlaceCoords() player=" + p.getPlayerAlias());
-		if (shiptype == 5)
-			shiptype = 0;
+//		System.out.println("PlaceScr: getPlaceCoords() player=" + p.getPlayerAlias());
+		if (shiptype == 5) shiptype = 0;
 		g.display(p);
-		System.out.println("Enter coordinates (e.g. C4) to place your " + ship[shiptype] + ":");
+		System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
 		coords = s.nextLine();
 		validentry(coords);
 		validshiptype(shiptype);
@@ -53,13 +52,10 @@ public class PlaceScr {
 		return coords;
 	}
 
-	public String getDirection() {
-		@SuppressWarnings("resource")
-		Scanner DirectionInput = new Scanner(System.in);
-		System.out.println("Enter orienation(e.g. right):");
-		Direction = DirectionInput.nextLine();
-
-		return Direction = Direction.toUpperCase();
+	public String getDirection(Scanner s) {
+		System.out.print("Enter orientation(e.g. right): ");
+		String direction = s.nextLine();
+		return direction.toUpperCase();
 	}
 
 	public static void validentry(String s) {
@@ -177,6 +173,7 @@ public class PlaceScr {
 	}
 
 	public boolean remainingShips() {
+//	   System.out.println("remainingShips="+temp);
 		if (temp >= 0) {
 			temp--;
 			return true;

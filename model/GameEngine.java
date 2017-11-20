@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.concurrent.ConcurrentHashMap;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,22 +15,23 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Paths;
-
 import model.GameEngine;
 import model.GameModel;
 import model.Player;
 
-   /**
-    * @author Kevin Purnell s3611540
-    * @version 1.0
-    * Subject:       CPT111 BITS 
-    * Study Period:  SP3 2017
-    * Purpose:       1)holds game playing logic and data stores
-    *                2)handles multiple players
-    *                3)handles all game history records
-    * Location:      Model 
-    * Source:        own work 
-    */
+/**
+ * @author Kevin Purnell s3611540
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Project Title: Battleships
+ * Purpose:       1)implements the GameModel interface
+ *                2)models, stores and retrieves data
+ *                3)handles multiple players
+ *                4)handles game history
+ * Package:       model 
+ * Source:        own work 
+ */
 //copied from zip/
 public class GameEngine implements GameModel
 {
@@ -45,11 +45,11 @@ public class GameEngine implements GameModel
    //constructors
    public GameEngine()
    {
-      System.out.println("GameEngine contructor");
+//      System.out.println("GameEngine contructor");
       //read in history file
       readInGameHistory();
-      if(noGameHistory) System.out.println("No Game History file found!");
-      else              System.out.println("Game History file found!");
+//      if(noGameHistory) System.out.println("No Game History file found!");
+//      else              System.out.println("Game History file found!");
    }
 
    
@@ -91,13 +91,13 @@ public class GameEngine implements GameModel
    
    //Persistence
    public void readInGameHistory() {
-      System.out.println("readInGameHistory:");
+//      System.out.println("readInGameHistory:");
       //read file, one 'GameRecord' object per record
       try(FileInputStream in = new FileInputStream(Paths.get(HISTORY_FILE).toFile())){
          ObjectInputStream ois = new ObjectInputStream(in);
          GameRecord record = null;
          while((record=(GameRecord)ois.readObject())!=null){
-            System.out.println("Reading from file: "+record.getWinner());
+//            System.out.println("Reading from file: "+record.getWinner());
             this.addGameStats(record);}}
       catch(EOFException e) {return;} 
       catch(ClassNotFoundException e) {e.printStackTrace();}

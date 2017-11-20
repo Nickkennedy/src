@@ -70,7 +70,7 @@ public class SplashScr
    
    public static PlayMode inputPlayMode(Scanner input) {
       String pm = null;
-      System.out.println("Enter play mode: (S)tandard, S(K)irmish, (T)eam ");
+      System.out.print("Enter play mode: (S)tandard, S(K)irmish, (T)eam ");
       do {
          if(pm != null) System.out.print("Game only allows S, K or T. Try again: ");
          pm = input.nextLine();
@@ -82,12 +82,13 @@ public class SplashScr
          default:  return PlayMode.STANDARD;}}
 
    public static String inputPlayerName(Scanner input, int i) {
-         System.out.print("\nEnter alias for player " + i + ": ");
+         System.out.print("Enter alias for player " + i + ": ");
          String name = input.nextLine();
          return name;}
    
    public static void displayScreen() {
       // print project name
+      System.out.println("\n\n\n");
       System.out.println("\t\t=====================================================");
       System.out.printf("\t\t\t\t%s\n", PROJECT);
       System.out.println("\t\t=====================================================");
