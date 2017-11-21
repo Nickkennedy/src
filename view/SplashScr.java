@@ -4,6 +4,11 @@ import java.util.Scanner;
 import controller.PlayMode;
 import model.GameModel;
 import view.HOFScr;
+
+/**
+ * @author Christopher Musamba
+ * with help
+ */
 //copied from zip/
 public class SplashScr 
 {

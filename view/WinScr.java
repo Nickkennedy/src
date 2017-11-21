@@ -21,6 +21,11 @@ package view;
 import java.util.Scanner;
 import model.Player;
 import model.GameModel;
+
+/**
+ * @author Robert Bessell
+ * 
+ */
 //copied from zip/
 public class WinScr {
 	

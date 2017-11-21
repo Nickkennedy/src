@@ -1,6 +1,11 @@
 package view;
 
 import model.Player;
+
+/**
+ * @author Nicholas Kennedy
+ * 
+ */
 //copied from zip/
 public class GridScr
 {

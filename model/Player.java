@@ -1,6 +1,18 @@
 package model;
 import model.Cell; 
 import model.Grid;
+
+/**
+ * @author Kevin Purnell s3611540
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Project Title: Battleships
+ * Purpose:       1)Models the Player's state and behaviour
+ *                2)Holds the Player statistics
+ * Package:       model
+ * Source:        own work 
+ */
 //copied from zip/
 public class Player
 {
@@ -177,7 +189,7 @@ public class Player
       if(rightST != hitST) direction = "updown";
       if(downST  != hitST) direction = "leftright";
       if(leftST  != hitST) direction = "updown";
-      if(downST  != hitST) direction = "leftright";
+      if(upST    != hitST) direction = "leftright";
       
       //crawl along direction to determine if any ship cells are unhit
       if(direction.equals("leftright")) {

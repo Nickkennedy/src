@@ -56,6 +56,11 @@ package view;
 
 import java.util.Scanner;
 import model.Player;
+
+/**
+ * @author Robert Bessell
+ * 
+ */
 //copied from zip/
 public class HandoffScr { 
    

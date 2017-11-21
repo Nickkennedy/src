@@ -26,7 +26,7 @@ public class GameLogic
    private PlayMode playMode = PlayMode.STANDARD;
    private int playerCount=2;
    private Boolean win=false, exit=false;
-   private Player player = null, enemy = null, winner = null;
+   private Player winner = null;
    String coords = "";
 
    
@@ -40,6 +40,8 @@ public class GameLogic
 
       //play game
       do {
+         //clear out last game
+//         data.
          //display splash screen & get game configuration from the players
          ui.dspSplashScr(data);
          processGameConfigInput();
@@ -62,7 +64,7 @@ public class GameLogic
             default: System.out.println("Unknown Play Mode!");}   
                      
          //display winner, ask if another game, record game stats
-         System.out.println("GameLogic: before dspWinScr:");
+//         System.out.println("GameLogic: before dspWinScr:");
          exit = ui.dspWinScr(winner,data);
          data.addGameStats(new GameRecord(winner.getPlayerAlias(),winner.getShipsLeft(),
                winner.getShotCount(),winner.getHitCount()));
