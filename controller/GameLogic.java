@@ -40,8 +40,9 @@ public class GameLogic
 
       //play game
       do {
-         //clean out last games's players
-         data.deleteAllPlayers();
+         //reset the game
+         resetGame();
+         
          //display splash screen & get game configuration from the players
          ui.dspSplashScr(data);
          processGameConfigInput();
@@ -114,7 +115,14 @@ public class GameLogic
       data.addPlayer(new Player(aliases[0]));
       data.addPlayer(new Player(aliases[1]));
       playerCount = 2;}                          //Core Features default
-   
+
+   //clean out last games's players and reset state variables
+   private void resetGame() {
+      data.deleteAllPlayers();
+      win=false; exit=false;
+      winner = null;
+      coords = "";}
+      
    //load test data
    private void loadTestData(){
       data.addGameStats(new GameRecord("jack",1,32,5));  //test data

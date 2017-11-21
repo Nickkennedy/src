@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +37,7 @@ import model.Player;
 public class GameEngine implements GameModel
 {
    //attributes
-   private Map<Integer,Player> players = new TreeMap<Integer,Player>();
+   private Map<Integer,Player> players = new ConcurrentSkipListMap<Integer,Player>();
    private Map<Double,GameRecord> records = new TreeMap<Double,GameRecord>(Collections.reverseOrder());
    private int gameID = 1;
    private int playerID = 1;
@@ -46,6 +47,9 @@ public class GameEngine implements GameModel
    public GameEngine()
    {
       readInGameHistory();
+      gameID = 1;
+      playerID = 1;
+      noGameHistory = false;
    }
 
    
@@ -56,7 +60,7 @@ public class GameEngine implements GameModel
    
    public void deleteAllPlayers() {
       for(Player p : players.values()) {
-         System.out.println("deleteAllPlayers: "+p.toString());
+//         System.out.println("deleteAllPlayers: "+p.getPlayerID()+" "+p.getPlayerAlias());
          players.remove(p.getPlayerID());}}
    
    public Player getPlayer(int key) {

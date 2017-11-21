@@ -31,7 +31,11 @@ public class Player
       myID = 0; 
       myAlias = a;
       myShips = new Grid();
-      myShots = new Grid();}
+      myShots = new Grid();
+      myShotCount = 0;
+      myHitCount = 0;
+      hitsTaken = 0;
+      shipsLeft = 0;}
    
    //getters & setters
    public int getPlayerID() {
@@ -132,7 +136,7 @@ public class Player
             default:   {                                                                   ; break;}
       }  }
       shipsLeft++;
-      System.out.println("Player: loadPlayerShip:  shipsLeft= "+shipsLeft);
+//      System.out.println("Player: loadPlayerShip:  shipsLeft= "+shipsLeft);
       return true;}
    
    /* loadPlayerShot() records shots against both the enemy and the player
