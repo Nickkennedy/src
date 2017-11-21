@@ -66,7 +66,7 @@ public class PlaceScr {
 	 * Once entered, it converts the string to uppercase and then checks that it was a valid input.
 	 */
 	public String getDirection(Scanner s) {
-		System.out.print("Enter orientation: (l)eft, (r)ight, (u)p, (d)own ");
+		System.out.print("Enter orientation: left, right, up, down: ");
 		direction = s.nextLine();
 		direction = direction.toUpperCase();
 		if (validdirection(direction) == false){
