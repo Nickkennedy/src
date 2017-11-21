@@ -66,11 +66,14 @@ public class SplashScr
    //helpers
    public static int inputNumberOfPlayers(Scanner input) {
       int i = -99;
-      System.out.print("Enter number of players: (only 2 allowed) ");
+      System.out.print("Enter number of players: (only '2' allowed) ");
       do {
-         if(i != -99) System.out.print("Game only allows 2 players. Try again: ");
-         i = Integer.parseInt(input.nextLine());
-      } while(i<1 || i>4);
+         if(i != -99) System.out.print("'Core Features' game allows only '2' players. Try again: ");
+         try {
+            i = Integer.parseInt(input.nextLine());}
+         catch(Exception e) {
+            i = -98;}
+      } while(i!=2);
       return i;}
    
    public static PlayMode inputPlayMode(Scanner input) {
