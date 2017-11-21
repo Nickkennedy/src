@@ -9,8 +9,13 @@ import model.ShipType;
 import view.GridScr;
 
 /**
- * @author Christopher Musamba
- * with help
+ * @author Christopher Musamba & Nicholas Kennedy
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Purpose:       1) Allows the user to enter coordinates.
+ *                2) Allows the user to Enter a direction.
+ *                3) Validates the users input.
  */
 //copied from zip/
 // declare class
@@ -27,23 +32,14 @@ public class PlaceScr {
 	String direction;
 	DirectionType dir;
 
-	// constructor
+	//Each time the constructor is called, it loads the temp value back to 4. This is key for the ship string array.
 	public PlaceScr() {
 		temp = 4;
 	}
-
-	/*
-	 * public public static void shiptypeinput() { // displays the ships left
-	 * System.out.println("Ships available"); for (int i = 0; i < ship.length;
-	 * i++) { System.out.println(" " + ship[i]); }
-	 * 
-	 * @SuppressWarnings("resource") Scanner shiptypeinput = new
-	 * Scanner(System.in); System.out.println(
-	 * "Enter your ship type (e.g. Battleship):"); shiptype =
-	 * shiptypeinput.nextLine(); if(validshiptype(shiptype) == false){
-	 * shiptypeinput(); } }
-	 */
-
+	
+	/*The functions accepts a scanner, grid and player valuer and once called, will prompt the user to enter in there coordinates. 
+	 * Once the user has entered in coordinates, it validates the string and ship type. 
+	*/
 	public String getPlaceCoords(Scanner s, GridScr g, Player p) {
 		// System.out.println("PlaceScr: getPlaceCoords() player=" +
 		// p.getPlayerAlias());
@@ -57,7 +53,10 @@ public class PlaceScr {
 		shiptype++;
 		return coords;
 	}
-
+	
+	/*	This function accepts a scanner and prompts the user to enter in their desired orientation.
+	 * Once entered, it converts the string to uppercase and then checks that it was a valid input.
+	 */
 	public String getDirection(Scanner s) {
 		System.out.print("Enter orientation: (l)eft, (r)ight, (u)p, (d)own ");
 		direction = s.nextLine();
@@ -68,6 +67,9 @@ public class PlaceScr {
 		return direction;
 	}
 
+	/* Validentry is designed to check that the user entered in valid coordinates and if so, assign the row and colum to int values. 
+	 * 
+	 */
 	public static void validentry(String s) {
 		// Converts the keyboard entry into a char (column) and string (row)
 		char colchar = s.charAt(0);
@@ -112,7 +114,10 @@ public class PlaceScr {
 			System.out.println("Invalid row");
 		}
 	}
-
+	
+	/*
+	 * This method is passed a string and checks to see that the users input was a valid direction and if so, return the direction type.
+	 */
 	public static DirectionType validgetDirection(String s) {
 		if (s.equals("RIGHT")) {
 			return DirectionType.RIGHT;
@@ -129,6 +134,9 @@ public class PlaceScr {
 		return DirectionType.valueOf(s);
 	}
 
+	/*
+	 * This method is passed a int and checks to see that the users input was a valid ship type. The int value relates to the ship type in the string array.
+	 */
 	public static boolean validshiptype(int i) {
 
 		if (i == 0) {
@@ -151,6 +159,9 @@ public class PlaceScr {
 		return false;
 	}
 
+	/*
+	 * This method is passed a string and checks to see that the users input was a valid direction and if so, returns true, else false.
+	 */
 	public boolean validdirection(String s){
 		switch(s){
 		 case "RIGHT": return true;
@@ -160,13 +171,15 @@ public class PlaceScr {
 		}
 		return false;
 	}
-
+	
+	/*
+	 * This method is passed a player and within the method pulls the tempcell, row and col. Once these values have been pulled, it checks to see if the ship will see
+	 * and if so, places the value of the cell to "O" which represents a ship.
+	 */
 	public static void placeShips(Player p) {
-
 		if (Direction.equals("RIGHT")) {
 			for (int i = col; i <= col + tempship.getLength(); i++) {
 				p.getPlayerShips().setGridCell(tempcell, row, i);
-				;
 			}
 		} else if (Direction.equals("LEFT")) {
 			for (int i = col; i < tempship.getLength() - 1; i--) {
@@ -182,15 +195,15 @@ public class PlaceScr {
 			}
 		}
 	}
-
+	
+	/*
+	 * This boolean method is used to check if there are any more ships left to be places. 
+	 */
 	public boolean remainingShips() {
-		// System.out.println("remainingShips="+temp);
 		if (temp >= 0) {
 			temp--;
 			return true;
 		}
 		return false;
 	}
-
 }
-//

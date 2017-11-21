@@ -65,12 +65,14 @@ import model.Player;
 public class HandoffScr { 
    
 public HandoffScr(Scanner s, Player last, Player current){
-     ///Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
+     
+	///Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
      if(last==null) return;
      
      System.out.println(last.getPlayerAlias() + " Press \"ENTER\" to continue..." );
      s.nextLine();
      
+     //This look is used to push the screen down and ensure that the second player can not see the screen.
      for(int count=0; count<10;count++) { 
     	 System.out.println("\n"); 
      }
@@ -81,7 +83,7 @@ public HandoffScr(Scanner s, Player last, Player current){
      
      System.out.println("\n\t\t\t\t"+ last.getPlayerAlias() + " has finished his/her turn...");
      System.out.println("\n\t\t\t\t"+ current.getPlayerAlias() + ", Press \"ENTER\" to continue...");
-    
+     //This look is used to push the screen down and ensure that the second player can not see the screen.
      for(int count=0; count<5;count++) { 
     	 System.out.println("\n"); 
      }

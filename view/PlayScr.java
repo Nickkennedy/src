@@ -26,7 +26,10 @@ public class PlayScr {
 	public PlayScr(){};
 	
 	
-
+	
+	/*The functions accepts a scanner, grid and player valuer and once called, will prompt the user to enter in there coordinates. 
+	 * Once the user has entered in coordinates, it validates the string and ship type. 
+	*/
    public String getShotCoords(Scanner s, GridScr g, Player p) {
       boolean first = true;
       g.display(p);
@@ -46,7 +49,7 @@ public class PlayScr {
 		validenemyentry(s, attack);
 	}
 	
-	//Checks to see if the users entry was valid.
+	//This method is passed a scanner and string and then checks to see if the users entry was valid.
 	public static void validenemyentry(Scanner s, String str) {
 		//Loops through all game options and checks i its valid. If not, asks the user to try again. 
 		if (str.equals("1")) {
@@ -62,15 +65,18 @@ public class PlayScr {
 			whotoattack(s);
 		}
 	}
-
+	
+	//Returns the number of players. 
 	public int getPlayerCount() {
 		return splash.getCount();
 	}
-
+	
+	//returns the player alias's.
 	public String[] getPlayerAliases(Player p) {
 		return splash.getAliases();
 	}
 	
+	//Displays the users grids. 
 	public void dspShot(GridScr g, Player p) {
 		g.display(p);
 	}
