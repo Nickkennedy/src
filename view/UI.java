@@ -33,7 +33,7 @@ public interface UI
    public void dspShot();
    
    //Handoff Screen
-   public void dspHandoffScr(Player l, Player p);
+   public void dspHandoffScr(Player l, Player p, String placeorplay);
    
    //Win Screen
    public boolean dspWinScr(Player p, GameModel m);

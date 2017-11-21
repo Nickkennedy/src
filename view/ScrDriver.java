@@ -117,9 +117,9 @@ public class ScrDriver implements UI {
    
 
 	// Handoff Screen
-	public void dspHandoffScr(Player last, Player current) {
+	public void dspHandoffScr(Player last, Player current, String placeorplay) {
 //	   System.out.println("ScrDriver: dspHandoffScr:");
-		hs = new HandoffScr(s, last, current);}
+		hs = new HandoffScr(s, last, current, placeorplay);}
 	
 	
 

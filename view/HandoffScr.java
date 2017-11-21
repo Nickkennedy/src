@@ -62,32 +62,35 @@ import model.Player;
  * 
  */
 //copied from zip/
-public class HandoffScr { 
-   
-public HandoffScr(Scanner s, Player last, Player current){
+public class HandoffScr 
+{ 
+   public HandoffScr(Scanner s, Player last, Player current, String placeorplay)
+   {
+      if     (placeorplay.equals("place")) System.out.println("place handoff");
+      else if(placeorplay.equals("play"))  System.out.println("play handoff");
      
-	///Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
-     if(last==null) return;
+      //Displays message for the next player that the previous has placed all of their ships. Waits for user to press "Enter" to continue 
+      if(last==null) return;
      
-     System.out.println(last.getPlayerAlias() + " Press \"ENTER\" to continue..." );
-     s.nextLine();
+      System.out.println(last.getPlayerAlias() + " Press \"ENTER\" to continue..." );
+      s.nextLine();
      
-     //This look is used to push the screen down and ensure that the second player can not see the screen.
-     for(int count=0; count<10;count++) { 
-    	 System.out.println("\n"); 
-     }
+      //This look is used to push the screen down and ensure that the second player can not see the screen.
+      for(int count=0; count<10;count++) { 
+         System.out.println("\n"); 
+      }
      
-     System.out.println("\t\t\t\t\t =================");
-     System.out.println("\t\t\t\t\t NOSRC Battleships");
-     System.out.println("\t\t\t\t\t =================");
+      System.out.println("\t\t\t\t\t =================");
+      System.out.println("\t\t\t\t\t NOSRC Battleships");
+      System.out.println("\t\t\t\t\t =================");
      
-     System.out.println("\n\t\t\t\t"+ last.getPlayerAlias() + " has finished his/her turn...");
-     System.out.println("\n\t\t\t\t"+ current.getPlayerAlias() + ", Press \"ENTER\" to continue...");
-     //This look is used to push the screen down and ensure that the second player can not see the screen.
-     for(int count=0; count<5;count++) { 
-    	 System.out.println("\n"); 
-     }
+      System.out.println("\n\t\t\t\t"+ last.getPlayerAlias() + " has finished his/her turn...");
+      System.out.println("\n\t\t\t\t"+ current.getPlayerAlias() + ", Press \"ENTER\" to continue...");
+      //This look is used to push the screen down and ensure that the second player can not see the screen.
+      for(int count=0; count<5;count++) { 
+         System.out.println("\n"); 
+      }
      
-     s.nextLine();
-  }
+    s.nextLine();
+   }
 }

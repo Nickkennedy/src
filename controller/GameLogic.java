@@ -50,7 +50,7 @@ public class GameLogic
          //each player place their ships
 //         System.out.println("before placing ships: no players="+playerCount);
          for(int i=1; i<=playerCount; i++){
-            if(i!=1) ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i));
+            if(i!=1) ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i),"place");
             ui.dspPlaceScr(data.getPlayer(i));}
 //         System.out.println("after placing ships: ");
             
@@ -84,13 +84,13 @@ public class GameLogic
       do {
          for(int i=1; i<=playerCount; i++){
             if(i==1) {
-               ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(i));
+               ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(i),"play");
                ui.dspPlayScr   (data.getPlayer(2), data.getPlayer(i));
                if(!data.getPlayer(2).anyShipsLeft()) win=true;
 //               System.out.println("GameLogic: anyShipsLeft="+data.getPlayer(2).anyShipsLeft()+" win="+win);
                }
             else {
-               ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i));
+               ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i),"play");
                ui.dspPlayScr   (data.getPlayer(1), data.getPlayer(i));
                if(!data.getPlayer(1).anyShipsLeft()) win=true;
 //               System.out.println("GameLogic: anyShipsLeft="+data.getPlayer(1).anyShipsLeft()+" win="+win);

@@ -52,7 +52,7 @@ package view;
       public void dspShot(){}
       
       //Handoff Screen   
-      public void dspHandoffScr(Player last, Player current){
+      public void dspHandoffScr(Player last, Player current, String placeorplay){
          hs = new HandoffGUI(s,last,current);}
       
       //Win Screen   
