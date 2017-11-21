@@ -118,10 +118,12 @@ public class Player
       else {index[0] = row; index[1]=col;}
       
       //look at the content of the addressed cell
-      if(myShips.getGrid()[index[0]][index[1]].getCellState()!=CellStatus.SHIP){
-         return false;}
+      if(   (myShips.getGrid()[index[0]][index[1]].getCellState()==CellStatus.SHIP)
+         || (myShips.getGrid()[index[0]][index[1]].getCellState()==CellStatus.HIT))
+      {
+         return true;}
       else{
-         return true;}}
+         return false;}}
    
    public boolean anyShipsLeft() {
       if(getShipsLeft()==0) return false;
