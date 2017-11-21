@@ -87,7 +87,7 @@ public class SplashScr
          default:  return PlayMode.STANDARD;}}
 
    public static String inputPlayerName(Scanner input, int i) {
-         System.out.print("Enter alias for player " + i + ": ");
+         System.out.print("Enter alias for player " + (i + 1) + ": ");
          String name = input.nextLine();
          return name;}
    
