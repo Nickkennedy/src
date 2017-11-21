@@ -15,7 +15,7 @@ import view.WinScr;
 import view.UI;
 
 /**
- * @author Kevin Purnell s3611540
+ * @author Kevin & Nick
  * @version 1.0
  * Subject:       CPT111 BITS 
  * Study Period:  SP3 2017
@@ -67,7 +67,8 @@ public class ScrDriver implements UI {
 		      fits = p.willShipFit(coords, PlaceScr.tempship, direction);
 //			    System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
 		      if(!fits){
-		         System.out.println("Ship won't fit there. Try again: ");}
+		         System.out.println("Ship won't fit there. Try again: ");
+		         PlaceScr.shiptype--;}
 		      else{
 		         p.loadPlayerShip(coords,PlaceScr.tempship,direction);}
 		   }
