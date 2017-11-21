@@ -67,31 +67,33 @@ public class ScrDriver implements UI {
 
 	// Play Screen
 	public void dspPlayScr(Player e, Player p) {
-	   System.out.println("ScrDriver: dspPlayScr: Player="+p.getPlayerAlias());
-	   boolean hit;
+//	   System.out.println("ScrDriver: dspPlayScr: Player="+p.getPlayerAlias());
+	   boolean hit, stillHasShips;
 		plays = new PlayScr();
 		do {
 		   String coords = plays.getShotCoords(s, grid, p);
-		   hit = e.loadPlayerShot(false,true,coords);   //load shot against the enemy
-		   p.loadPlayerShot(hit, false, coords);        //load shot on own shot grid
-		   grid.display(p);
+		   hit = e.loadPlayerShot(false,true,coords); //load shot against the enemy
+		   p.loadPlayerShot(hit, false, coords);      //load shot on own shot grid
+		   stillHasShips = e.anyShipsLeft();          //does the enemy still have ships after our onslaught? 
 		
 		   //print out stats for debug
-		   System.out.println("ScrDriver: dspPlayScr: "
-		      +" player: "      + p.getPlayerAlias()
-		      +" shots by: "    + p.getShotCount()
-            +" hits by: "     + p.getHitCount()
-            +" ships left: "  + p.getShipsLeft()
-            +" hits against: "+ p.getHitsAgainst());
-		
-	      System.out.println("ScrDriver: dspPlayScr: "
-	         +" enemy: "       + e.getPlayerAlias()
-	         +" shots by: "    + e.getShotCount()
-	         +" hits by: "     + e.getHitCount()
-	         +" ships left: "  + e.getShipsLeft()
-	         +" hits against: "+ e.getHitsAgainst());
+//		   System.out.println("ScrDriver: dspPlayScr: "
+//		      +" player: "      + p.getPlayerAlias()
+//		      +" shots by: "    + p.getShotCount()
+//            +" hits by: "     + p.getHitCount()
+//            +" ships left: "  + p.getShipsLeft()
+//            +" hits against: "+ p.getHitsAgainst());
+//		
+//	      System.out.println("ScrDriver: dspPlayScr: "
+//	         +" enemy: "       + e.getPlayerAlias()
+//	         +" shots by: "    + e.getShotCount()
+//	         +" hits by: "     + e.getHitCount()
+//	         +" ships left: "  + e.getShipsLeft()
+//	         +" hits against: "+ e.getHitsAgainst());
+//	      
+//	      System.out.println("ScrDriver: dspPlayScr: hit="+hit+" stillHasShips="+stillHasShips);
 		}
-		while(hit);
+		while(hit && stillHasShips);
 	 }
 
    public void dspShot() {
@@ -111,8 +113,6 @@ public class ScrDriver implements UI {
 	// Win Screen
 	public boolean dspWinScr(Player p, GameModel m) {
 		ws = new WinScr(s, p, m);
-		return true;}
-
-
+		return ws.endGameSelection(s);}
 }
 //

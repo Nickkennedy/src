@@ -62,6 +62,7 @@ public class GameLogic
             default: System.out.println("Unknown Play Mode!");}   
                      
          //display winner, ask if another game, record game stats
+         System.out.println("GameLogic: before dspWinScr:");
          exit = ui.dspWinScr(winner,data);
          data.addGameStats(new GameRecord(winner.getPlayerAlias(),winner.getShipsLeft(),
                winner.getShotCount(),winner.getHitCount()));
@@ -76,20 +77,24 @@ public class GameLogic
    
    //play mode helper methods
    private void playStandardMode() {
-      System.out.println("GameLogic: playStandardMode: ");
+//      System.out.println("GameLogic: playStandardMode: ");
       do {
          for(int i=1; i<=playerCount; i++){
             if(i==1) {
                ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(i));
                ui.dspPlayScr   (data.getPlayer(2), data.getPlayer(i));
-               if(data.getPlayer(2).getShipsLeft()==0) win=true;}
+               if(!data.getPlayer(2).anyShipsLeft()) win=true;
+//               System.out.println("GameLogic: anyShipsLeft="+data.getPlayer(2).anyShipsLeft()+" win="+win);
+               }
             else {
                ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i));
                ui.dspPlayScr   (data.getPlayer(1), data.getPlayer(i));
-               if(data.getPlayer(1).getShipsLeft()==0) win=true;}
-            if(win) winner = data.getPlayer(i);
+               if(!data.getPlayer(1).anyShipsLeft()) win=true;
+//               System.out.println("GameLogic: anyShipsLeft="+data.getPlayer(1).anyShipsLeft()+" win="+win);
+               }
+            if(win) {winner = data.getPlayer(i); break;}
          }
-      } while(!win); }
+      } while(!win);}
 
    private void playAIMode() {}
 
@@ -104,13 +109,9 @@ public class GameLogic
    private void processGameConfigInput(){
       playerCount = ui.getPlayerCount();
       String[] aliases = ui.getPlayerAliases();
-      String playerName = aliases[0];
-      String enemyName = aliases[1];
-      player = new Player("Fred");                       //test data
-      enemy = new Player("Freda");                       //test data
-      data.addPlayer(player);                            //test data
-      data.addPlayer(enemy);                             //test data
-      playerCount = 2;}                                  //test data
+      data.addPlayer(new Player(aliases[0]));
+      data.addPlayer(new Player(aliases[1]));
+      playerCount = 2;}                          //Core Features default
    
    //load test data
    private void loadTestData(){

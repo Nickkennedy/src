@@ -17,10 +17,12 @@ public class Grid
    //methods
    public Cell[][] getGrid(){
       return grid;}
+   
+   public Cell getGridCell(int row, int col){
+      return grid[row][col];}
       
    public void setGridCell(Cell cell, int row, int col){
       grid[row][col] = cell;
-      return;
-   }
+      return;}
 }
 //

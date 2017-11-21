@@ -21,7 +21,6 @@ public class PlayScr {
 	public static String attack;
 	public static int attackint;
 	private SplashScr splash;
-	private PlaceScr place;
 
 	//Constructor
 	public PlayScr(){};

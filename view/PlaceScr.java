@@ -56,7 +56,7 @@ public class PlaceScr {
 	}
 
 	public String getDirection(Scanner s) {
-		System.out.print("Enter orientation(e.g. right): ");
+		System.out.print("Enter orientation: (l)eft, (r)ight, (u)p, (d)own ");
 		direction = s.nextLine();
 		direction = direction.toUpperCase();
 		if (validdirection(direction) == false){

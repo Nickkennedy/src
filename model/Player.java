@@ -88,6 +88,11 @@ public class Player
 //         System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);
          return true;}}
    
+   public boolean anyShipsLeft() {
+      if(getShipsLeft()==0) return false;
+      else return true;
+   }
+   
    //setters
    public boolean loadPlayerShip(String coords, ShipType shiptype, DirectionType direction){
 //      System.out.println("Player: loadPlayerShip");
@@ -112,52 +117,92 @@ public class Player
    
    /* loadPlayerShot() records shots against both the enemy and the player
     * Different statistics are recorded if this player is the enemy*/
-   public boolean loadPlayerShot(boolean hit, boolean enemy, String coords){
-      //convert coordinates from string ("C4") to row, col index from 0
+   public boolean loadPlayerShot(boolean hit, boolean enemy, String coords)
+   {
+      //convert coordinates from string ("C4") to row, col indexed from 0
       int[] index = {0,0};
       index = translateCoords(coords);
+      ShipType st;
       
       //update the enemy's data
       if(enemy) {
-         if(isShipPresent("", index[0], index[1])) {  //determine if a hit
-            myShips.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);  //record a hit
-            hitsTaken++;                              //record stats                         
-            if(shipHasBeenSunk(index[0], index[1])) shipsLeft--; //determine if ship sunk here            
+         if(isShipPresent("", index[0], index[1])) {                             //determine if a hit
+            st = myShips.getGridCell(index[0], index[1]).getShipType();          //determine type of ship hit 
+            myShips.setGridCell(new Cell(CellStatus.HIT,st), index[0], index[1]);//mark a hit on enemy's screen
+            hitsTaken++;                                                         //record stats
+//            System.out.println("Player: loadPlayerShot:  before shipHasBeenSunk: shipsLeft= "+shipsLeft);
+            if(shipHasBeenSunk(index[0], index[1])) shipsLeft--;                 //determine if ship sunk here
+//            System.out.println("Player: loadPlayerShot:  after shipHasBeenSunk: shipsLeft= "+shipsLeft);
             return true;}                             //return true to indicate a hit against the enemy
          else {                                                                   
-            myShips.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]); //record a miss
+            myShips.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);  //mark a miss on enemy's screen
             return false;}                            //return false to indicate a miss against the enemy  
-      }     
-      //update the player's data
-      else {
-         if(hit) {
-            myShots.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);
-            myShotCount++;
-            myHitCount++; 
-            return true;}                             //return true -but not used
-         else {
-            myShots.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);
-            myShotCount++;
-            return false;}                            //return false -but not used      
+      }                                                                             
+      //update the player's data                                                     
+      else {                                                                         
+         if(hit) {                                                                    
+            myShots.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);   //mark hits on player's screen
+            myShotCount++;                                                       //record stats
+            myHitCount++;                                                        //record stats
+            return true;}                             //return true (hit) -but not used
+         else {                                                                   
+            myShots.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);  //mark misses on player's screen
+            myShotCount++;                                                       //record stats
+            return false;}                            //return false (miss) -but not used      
       }
    }
    
    
    
    //helpers
-   /*looks at cells around the shot to see if all ship cells have been hit*/
+   /*looks at cells around a hit to see if all ship cells have been hit*/
    private boolean shipHasBeenSunk(int row, int col) {
-      return false;
+      //create the coords for the 4 cells adjacent to shot, correcting for boundaries
+      int right = Math.min(GameModel.GRID_SIZE,col+1);
+      int down  = Math.min(GameModel.GRID_SIZE,row+1);
+      int left  = Math.max(0,col-1);
+      int up    = Math.max(0,row-1);
+//      System.out.println("Player: shipHasBeenSunk: row="+row+" col="+col+" right="+right+" down="+down+" left="+left+" up="+up);
+            
+      //retrieve the shiptypes of cells adjacent
+      ShipType hitST = myShips.getGridCell(row, col).getShipType();
+      ShipType rightST = myShips.getGridCell(row, right).getShipType();
+      ShipType downST = myShips.getGridCell(down, col).getShipType();
+      ShipType leftST = myShips.getGridCell(row, left).getShipType();
+      ShipType upST = myShips.getGridCell(up, col).getShipType();
+//      System.out.println("Player: shipHasBeenSunk:"+" hit="+hitST+" right="+rightST+" down="+downST+" left="+leftST+" up="+upST);
+
+      //identify direction of ship
+      String direction = "unknown";
+      if(rightST != hitST) direction = "updown";
+      if(downST  != hitST) direction = "leftright";
+      if(leftST  != hitST) direction = "updown";
+      if(downST  != hitST) direction = "leftright";
+      
+      //crawl along direction to determine if any ship cells are unhit
+      if(direction.equals("leftright")) {
+//         System.out.println("Player: shipHasBeenSunk:"+" direction="+direction);
+         for(int i=0; i<GameModel.GRID_SIZE; i++) 
+            if(   (myShips.getGridCell(row, i).getCellState() == CellStatus.SHIP) 
+               && (myShips.getGridCell(row, i).getShipType()  == hitST)) return false;} //unhit cell detected, return false
+      else {
+//         System.out.println("Player: shipHasBeenSunk:"+" direction="+direction);
+         for(int i=0; i<GameModel.GRID_SIZE; i++) 
+            if(   (myShips.getGridCell(i, col).getCellState() == CellStatus.SHIP) 
+               && (myShips.getGridCell(i, col).getShipType()  == hitST)) return false;} //unhit cell detected, return false         
+      
+      //no unhit cells found, return true (shipHasBeenSunk)
+      return true;
    }  
    
    private int[] translateCoords(String coords) {
-//      System.out.println("Player: translateCoords " + coords + " length="+coords.length());
+//      System.out.println("translateCoords: "+coords);
       int length = coords.length();
       int[] index = {0,0};
       char[] chars = coords.toCharArray();
-//      System.out.println("Player: translateCoords:  chars.length="+chars.length);
       if(length==2) index[0]=Character.getNumericValue(chars[1])-1; 
       else          index[0] = 9;
+//      System.out.println("translateCoords: "+coords+" chars[0]="+chars[0]+" chars[1]="+chars[1]);
       switch(chars[0]) {
          case 'A': index[1]=0;break;
          case 'B': index[1]=1;break;

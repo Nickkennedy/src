@@ -40,23 +40,10 @@ public class WinScr {
 	    System.out.println("\n\t\t\t\t\tTo play again enter 'Y'");
 	    System.out.println("\t\t\t\t\t To exit enter 'X'");
 	    System.out.print("\t\t\t\t\t    Selection: ");
-	    endGameSelection(s);
-	}
-	/// Detects whether a player has any ships alive, returns either true or false. Updated  18/11 Rob
-
-	
-	public static boolean endGameDetection(Player p) {
-		boolean gameOver = false;
-		if(p.getShipsLeft()==0) {
-			gameOver=true;
-		}
-		return gameOver;
-		
 	}
 	
 	/// Waits until the user selects a valid input.
-	
-	public static String endGameSelection(Scanner s) {
+	public boolean endGameSelection(Scanner s) {
 		
 		String selection;
 				
@@ -64,7 +51,9 @@ public class WinScr {
 		while(!selection.matches("Y|X")) {
 			selection = s.nextLine().toUpperCase();
 		}
-		return selection;
+      if(selection.equals("X")) 
+         return true;    //end the game
+      else 
+         return false;   //play another game
 	}	
 }
-
