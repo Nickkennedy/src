@@ -22,7 +22,7 @@ public class GridScr
 		System.out.println("					   " + p.getPlayerAlias() + "									");
 		System.out.println("	   	 My Ships					My Shots");
 		System.out.println("--------------------------------------------------------------------------------------------");
-		System.out.println("     A   B   C   D   E   F   G   H   I   J  	    A   B   C   D   E   F   G   H   I   J");
+		System.out.println("     A   B   C   D   E   F   G   H   I   J  	     A   B   C   D   E   F   G   H   I   J");
 		System.out.println("--------------------------------------------	--------------------------------------------");
 		//i and P2 are nested values which loop through and call each cell. This allows the loop to access all items of the player cell arrays.
 		int i = 0;

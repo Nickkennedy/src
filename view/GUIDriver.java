@@ -15,13 +15,13 @@ package view;
       private SplashGUI ss;
       private PlaceGUI ps;
       private PlayGUI plays;
-      private GridGUI grid;
+      private GridScr grid;
       private HandoffGUI hs;
       private WinGUI ws;
       
       //constructor.
       public GUIDriver(){
-         grid = new GridGUI();
+         grid = new GridScr();
       }
       
       //Splash Screen

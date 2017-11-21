@@ -23,7 +23,7 @@ public class PlaceScr {
 	static String[] ship = { "PATROL", "SUBMARINE", "DESTROYER", "BATTLESHIP", "CARRIER" };
 	public static int col;
 	public static int row;
-	public static int shiptype;
+	public static int shiptype = 0;
 	static String coords;
 	static String Direction;
 	static ShipType tempship = null;
@@ -41,16 +41,24 @@ public class PlaceScr {
 	 * Once the user has entered in coordinates, it validates the string and ship type. 
 	*/
 	public String getPlaceCoords(Scanner s, GridScr g, Player p) {
-		// System.out.println("PlaceScr: getPlaceCoords() player=" +
-		// p.getPlayerAlias());
+		boolean first = true;
 		if (shiptype == 5)
 			shiptype = 0;
 		g.display(p);
 		System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
 		coords = s.nextLine();
-		validentry(coords);
+		coords = coords.toUpperCase();
 		validshiptype(shiptype);
-		shiptype++;
+	    do{
+	    	if(p.areCoordsValid(coords) == false){
+	    		System.out.print("Invalid coordinates!");
+	    		System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
+	    		coords = s.nextLine();
+	    		first = false;
+	    	}
+	    }
+	    while(!p.areCoordsValid(coords));
+	    shiptype++;
 		return coords;
 	}
 	
@@ -70,49 +78,44 @@ public class PlaceScr {
 	/* Validentry is designed to check that the user entered in valid coordinates and if so, assign the row and colum to int values. 
 	 * 
 	 */
-	public static void validentry(String s) {
+	public static boolean validentry(String s) {
 		// Converts the keyboard entry into a char (column) and string (row)
 		char colchar = s.charAt(0);
 		String rowchar = s.substring(1);
-
+		int temp = 0;
+		
 		switch (colchar) {
-		case 'A': col = 0; break;
-		case 'a': col = 0; break;
-		case 'B': col = 1; break;
-		case 'b': col = 1; break;
-		case 'C': col = 2; break;
-		case 'c': col = 2; break;
-		case 'D': col = 3; break;
-		case 'd': col = 3; break;
-		case 'E': col = 4; break;
-		case 'e': col = 4; break;
-		case 'F': col = 5; break;
-		case 'f': col = 5; break;
-		case 'G': col = 6; break;
-		case 'g': col = 6; break;
-		case 'H': col = 7; break;
-		case 'h': col = 7; break;
-		case 'I': col = 8; break;
-		case 'i': col = 8; break;
-		case 'J': col = 9; break;
-		case 'j': col = 9; break;
+			case 'A': col = 0; temp++; break;
+			case 'B': col = 1; temp++; break;
+			case 'C': col = 2; temp++; break;
+			case 'D': col = 3; temp++; break;
+			case 'E': col = 4; temp++; break;
+			case 'F': col = 5; temp++; break;
+			case 'G': col = 6; temp++; break;
+			case 'H': col = 7; temp++; break;
+			case 'I': col = 8; temp++; break;
+			case 'J': col = 9; temp++; break;
 		default: System.out.println("Invalid column");
 		}
 
 		switch (rowchar) {
-		case "1": col = 0; break;
-		case "2": col = 1; break;
-		case "3": col = 2; break;
-		case "4": col = 3; break;
-		case "5": col = 4; break;
-		case "6": col = 5; break;
-		case "7": col = 6; break;
-		case "8": col = 7; break;
-		case "9": col = 8; break;
-		case "10": col = 9;	break;
+			case "1": col = 0; temp++; break;
+			case "2": col = 1; temp++; break;
+			case "3": col = 2; temp++; break;
+			case "4": col = 3; temp++; break;
+			case "5": col = 4; temp++; break;
+			case "6": col = 5; temp++; break;
+			case "7": col = 6; temp++; break;
+			case "8": col = 7; temp++; break;
+			case "9": col = 8; temp++; break;
+			case "10": col = 9; temp++;	break;
 		default:
 			System.out.println("Invalid row");
 		}
+		
+		if(temp == 2)
+			return true;
+		return false;
 	}
 	
 	/*
