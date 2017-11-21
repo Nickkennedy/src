@@ -1,6 +1,8 @@
 package view;
 
 import java.util.Scanner;
+
+import model.DirectionType;
 import model.GameModel;
 import model.Grid;
 import model.Player;
@@ -55,11 +57,21 @@ public class ScrDriver implements UI {
 	public void dspPlaceScr(Player p) {
 //	   System.out.println("ScrDriver: dspPlaceScr: Player="+p.getPlayerAlias());
 		ps = new PlaceScr();
-		
+		String coords = "";
+		DirectionType direction = null;
+		boolean fits = false;
 		while (ps.remainingShips() == true){
-			String coords = ps.getPlaceCoords(s, grid, p);
-//			System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
-			p.loadPlayerShip(coords,PlaceScr.tempship,PlaceScr.validgetDirection(ps.getDirection(s)));	
+		   do {
+		      coords = ps.getPlaceCoords(s, grid, p);
+		      direction = PlaceScr.validgetDirection(ps.getDirection(s));
+		      fits = p.willShipFit(coords, PlaceScr.tempship, direction);
+//			    System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
+		      if(!fits){
+		         System.out.println("Ship won't fit there. Try again: ");}
+		      else{
+		         p.loadPlayerShip(coords,PlaceScr.tempship,direction);}
+		   }
+		   while(!fits);
 			if(PlaceScr.tempship == ShipType.CARRIER)
 				grid.display(p);
 		}
