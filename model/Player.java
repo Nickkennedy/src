@@ -68,7 +68,7 @@ public class Player
    
    //information getters
    public boolean willShipFit(String coords, ShipType shiptype, DirectionType direction){
-//      System.out.println("Player: willShipFit " + coords );
+//      System.out.println("Player: willShipFit "+coords+" shiptype="+shiptype+" direction="+direction);
       //convert coordinates from string ("C4") to row, col index from 0
       int[] index = {0,0};
       index = translateCoords(coords);

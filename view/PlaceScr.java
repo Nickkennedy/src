@@ -43,29 +43,23 @@ public class PlaceScr {
 	 * Once the user has entered in coordinates, it validates the string and ship type. 
 	*/
 	public String getPlaceCoords(Scanner s, GridScr g, Player p) {
-		boolean first = true;
-		if (shiptype == 5)
-			shiptype = 0;
+		boolean valid = true;
+		if (shiptype == 5) shiptype = 0;
 		g.display(p);
 		if(shipdoesntfit) {
 		   System.out.print("\nShip won't fit there. Try again: ");
-		   shipdoesntfit = false;
-		}
-		System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
-		coords = s.nextLine();
-		coords = coords.toUpperCase();
-		validshiptype(shiptype);
-	    do{
-	    	if(p.areCoordsValid(coords) == false){
-	    		System.out.print("Invalid coordinates!");
-	    		System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
-	    		coords = s.nextLine();
-	    		first = false;
-	    	}
-	    }
-	    while(!p.areCoordsValid(coords));
-	    shiptype++;
-		return coords;
+		   shipdoesntfit = false;}
+		
+      do {
+		   System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
+		   coords = s.nextLine().toUpperCase();
+		   if(coords.equals("")) coords = " ";
+		   validshiptype(shiptype);
+		   valid = p.areCoordsValid(coords);
+		   if(!valid) System.out.print("Invalid coordinates!");}
+		while(!valid);
+      shiptype++;
+      return coords;
 	}
 	
 	/*	This function accepts a scanner and prompts the user to enter in their desired orientation.
