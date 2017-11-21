@@ -118,11 +118,9 @@ public class Player
       else {index[0] = row; index[1]=col;}
       
       //look at the content of the addressed cell
-      if(myShips.getGrid()[index[0]][index[1]].getCellState()==CellStatus.EMPTY){
-//         System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);
+      if(myShips.getGrid()[index[0]][index[1]].getCellState()!=CellStatus.SHIP){
          return false;}
       else{
-//         System.out.println("SHIP "+myShips.getGrid()[index[0]][index[1]].getCellState()+" AT row="+index[0]+" col="+index[1]);
          return true;}}
    
    public boolean anyShipsLeft() {
