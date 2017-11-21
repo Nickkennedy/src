@@ -68,7 +68,7 @@ public class Player
    
    //information getters
    public boolean willShipFit(String coords, ShipType shiptype, DirectionType direction){
-      System.out.println("Player: willShipFit " + coords );
+//      System.out.println("Player: willShipFit " + coords );
       //convert coordinates from string ("C4") to row, col index from 0
       int[] index = {0,0};
       index = translateCoords(coords);
@@ -77,11 +77,17 @@ public class Player
       
       //check boundary conditions
       switch(direction) {
-         case UP:   System.out.println("UP    "+row+" to "+(row-(length-1))); if((row-(length-1))<0)                     return false; else break;
-         case DOWN: System.out.println("DOWN  "+row+" to "+(row+(length-1))); if((row+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
-         case LEFT: System.out.println("LEFT  "+col+" to "+(col-(length-1))); if((col-(length-1))<0)                     return false; else break;
-         case RIGHT:System.out.println("RIGHT "+col+" to "+(col+(length-1))); if((col+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
-         default:                                       return false;}
+         case UP:   if((row-(length-1))<0)                     return false; else break;
+         case DOWN: if((row+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
+         case LEFT: if((col-(length-1))<0)                     return false; else break;
+         case RIGHT:if((col+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
+         default:                                              return false;}
+//      switch(direction) {
+//         case UP:   System.out.println("UP    "+row+" to "+(row-(length-1))); if((row-(length-1))<0)                     return false; else break;
+//         case DOWN: System.out.println("DOWN  "+row+" to "+(row+(length-1))); if((row+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
+//         case LEFT: System.out.println("LEFT  "+col+" to "+(col-(length-1))); if((col-(length-1))<0)                     return false; else break;
+//         case RIGHT:System.out.println("RIGHT "+col+" to "+(col+(length-1))); if((col+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
+//         default:                                       return false;}
       //check if another ship present (need to check all positions)
       for(int i=0; i<length; i++) {
          switch(direction) {

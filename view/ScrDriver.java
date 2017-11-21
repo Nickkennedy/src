@@ -67,7 +67,7 @@ public class ScrDriver implements UI {
 		      fits = p.willShipFit(coords, PlaceScr.tempship, direction);
 //			    System.out.println("ScrDriver: dspPlaceScr: coords input="+coords);
 		      if(!fits){
-		         System.out.println("Ship won't fit there. Try again: ");
+		         PlaceScr.shipdoesntfit=true;
 		         PlaceScr.shiptype--;}
 		      else{
 		         p.loadPlayerShip(coords,PlaceScr.tempship,direction);}

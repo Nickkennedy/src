@@ -27,6 +27,7 @@ public class PlaceScr {
 	static String coords;
 	static String Direction;
 	static ShipType tempship = null;
+	static boolean shipdoesntfit = false;
 	static Cell tempcell = new Cell(CellStatus.EMPTY);
 	private int temp = 4;
 	String direction;
@@ -35,6 +36,7 @@ public class PlaceScr {
 	//Each time the constructor is called, it loads the temp value back to 4. This is key for the ship string array.
 	public PlaceScr() {
 		temp = 4;
+		shipdoesntfit = false;
 	}
 	
 	/*The functions accepts a scanner, grid and player valuer and once called, will prompt the user to enter in there coordinates. 
@@ -45,6 +47,10 @@ public class PlaceScr {
 		if (shiptype == 5)
 			shiptype = 0;
 		g.display(p);
+		if(shipdoesntfit) {
+		   System.out.print("\nShip won't fit there. Try again: ");
+		   shipdoesntfit = false;
+		}
 		System.out.print("\nEnter coordinates (e.g. C4) to place your " + ship[shiptype] + ": ");
 		coords = s.nextLine();
 		coords = coords.toUpperCase();
