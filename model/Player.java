@@ -237,8 +237,9 @@ public class Player
       int length = coords.length();
       int[] index = {0,0};
       char[] chars = coords.toCharArray();
-      if(length==2) index[0]=Character.getNumericValue(chars[1])-1; 
-      else          index[0] = 9;
+      if     (length==3 && chars[1]=='1' && chars[2]=='0') index[0]=9;
+      else if(length==2) index[0]=Character.getNumericValue(chars[1])-1;
+      else index[0] = 99;
 //      System.out.println("translateCoords: "+coords+" chars[0]="+chars[0]+" chars[1]="+chars[1]);
       switch(chars[0]) {
          case 'A': index[1]=0;break;
