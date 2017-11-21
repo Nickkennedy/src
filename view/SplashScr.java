@@ -66,9 +66,9 @@ public class SplashScr
    //helpers
    public static int inputNumberOfPlayers(Scanner input) {
       int i = -99;
-      System.out.print("Enter number of players: (1 to 4) ");
+      System.out.print("Enter number of players: (only 2 allowed) ");
       do {
-         if(i != -99) System.out.print("Game only allows 1 to 4 players. Try again: ");
+         if(i != -99) System.out.print("Game only allows 2 players. Try again: ");
          i = Integer.parseInt(input.nextLine());
       } while(i<1 || i>4);
       return i;}

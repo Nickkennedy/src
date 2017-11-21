@@ -81,9 +81,16 @@ public class Player
          case DOWN: System.out.println("DOWN  "+row+" to "+(row+(length-1))); if((row+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
          case LEFT: System.out.println("LEFT  "+col+" to "+(col-(length-1))); if((col-(length-1))<0)                     return false; else break;
          case RIGHT:System.out.println("RIGHT "+col+" to "+(col+(length-1))); if((col+(length-1))>GameModel.GRID_SIZE-1) return false; else break;
-         default:                                          return false;}
+         default:                                       return false;}
       //check if another ship present (need to check all positions)
-      if(isShipPresent("",row,col)) return false;  //this does one cell so just loop it as per loadPlayerShip()
+      for(int i=0; i<length; i++) {
+         switch(direction) {
+            case UP:   {if(isShipPresent("",row-i,col)) return false; else break;}
+            case DOWN: {if(isShipPresent("",row+i,col)) return false; else break;}
+            case LEFT: {if(isShipPresent("",row,col-i)) return false; else break;}
+            case RIGHT:{if(isShipPresent("",row,col+i)) return false; else break;}
+            default:   {                                return false;}
+      }  }
       return true;}
    
    public boolean areCoordsValid(String coords) {
