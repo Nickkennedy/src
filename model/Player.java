@@ -17,6 +17,7 @@ import model.Grid;
 public class Player
 {
    //attributes
+   int myID = 0;
    String myAlias = "";
    Grid myShips = null;
    Grid myShots = null;
@@ -27,11 +28,15 @@ public class Player
    
    //constructor.
    public Player(String a){
+      myID = 0; 
       myAlias = a;
       myShips = new Grid();
       myShots = new Grid();}
    
-   //getters
+   //getters & setters
+   public int getPlayerID() {
+      return myID;}
+   
    public String getPlayerAlias(){
       return myAlias;}
    
@@ -54,6 +59,9 @@ public class Player
       return hitsTaken;
    }
 
+   public void setPlayerID(int ID) {
+      myID = ID;}
+   
    //information getters
    public boolean willShipFit(String coords, ShipType shiptype, DirectionType direction){
       System.out.println("Player: willShipFit " + coords );
@@ -105,7 +113,7 @@ public class Player
       else return true;
    }
    
-   //setters
+   //mutators
    public boolean loadPlayerShip(String coords, ShipType shiptype, DirectionType direction){
 //      System.out.println("Player: loadPlayerShip");
       //convert coordinates from string ("C4") to row, col index from 0

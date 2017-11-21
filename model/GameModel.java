@@ -21,6 +21,7 @@ public interface GameModel
    //Player housekeeping
    public void addPlayer(Player p);
    public Player getPlayer(int key);
+   public void deleteAllPlayers();
    public Collection<Player> getAllPlayers();
    public boolean detectEndGame();
    

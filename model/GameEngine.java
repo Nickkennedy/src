@@ -45,17 +45,19 @@ public class GameEngine implements GameModel
    //constructors
    public GameEngine()
    {
-//      System.out.println("GameEngine contructor");
-      //read in history file
       readInGameHistory();
-//      if(noGameHistory) System.out.println("No Game History file found!");
-//      else              System.out.println("Game History file found!");
    }
 
    
    //Player housekeeping
    public void addPlayer(Player p){
+      p.setPlayerID(playerID);
       players.put(playerID++,p);}
+   
+   public void deleteAllPlayers() {
+      for(Player p : players.values()) {
+         System.out.println("deleteAllPlayers: "+p.toString());
+         players.remove(p.getPlayerID());}}
    
    public Player getPlayer(int key) {
       return players.get(key);}

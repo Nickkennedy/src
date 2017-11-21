@@ -40,8 +40,8 @@ public class GameLogic
 
       //play game
       do {
-         //clear out last game
-//         data.
+         //clean out last games's players
+         data.deleteAllPlayers();
          //display splash screen & get game configuration from the players
          ui.dspSplashScr(data);
          processGameConfigInput();
