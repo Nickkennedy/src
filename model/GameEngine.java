@@ -55,16 +55,23 @@ public class GameEngine implements GameModel
    
    //Player housekeeping
    public void addPlayer(Player p){
+      System.out.println("GameEngine: addPlayer: before: player="+p.getPlayerAlias()+" playerID="+playerID );
       p.setPlayerID(playerID);
-      players.put(playerID++,p);}
-   
-   public void deleteAllPlayers() {
-      for(Player p : players.values()) {
-//         System.out.println("deleteAllPlayers: "+p.getPlayerID()+" "+p.getPlayerAlias());
-         players.remove(p.getPlayerID());}}
+      players.put(playerID++,p);
+      for(Player pl : players.values()) {
+         System.out.println("GameEngine: addPlayer: print all loop: player="+pl.getPlayerAlias()+" playerID="+pl.getPlayerID() );      
+      }
+   }
    
    public Player getPlayer(int key) {
       return players.get(key);}
+   
+   public void deleteAllPlayers() {
+      for(Player p : players.values()) {
+         players.remove(p.getPlayerID());}}
+   
+   public void resetPlayerID() {
+      playerID = 1;}
    
    public Collection<Player> getAllPlayers(){
       return players.values();}

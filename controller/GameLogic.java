@@ -117,6 +117,7 @@ public class GameLogic
    //clean out last games's players and reset state variables
    private void resetGame() {
       data.deleteAllPlayers();
+      data.resetPlayerID();
       exit=false;
       w = null;
       coords = "";}

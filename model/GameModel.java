@@ -22,6 +22,7 @@ public interface GameModel
    public void addPlayer(Player p);
    public Player getPlayer(int key);
    public void deleteAllPlayers();
+   public void resetPlayerID();
    public Collection<Player> getAllPlayers();
    public boolean detectEndGame();
    
