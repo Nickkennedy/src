@@ -15,7 +15,7 @@ import view.WinScr;
 import view.UI;
 
 /**
- * @author Kevin & Nick
+ * @author Kevin Purnell s3611540 & Nicholas Kennedy s3674937
  * @version 1.0
  * Subject:       CPT111 BITS 
  * Study Period:  SP3 2017
@@ -41,6 +41,7 @@ public class ScrDriver implements UI {
 	public ScrDriver() {
 	   grid = new GridScr();	}
 
+	//METHODS
 	// Splash Screen
 	public void dspSplashScr(GameModel m) {
 		ss = new SplashScr(s, m);}
@@ -51,7 +52,6 @@ public class ScrDriver implements UI {
 	public String[] getPlayerAliases() {
 		return ss.getAliases();}
 
-		
 	
 	// Place Screen
 	public void dspPlaceScr(Player p) {
@@ -78,10 +78,11 @@ public class ScrDriver implements UI {
 		}
 	}
 
+	
 	// Play Screen
 	public void dspPlayScr(Player e, Player p) {
-//	   System.out.println("ScrDriver: dspPlayScr: Player="+p.getPlayerAlias());
-	   boolean hit, stillHasShips;
+//	   System.out.println("ScrDriver: dspPlayScr: Player="+p.getPlayerAlias()+"  Enemy="+e.getPlayerAlias());
+	   boolean hit=false, stillHasShips=true;
 		plays = new PlayScr();
 		do {
 		   String coords = plays.getShotCoords(s, grid, p);
@@ -107,22 +108,19 @@ public class ScrDriver implements UI {
 //	      System.out.println("ScrDriver: dspPlayScr: hit="+hit+" stillHasShips="+stillHasShips);
 		}
 		while(hit && stillHasShips);
+		grid.display(p);
 	 }
 
-   public void dspShot() {
-      // TODO Auto-generated method stub
-      
-   }
-
-   
-
+	
+	// Handoff Screen
 	// Handoff Screen
 	public void dspHandoffScr(Player last, Player current, String placeorplay) {
 //	   System.out.println("ScrDriver: dspHandoffScr:");
 		hs = new HandoffScr(s, last, current, placeorplay);}
 	
-	
 
+	
+	// Win Screen
 	// Win Screen
 	public boolean dspWinScr(Player p, GameModel m) {
 		ws = new WinScr(s, p, m);

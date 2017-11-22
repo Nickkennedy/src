@@ -30,8 +30,6 @@ public interface UI
    //Play Screen
    public void dspPlayScr(Player e, Player p);
    
-   public void dspShot();
-   
    //Handoff Screen
    public void dspHandoffScr(Player l, Player p, String placeorplay);
    

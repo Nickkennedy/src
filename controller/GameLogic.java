@@ -25,10 +25,9 @@ public class GameLogic
    private UI ui;
    private PlayMode playMode = PlayMode.STANDARD;
    private int playerCount=2;
-   private Boolean win=false, exit=false;
-   private Player winner = null;
+   private Boolean exit=false;
+   private Player w = null;
    String coords = "";
-
    
    //contructor -main game logic
    public GameLogic()
@@ -47,13 +46,14 @@ public class GameLogic
          ui.dspSplashScr(data);
          processGameConfigInput();
             
-         //each player place their ships
-//         System.out.println("before placing ships: no players="+playerCount);
+         //each player places ships here
          for(int i=1; i<=playerCount; i++){
             if(i!=1) ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i),"place");
             ui.dspPlaceScr(data.getPlayer(i));}
-//         System.out.println("after placing ships: ");
-            
+
+         //handoff to play section 
+         ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(1),"place");
+         
          //play the game using the selected 'Play Mode'
          playMode = PlayMode.STANDARD;
          switch(playMode){
@@ -64,15 +64,11 @@ public class GameLogic
             case TEAM:      playTeamMode();     break;    
             default: System.out.println("Unknown Play Mode!");}   
                      
-         //display winner, ask if another game, record game stats
-//         System.out.println("GameLogic: before dspWinScr:");
-         exit = ui.dspWinScr(winner,data);
-         data.addGameStats(new GameRecord(winner.getPlayerAlias(),winner.getShipsLeft(),
-               winner.getShotCount(),winner.getHitCount()));
-         
+         //record game stats in memory & disk; display winner; ask if another game
+         data.addGameStats(new GameRecord(w.getPlayerAlias(),w.getShipsLeft(),w.getShotCount(),w.getHitCount()));  
+         data.writeOutGameHistory();
+         exit = ui.dspWinScr(w,data);
       } while(!exit);
-      //write out game stats to file   
-      data.writeOutGameHistory();
    }
 
    
@@ -80,23 +76,25 @@ public class GameLogic
    
    //play mode helper methods
    private void playStandardMode() {
-//      System.out.println("GameLogic: playStandardMode: ");
-      do {
-         for(int i=1; i<=playerCount; i++){
-            if(i==1) {
-               ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(i),"play");
-               ui.dspPlayScr   (data.getPlayer(2), data.getPlayer(i));
-               if(!data.getPlayer(2).anyShipsLeft()) win=true;
-//               System.out.println("GameLogic: anyShipsLeft="+data.getPlayer(2).anyShipsLeft()+" win="+win);
-               }
-            else {
-               ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i),"play");
-               ui.dspPlayScr   (data.getPlayer(1), data.getPlayer(i));
-               if(!data.getPlayer(1).anyShipsLeft()) win=true;
-//               System.out.println("GameLogic: anyShipsLeft="+data.getPlayer(1).anyShipsLeft()+" win="+win);
-               }
-            if(win) {winner = data.getPlayer(i); break;}
-         }
+      boolean first = true, win = false;
+      do {           //first player
+//         System.out.println("GameLogic: playStandardMode: first="+first+" win="+win);
+         if(!first) ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(1),"play");
+         first=false;
+         ui.dspPlayScr(data.getPlayer(2), data.getPlayer(1));
+//         System.out.println("GameLogic: after player 1: win="+win);
+         if(!data.getPlayer(2).anyShipsLeft()){
+            win=true; w = data.getPlayer(1);
+//            System.out.println("GameLogic: after player 1 win eval: win="+win);
+            }
+         else {      //second player
+            ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(2),"play");
+            ui.dspPlayScr(data.getPlayer(1), data.getPlayer(2));
+//            System.out.println("GameLogic: after player 2: win="+win);
+            if(!data.getPlayer(1).anyShipsLeft()){
+               win=true; w = data.getPlayer(2);
+//               System.out.println("GameLogic: after player 2 win eval: win="+win);
+         }  }
       } while(!win);}
 
    private void playAIMode() {}
@@ -114,13 +112,13 @@ public class GameLogic
       String[] aliases = ui.getPlayerAliases();
       data.addPlayer(new Player(aliases[0]));
       data.addPlayer(new Player(aliases[1]));
-      playerCount = 2;}                          //Core Features default
+      playerCount = 2;}                          //'Core Features' default
 
    //clean out last games's players and reset state variables
    private void resetGame() {
       data.deleteAllPlayers();
-      win=false; exit=false;
-      winner = null;
+      exit=false;
+      w = null;
       coords = "";}
       
    //load test data

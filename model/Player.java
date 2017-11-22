@@ -164,6 +164,7 @@ public class Player
       //update the enemy's data
       if(enemy) {
          if(isShipPresent("", index[0], index[1])) {                             //determine if a hit
+//            System.out.println("Player: loadPlayerShot: Update enemy.  Shot was a hit! "+CellStatus.HIT);
             st = myShips.getGridCell(index[0], index[1]).getShipType();          //determine type of ship hit 
             myShips.setGridCell(new Cell(CellStatus.HIT,st), index[0], index[1]);//mark a hit on enemy's screen
             hitsTaken++;                                                         //record stats
@@ -171,18 +172,21 @@ public class Player
             if(shipHasBeenSunk(index[0], index[1])) shipsLeft--;                 //determine if ship sunk here
 //            System.out.println("Player: loadPlayerShot:  after shipHasBeenSunk: shipsLeft= "+shipsLeft);
             return true;}                             //return true to indicate a hit against the enemy
-         else {                                                                   
+         else {
+//            System.out.println("Player: loadPlayerShot: Update enemy.  Shot was a miss! "+CellStatus.MISS);
             myShips.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);  //mark a miss on enemy's screen
             return false;}                            //return false to indicate a miss against the enemy  
       }                                                                             
       //update the player's data                                                     
       else {                                                                         
-         if(hit) {                                                                    
+         if(hit) {
+//            System.out.println("Player: loadPlayerShot: Update player. Shot was a hit! "+CellStatus.HIT);
             myShots.setGridCell(new Cell(CellStatus.HIT), index[0], index[1]);   //mark hits on player's screen
             myShotCount++;                                                       //record stats
             myHitCount++;                                                        //record stats
             return true;}                             //return true (hit) -but not used
-         else {                                                                   
+         else {
+//            System.out.println("Player: loadPlayerShot: Update player. Shot was a miss! "+CellStatus.MISS);
             myShots.setGridCell(new Cell(CellStatus.MISS), index[0], index[1]);  //mark misses on player's screen
             myShotCount++;                                                       //record stats
             return false;}                            //return false (miss) -but not used      
@@ -211,10 +215,10 @@ public class Player
 
       //identify direction of ship
       String direction = "unknown";
-      if(rightST != hitST) direction = "updown";
-      if(downST  != hitST) direction = "leftright";
-      if(leftST  != hitST) direction = "updown";
-      if(upST    != hitST) direction = "leftright";
+      if(rightST == hitST) direction = "leftright";
+      if(downST  == hitST) direction = "updown";
+      if(leftST  == hitST) direction = "leftright";
+      if(upST    == hitST) direction = "updown";
       
       //crawl along direction to determine if any ship cells are unhit
       if(direction.equals("leftright")) {

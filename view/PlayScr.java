@@ -20,7 +20,6 @@ public class PlayScr {
 	public static String coords;
 	public static String attack;
 	public static int attackint;
-	private SplashScr splash;
 
 	//Constructor
 	public PlayScr(){};
@@ -31,13 +30,15 @@ public class PlayScr {
 	 * Once the user has entered in coordinates, it validates the string and ship type. 
 	*/
    public String getShotCoords(Scanner s, GridScr g, Player p) {
+//      System.out.println("PlayScr: getShotCoords: Player="+p.getPlayerAlias());
       boolean first = true;
       g.display(p);
       System.out.print("\nEnter Coordinates and press Enter to Fire: ");
       do{
-         if(!first) System.out.print("Invalid Coordinates! Enter again and press Enter to Fire: ");
-         first = false;
-         coords = s.nextLine();}
+         if(!first) System.out.print("Invalid Coordinates! Enter again and press Enter to Fire: "); 
+         first=false;
+         coords = s.nextLine().toUpperCase();
+         if(coords.equals("")) coords = " ";}
       while(!p.areCoordsValid(coords));
       return coords;
    }
@@ -64,21 +65,6 @@ public class PlayScr {
 			System.out.println("Invalid enemy. Try again.");
 			whotoattack(s);
 		}
-	}
-	
-	//Returns the number of players. 
-	public int getPlayerCount() {
-		return splash.getCount();
-	}
-	
-	//returns the player alias's.
-	public String[] getPlayerAliases(Player p) {
-		return splash.getAliases();
-	}
-	
-	//Displays the users grids. 
-	public void dspShot(GridScr g, Player p) {
-		g.display(p);
 	}
 }
 //

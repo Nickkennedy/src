@@ -33,18 +33,18 @@ public class WinScr {
 	
 	public WinScr(Scanner s, Player p, GameModel m) {
 		
-		System.out.println("\n\n\n\n\n\n\t\t\t\t\t =================");
-	    System.out.println("\t\t\t\t\t NOSRC Battleships");
-	    System.out.println("\t\t\t\t\t =================");
+		System.out.println("\n\n\n\n\n\n\t\t\t\t =================");
+	    System.out.println("\t\t\t\t NOSRC Battleships");
+	    System.out.println("\t\t\t\t =================");
 	    
 	    new HOFScr(m);
 	    
-	    System.out.println("\n\t\t\t\t\t =================");
-	    System.out.println("\n\t\t\t\tCongratulations " + p.getPlayerAlias() + " has won the game!!!");
+	    System.out.println("\n\t\t\t\t =================");
+	    System.out.println("\n\t\t\tCongratulations " + p.getPlayerAlias() + " has won the game!!!");
 	    
-	    System.out.println("\n\t\t\t\t\tTo play again enter 'Y'");
-	    System.out.println("\t\t\t\t\t To exit enter 'X'");
-	    System.out.print("\t\t\t\t\t    Selection: ");
+	    System.out.println("\n\t\t\t\tTo play again enter 'Y'");
+	    System.out.println("\t\t\t\t To exit enter 'X'");
+	    System.out.print("\t\t\t\t    Selection: ");
 	}
 	
 	/// Waits until the user selects a valid input.
