@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import model.Player;
 import model.ShipType;
-/**
+/***
  * @author Nicholas Kennedy s3674937
  * @version 1.0
  * Subject:       CPT111 BITS 

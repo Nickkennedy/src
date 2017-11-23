@@ -3,7 +3,7 @@ package view;
 import model.GameModel;
 import model.Player;
 
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -13,7 +13,6 @@ import model.Player;
  * Package:       view 
  * Source:        own work 
  */
-//copied from zip/
 public interface UI 
 {
    //Constants.
@@ -36,4 +35,3 @@ public interface UI
    //Win Screen
    public boolean dspWinScr(Player p, GameModel m);
 }
-//

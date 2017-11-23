@@ -2,7 +2,7 @@ package view;
 
 import model.GameModel;
 import model.GameRecord;
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -12,7 +12,6 @@ import model.GameRecord;
  * Package:       view 
  * Source:        own work
  */
-//copied from zip/
 public class HOFScr 
 {
    //constructor
@@ -30,4 +29,3 @@ public class HOFScr
       System.out.println("\t\t\t======================================");
       System.out.println("");}
 }
-//

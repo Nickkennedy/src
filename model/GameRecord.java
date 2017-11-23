@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -46,4 +46,3 @@ public class GameRecord implements Serializable
             +String.format("%1$,.1f",Math.round(hitrate*100)/100.0)+"     "
             +(String.format("%1$,.1f",Math.round(rating*100)/100.0)));}
 }
-//

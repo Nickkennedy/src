@@ -1,6 +1,6 @@
 package model;
 
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -10,7 +10,6 @@ package model;
  * Package:       model
  * Source:        own work 
  */
-//copied from zip/
 public class Grid 
 {
    //attributes
@@ -40,4 +39,3 @@ public class Grid
             grid[row][col] = new Cell(CellStatus.EMPTY,null);}}
    }
 }
-//

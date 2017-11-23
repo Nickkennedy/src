@@ -6,13 +6,13 @@ import java.util.Calendar;
 import java.util.Date;
 import model.GameModel;
 import model.GameRecord;
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
  * Study Period:  SP3 2017
- * Purpose:       Display the "Hall-of-Fame" GUI sub-screen
- * Location:      Model 
+ * Purpose:       1)Display the "Hall-of-Fame" GUI sub-screen
+ * Package:       view 
  * Source:        own work
  */
 //copied from zip/
@@ -82,7 +82,6 @@ public class HOFGUI extends JPanel
 //      //repaint the screen
 //      betHistory.repaint();
 //   }
-}
 //      int i = 0;
 //      System.out.println("    ======================================");
 //      System.out.println("    |           Hall Of Fame             |");       
@@ -95,3 +94,4 @@ public class HOFGUI extends JPanel
 //      System.out.println("    ======================================");
 //      System.out.println("");}
 //
+}

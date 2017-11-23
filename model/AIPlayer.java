@@ -1,7 +1,7 @@
 package model;
 
 import java.util.Random;
-/**
+/***
  * @author Nicholas Kennedy s3674937
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -73,4 +73,3 @@ public class AIPlayer extends Player{
 	}
 
 }
-//

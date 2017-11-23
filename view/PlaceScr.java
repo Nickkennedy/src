@@ -1,6 +1,7 @@
 package view;
 
 import java.util.Scanner;
+
 import model.Cell;
 import model.CellStatus;
 import model.DirectionType;
@@ -8,7 +9,7 @@ import model.Player;
 import model.ShipType;
 import view.GridScr;
 
-/**
+/***
  * @author Christopher Musamba & Nicholas Kennedy
  * @version 1.0
  * Subject:       CPT111 BITS 

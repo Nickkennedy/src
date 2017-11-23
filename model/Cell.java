@@ -1,6 +1,6 @@
 package model;
 
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -52,4 +52,3 @@ public class Cell
 //      return cellstate.name() + " " + shiptype.name();
    }
 }
-//

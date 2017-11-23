@@ -2,7 +2,7 @@ package driver;
 
 import controller.GameLogic;
 
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -13,7 +13,6 @@ import controller.GameLogic;
  * Package:       driver 
  * Source:        own work 
  */
-//copied from zip/
 public class TeamA3Battleships 
 {
    public static void main(String[] args) 
@@ -21,4 +20,3 @@ public class TeamA3Battleships
       new GameLogic();
    }
 }
-//

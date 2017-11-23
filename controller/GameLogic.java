@@ -6,7 +6,7 @@ import model.Player;
 import view.ScrDriver;
 import view.UI;
 
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -17,7 +17,6 @@ import view.UI;
  * Package:       controller
  * Source:        own work 
  */
-//copied from zip/
 public class GameLogic 
 {
    //attributes
@@ -33,9 +32,9 @@ public class GameLogic
    public GameLogic()
    {
       //create game 
-      ui = new ScrDriver();
-//      ui = new GUIDriver();    //uncomment to get GUI screens
-      data = new GameEngine();   //uncomment to get char screens
+      ui = new ScrDriver();      //uncomment to get char screens
+//    ui = new GUIDriver();      //uncomment to get GUI screens
+      data = new GameEngine();
 
       //play game
       do {
@@ -74,27 +73,20 @@ public class GameLogic
    
    
    
-   //play mode helper methods
+   //play mode methods
    private void playStandardMode() {
       boolean first = true, win = false;
       do {           //first player
-//         System.out.println("GameLogic: playStandardMode: first="+first+" win="+win);
          if(!first) ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(1),"play");
          first=false;
          ui.dspPlayScr(data.getPlayer(2), data.getPlayer(1));
-//         System.out.println("GameLogic: after player 1: win="+win);
          if(!data.getPlayer(2).anyShipsLeft()){
-            win=true; w = data.getPlayer(1);
-//            System.out.println("GameLogic: after player 1 win eval: win="+win);
-            }
+            win=true; w = data.getPlayer(1);}
          else {      //second player
             ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(2),"play");
             ui.dspPlayScr(data.getPlayer(1), data.getPlayer(2));
-//            System.out.println("GameLogic: after player 2: win="+win);
             if(!data.getPlayer(1).anyShipsLeft()){
-               win=true; w = data.getPlayer(2);
-//               System.out.println("GameLogic: after player 2 win eval: win="+win);
-         }  }
+               win=true; w = data.getPlayer(2);}}
       } while(!win);}
 
    private void playAIMode() {}
@@ -103,8 +95,52 @@ public class GameLogic
 
    private void playSkirmish4Mode() {}
 
-   private void playTeamMode() {}
+   private void playTeamMode() {
+      boolean first = true, win = false;
+      do{
+         //first team, first player, first enemy
+         if(!first) ui.dspHandoffScr(data.getPlayer(3), data.getPlayer(1),"play");
+         first=false;
+         ui.dspPlayScr(data.getPlayer(3), data.getPlayer(1));
+         
+         //first team, first player, second enemy
+         ui.dspHandoffScr(data.getPlayer(4), data.getPlayer(1),"play");
+         ui.dspPlayScr(data.getPlayer(4), data.getPlayer(1));
+         
+         //first team, second player, first enemy
+         ui.dspHandoffScr(data.getPlayer(3), data.getPlayer(2),"play");
+         ui.dspPlayScr(data.getPlayer(3), data.getPlayer(2));
+         
+         //first team, second player, second enemy
+         ui.dspHandoffScr(data.getPlayer(4), data.getPlayer(2),"play");
+         ui.dspPlayScr(data.getPlayer(4), data.getPlayer(2));
+         
+         //detect end-of-game (both enemies have to loose all their ships)
+         if(!data.getPlayer(3).anyShipsLeft() && !data.getPlayer(4).anyShipsLeft()){
+            win=true; w = data.getPlayer(1);}    
+         
+         else {
+            //second team, first player, first enemy
+            ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(3),"play");
+            ui.dspPlayScr(data.getPlayer(1), data.getPlayer(3));
+            
+            //second team, first player, second enemy           
+            ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(3),"play");
+            ui.dspPlayScr(data.getPlayer(2), data.getPlayer(3));
+            
+            //second team, second player, first enemy            
+            ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(4),"play");
+            ui.dspPlayScr(data.getPlayer(1), data.getPlayer(4));
+            
+            //second team, second player, second enemy  
+            ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(4),"play");
+            ui.dspPlayScr(data.getPlayer(2), data.getPlayer(4));
 
+            //detect end-of-game (both enemies have to loose all their ships)
+            if(!data.getPlayer(1).anyShipsLeft() && !data.getPlayer(2).anyShipsLeft()){
+               win=true; w = data.getPlayer(3);}}
+      } while(!win);}
+   
    
    //helpers
    private void processGameConfigInput(){
@@ -112,10 +148,10 @@ public class GameLogic
       String[] aliases = ui.getPlayerAliases();
       data.addPlayer(new Player(aliases[0]));
       data.addPlayer(new Player(aliases[1]));
-      playerCount = 2;}                          //'Core Features' default
+      playerCount = 2;}           //'Core Features' default
 
-   //clean out last games's players and reset state variables
    private void resetGame() {
+    //clean out last games's players and reset state variables
       data.deleteAllPlayers();
       data.resetPlayerID();
       exit=false;
@@ -138,4 +174,3 @@ public class GameLogic
          System.out.println("HOF: "+r.toString());}
    }
 }
-//

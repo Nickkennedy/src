@@ -20,7 +20,7 @@ import model.GameEngine;
 import model.GameModel;
 import model.Player;
 
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -55,13 +55,8 @@ public class GameEngine implements GameModel
    
    //Player housekeeping
    public void addPlayer(Player p){
-      System.out.println("GameEngine: addPlayer: before: player="+p.getPlayerAlias()+" playerID="+playerID );
       p.setPlayerID(playerID);
-      players.put(playerID++,p);
-      for(Player pl : players.values()) {
-         System.out.println("GameEngine: addPlayer: print all loop: player="+pl.getPlayerAlias()+" playerID="+pl.getPlayerID() );      
-      }
-   }
+      players.put(playerID++,p);}
    
    public Player getPlayer(int key) {
       return players.get(key);}
@@ -93,30 +88,21 @@ public class GameEngine implements GameModel
          Entry<Double, GameRecord> me = it.next();
          a.add((GameRecord) me.getValue());
          count++;}
-      return a;
-   }
-   
-   public boolean detectEndGame() {
-      //detect end of game here
-      return true;
-   };
+      return a;}
 
    
    //Persistence
    public void readInGameHistory() {
-//      System.out.println("readInGameHistory:");
       //read file, one 'GameRecord' object per record
       try(FileInputStream in = new FileInputStream(Paths.get(HISTORY_FILE).toFile())){
          ObjectInputStream ois = new ObjectInputStream(in);
          GameRecord record = null;
          while((record=(GameRecord)ois.readObject())!=null){
-//            System.out.println("Reading from file: "+record.getWinner());
             this.addGameStats(record);}}
       catch(EOFException e) {return;} 
       catch(ClassNotFoundException e) {e.printStackTrace();}
       catch(FileNotFoundException e) {noGameHistory = true;}
-      catch(IOException e) {e.printStackTrace();}
-   }
+      catch(IOException e) {e.printStackTrace();}}
    
    public void writeOutGameHistory() {
       //create (if does not exist) and write new file, one 'GameRecord' object per record
@@ -125,6 +111,5 @@ public class GameEngine implements GameModel
          for(GameRecord record : records.values()) {
             oos.writeObject(record);}}
       catch(FileNotFoundException e) {e.printStackTrace();}
-      catch(IOException e) {e.printStackTrace();}
-   }
+      catch(IOException e) {e.printStackTrace();}}
 }

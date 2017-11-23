@@ -1,13 +1,24 @@
 package view;
 
-   import java.util.Scanner;
+import java.util.Scanner;
+import model.DirectionType;
+import model.GameModel;
+import model.Player;
+import model.ShipType;
+import view.UI;
 
-   import model.DirectionType;
-   import model.GameModel;
-   import model.Player;
-   import model.ShipType;
-   import view.UI;
- //copied from zip/
+/***
+ * @author Kevin Purnell s3611540 & Nicholas Kennedy s3674937
+ * @version 1.0
+ * Subject:       CPT111 BITS 
+ * Study Period:  SP3 2017
+ * Project Title: Battleships
+ * Purpose:       1)implements the UI interface as GUI
+ *                2)controls screen display
+ *                3)pulls user input from screens
+ * Package:       view 
+ * Source:        own work 
+ */
    public class GUIDriver implements UI
    {
       //attributes
@@ -60,4 +71,3 @@ package view;
          ws = new WinGUI(s,p,m);
          return true;}
  }
-   //

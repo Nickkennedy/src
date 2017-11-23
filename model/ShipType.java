@@ -1,6 +1,6 @@
 package model;
 
-/**
+/***
  * @author Kevin Purnell s3611540
  * @version 1.0
  * Subject:       CPT111 BITS 
@@ -10,7 +10,6 @@ package model;
  * Package:       model
  * Source:        own work 
  */
-//copied from zip/
 public enum ShipType 
 {
    CARRIER   ("Carrier",5),
@@ -29,4 +28,3 @@ public enum ShipType
    public String getName() {return name;}
    public int getLength()  {return length;}
 }
-//

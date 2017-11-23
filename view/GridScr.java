@@ -2,7 +2,7 @@ package view;
 
 import model.Player;
 
-/**
+/***
  * @author Nicholas Kennedy
  * 
  */

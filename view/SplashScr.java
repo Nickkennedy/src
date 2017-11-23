@@ -5,7 +5,7 @@ import controller.PlayMode;
 import model.GameModel;
 import view.HOFScr;
 
-/**
+/***
  * @author Christopher Musamba
  * with help
  */
