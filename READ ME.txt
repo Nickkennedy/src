@@ -4,4 +4,6 @@ Before running the game, ensure that the controller, driver, model and view are 
 
 If you do notice that Files and Images are saved as packages, right click on each file > select Build Path followed by exclude.
 
+Please ensure that the History.dat file is present under the files folder.
+
 Enjoy!
