@@ -1,0 +1,7 @@
+-------READ ME-------
+
+Before running the game, ensure that the controller, driver, model and view are all saved as packages while Files and Images are saved as folders. 
+
+If you do notice that Files and Images are saved as packages, right click on each file > select Build Path followed by exclude.
+
+Enjoy!
