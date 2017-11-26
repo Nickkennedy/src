@@ -47,7 +47,8 @@ public class GameLogic
             
          //each player places ships here
          for(int i=1; i<=playerCount; i++){
-            if(i!=1) ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(i),"place");
+//            System.out.println("at handoff place:  mode="+playMode+" count="+playerCount+" player="+i+"  enemy="+(i-1));
+            if(i!=1) ui.dspHandoffScr(data.getPlayer(i-1), data.getPlayer(i),"place");
             ui.dspPlaceScr(data.getPlayer(i));}
 
          //handoff to play section 
@@ -146,10 +147,13 @@ public class GameLogic
    private void processGameConfigInput(){
       playerCount = ui.getPlayerCount();
       String[] aliases = ui.getPlayerAliases();
-      data.addPlayer(new Player(aliases[0]));
-      data.addPlayer(new Player(aliases[1]));
-      playerCount = 2;}           //'Core Features' default
-
+      for(int i=0; i<playerCount; i++) {
+         data.addPlayer(new Player(aliases[i]));
+         data.addPlayer(new Player(aliases[i]));
+      }
+//      playerCount = 2;                //'Core Features' default
+   }
+      
    private void resetGame() {
     //clean out last games's players and reset state variables
       data.deleteAllPlayers();

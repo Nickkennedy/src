@@ -43,7 +43,7 @@ public class SplashScr
       //get game configuration
       numberOfPlayers = inputNumberOfPlayers(s); 
       playMode = inputPlayMode(s);               
-      numberOfPlayers = 2;         //force game mode to STANDARD 2 Players for core features
+//      numberOfPlayers = 2;         //force game mode to STANDARD 2 Players for core features
       
       //input player names
       for(int i=0; i<numberOfPlayers; i++) {
@@ -66,14 +66,14 @@ public class SplashScr
    //helpers
    public static int inputNumberOfPlayers(Scanner input) {
       int i = -99;
-      System.out.print("Enter number of players: (only '2' allowed) ");
+      System.out.print("Enter number of players: (only '2' or '4' allowed) ");
       do {
          if(i != -99) System.out.print("'Core Features' game allows only '2' players. Try again: ");
          try {
             i = Integer.parseInt(input.nextLine());}
          catch(Exception e) {
             i = -98;}
-      } while(i!=2);
+      } while(i!=2 && i!=4);
       return i;}
    
    public static PlayMode inputPlayMode(Scanner input) {
@@ -82,7 +82,7 @@ public class SplashScr
       do {
          if(pm != null) System.out.print("Game only allows S, K or T. Try again: ");
          pm = input.nextLine();
-      } while(!(pm.length()==1 && pm.equals("S")));
+      } while(!(pm.length()==1 && (pm.equals("S")||(pm.equals("T")))));
       switch(pm){
          case "S": return PlayMode.STANDARD;
          case "K": return PlayMode.STANDARD;
