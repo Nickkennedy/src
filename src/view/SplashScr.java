@@ -40,12 +40,9 @@ public class SplashScr
       displayScreen();
       new HOFScr(m);
       
-      //get game configuration
-      numberOfPlayers = inputNumberOfPlayers(s); 
-      playMode = inputPlayMode(s);               
-//      numberOfPlayers = 2;         //force game mode to STANDARD 2 Players for core features
-      
-      //input player names
+      //get game configuration and player names
+      numberOfPlayers = inputNumberOfPlayers(s);
+      playMode = inputPlayMode(s);
       for(int i=0; i<numberOfPlayers; i++) {
          aliases[i] = inputPlayerName(s,i);}
    }
@@ -57,7 +54,7 @@ public class SplashScr
    public int getCount() {
       return numberOfPlayers;}
    
-   public PlayMode getPlayMode() {
+   public PlayMode getMode() {
       return playMode;}
    
    public String[] getAliases() {
@@ -68,25 +65,27 @@ public class SplashScr
       int i = -99;
       System.out.print("Enter number of players: (only '2' or '4' allowed) ");
       do {
-         if(i != -99) System.out.print("'Core Features' game allows only '2' players. Try again: ");
+         if(i != -99) System.out.print("Only 2 players (Core Feature) or 4 players (Extended Feature 'Teams') implemented. Try again: ");
          try {
             i = Integer.parseInt(input.nextLine());}
          catch(Exception e) {
             i = -98;}
       } while(i!=2 && i!=4);
+      System.out.println("");
       return i;}
    
    public static PlayMode inputPlayMode(Scanner input) {
       String pm = null;
       System.out.print("Enter play mode: (S)tandard, S(K)irmish, (T)eam ");
       do {
-         if(pm != null) System.out.print("Game only allows S, K or T. Try again: ");
-         pm = input.nextLine();
+         if(pm != null) System.out.print("Only S and T implemented. Try again: ");
+         pm = input.nextLine().toUpperCase();
       } while(!(pm.length()==1 && (pm.equals("S")||(pm.equals("T")))));
+      System.out.println("");
       switch(pm){
          case "S": return PlayMode.STANDARD;
          case "K": return PlayMode.STANDARD;
-         case "T": return PlayMode.STANDARD; 
+         case "T": return PlayMode.TEAM; 
          default:  return PlayMode.STANDARD;}}
 
    public static String inputPlayerName(Scanner input, int i) {

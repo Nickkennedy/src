@@ -46,16 +46,14 @@ public class GameLogic
          processGameConfigInput();
             
          //each player places ships here
-         for(int i=1; i<=playerCount; i++){
-//            System.out.println("at handoff place:  mode="+playMode+" count="+playerCount+" player="+i+"  enemy="+(i-1));
+         int i;
+         for(i=1; i<=playerCount; i++){
             if(i!=1) ui.dspHandoffScr(data.getPlayer(i-1), data.getPlayer(i),"place");
             ui.dspPlaceScr(data.getPlayer(i));}
-
-         //handoff to play section 
-         ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(1),"place");
+         //handoff to play section
+         ui.dspHandoffScr(data.getPlayer(i-1), data.getPlayer(1),"place");
          
          //play the game using the selected 'Play Mode'
-         playMode = PlayMode.STANDARD;
          switch(playMode){
             case STANDARD:  playStandardMode(); break;
             case AI:        playAIMode();       break;
@@ -76,6 +74,7 @@ public class GameLogic
    
    //play mode methods
    private void playStandardMode() {
+      System.out.println("Ready to play game in STANDARD mode");
       boolean first = true, win = false;
       do {           //first player
          if(!first) ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(1),"play");
@@ -90,30 +89,34 @@ public class GameLogic
                win=true; w = data.getPlayer(2);}}
       } while(!win);}
 
-   private void playAIMode() {}
+   private void playAIMode() {
+      System.out.println("Ready to play game in AI mode");}
 
-   private void playSkirmish3Mode() {}
+   private void playSkirmish3Mode() {
+      System.out.println("Ready to play game in SKIRMISH3 mode");}
 
-   private void playSkirmish4Mode() {}
+   private void playSkirmish4Mode() {
+      System.out.println("Ready to play game in SKIRMISH4 mode");}
 
    private void playTeamMode() {
+      System.out.println("Ready to play game in TEAM mode");
       boolean first = true, win = false;
       do{
          //first team, first player, first enemy
-         if(!first) ui.dspHandoffScr(data.getPlayer(3), data.getPlayer(1),"play");
+         if(!first) ui.dspHandoffScr(data.getPlayer(4), data.getPlayer(1),"play");
          first=false;
          ui.dspPlayScr(data.getPlayer(3), data.getPlayer(1));
          
          //first team, first player, second enemy
-         ui.dspHandoffScr(data.getPlayer(4), data.getPlayer(1),"play");
+         System.out.println("\nNow shoot at Enemy 2");
          ui.dspPlayScr(data.getPlayer(4), data.getPlayer(1));
          
          //first team, second player, first enemy
-         ui.dspHandoffScr(data.getPlayer(3), data.getPlayer(2),"play");
+         ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(2),"play");
          ui.dspPlayScr(data.getPlayer(3), data.getPlayer(2));
          
          //first team, second player, second enemy
-         ui.dspHandoffScr(data.getPlayer(4), data.getPlayer(2),"play");
+         System.out.println("\nNow shoot at Enemy 2");
          ui.dspPlayScr(data.getPlayer(4), data.getPlayer(2));
          
          //detect end-of-game (both enemies have to loose all their ships)
@@ -122,19 +125,19 @@ public class GameLogic
          
          else {
             //second team, first player, first enemy
-            ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(3),"play");
+            ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(3),"play");
             ui.dspPlayScr(data.getPlayer(1), data.getPlayer(3));
             
             //second team, first player, second enemy           
-            ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(3),"play");
+            System.out.println("\nNow shoot at Enemy 2");
             ui.dspPlayScr(data.getPlayer(2), data.getPlayer(3));
             
             //second team, second player, first enemy            
-            ui.dspHandoffScr(data.getPlayer(1), data.getPlayer(4),"play");
+            ui.dspHandoffScr(data.getPlayer(3), data.getPlayer(4),"play");
             ui.dspPlayScr(data.getPlayer(1), data.getPlayer(4));
             
             //second team, second player, second enemy  
-            ui.dspHandoffScr(data.getPlayer(2), data.getPlayer(4),"play");
+            System.out.println("\nNow shoot at Enemy 2");
             ui.dspPlayScr(data.getPlayer(2), data.getPlayer(4));
 
             //detect end-of-game (both enemies have to loose all their ships)
@@ -146,13 +149,10 @@ public class GameLogic
    //helpers
    private void processGameConfigInput(){
       playerCount = ui.getPlayerCount();
+      playMode = ui.getPlayMode();
       String[] aliases = ui.getPlayerAliases();
       for(int i=0; i<playerCount; i++) {
-         data.addPlayer(new Player(aliases[i]));
-         data.addPlayer(new Player(aliases[i]));
-      }
-//      playerCount = 2;                //'Core Features' default
-   }
+         data.addPlayer(new Player(aliases[i]));}}
       
    private void resetGame() {
     //clean out last games's players and reset state variables

@@ -9,7 +9,7 @@ import controller.GameLogic;
  * Study Period:  SP3 2017
  * Project Title: Battleships
  * Purpose:       1)creates and runs the game 
- *                2)more useful if GUI used as can launch the Event Dispatching thread
+ *                2)more useful if GUI used, as can launch the Event Dispatching Thread
  * Package:       driver 
  * Source:        own work 
  */

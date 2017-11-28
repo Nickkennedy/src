@@ -1,6 +1,8 @@
 package view;
 
 import java.util.Scanner;
+
+import controller.PlayMode;
 import model.DirectionType;
 import model.GameModel;
 import model.Player;
@@ -39,7 +41,10 @@ import view.UI;
       public void dspSplashScr(GameModel m){
          ss = new SplashGUI(s, m);}
       public int getPlayerCount() {
-         return ss.getCount();} 
+         return ss.getCount();}
+      public PlayMode getPlayMode() {
+         return ss.getMode();
+      }
       public String[] getPlayerAliases(){
          return ss.getAliases();}   
 

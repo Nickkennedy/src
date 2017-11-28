@@ -1,5 +1,6 @@
 package view;
 
+import controller.PlayMode;
 import model.GameModel;
 import model.Player;
 
@@ -21,6 +22,7 @@ public interface UI
    //Splash Screen
    public void dspSplashScr(GameModel m);
    public int getPlayerCount();
+   public PlayMode getPlayMode(); 
    public String[] getPlayerAliases();
    
    //Place Screen
